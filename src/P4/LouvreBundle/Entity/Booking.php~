@@ -257,45 +257,5 @@ class Booking
         return $this->ticketsType;
     }
     
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add ticket
-     *
-     * @param \P4\LouvreBundle\Entity\Ticket $ticket
-     *
-     * @return Booking
-     */
-    public function addTicket(\P4\LouvreBundle\Entity\Ticket $ticket)
-    {
-        $this->tickets[] = $ticket;
-
-        return $this;
-    }
-
-    /**
-     * Remove ticket
-     *
-     * @param \P4\LouvreBundle\Entity\Ticket $ticket
-     */
-    public function removeTicket(\P4\LouvreBundle\Entity\Ticket $ticket)
-    {
-        $this->tickets->removeElement($ticket);
-    }
-
-    /**
-     * Get tickets
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTickets()
-    {
-        return $this->tickets;
-    }
 }
+
