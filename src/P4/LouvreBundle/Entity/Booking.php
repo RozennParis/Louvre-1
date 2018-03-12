@@ -3,6 +3,8 @@
 namespace P4\LouvreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Booking
@@ -24,6 +26,7 @@ class Booking
     /**
      * @var Ticket
      * @ORM\OneToMany(targetEntity="P4\LouvreBundle\Entity\Ticket", mappedBy="booking", cascade={"persist"})
+     * @Assert\Valid()
      */
     private $tickets;
 
@@ -33,6 +36,7 @@ class Booking
      * @var \DateTime
      *
      * @ORM\Column(name="visitDate", type="datetime")
+     * @Assert\Date()
      */
     private $visitDate;
 
@@ -40,6 +44,7 @@ class Booking
      * @var \DateTime
      *
      * @ORM\Column(name="reservationDate", type="datetimetz")
+     * @Assert\DateTime()
      */
     private $reservationDate;
 
@@ -54,6 +59,8 @@ class Booking
      * @var int
      *
      * @ORM\Column(name="ticketsNumber", type="integer")
+     * @Assert\Range(min="1",max="20", minMessage="La commande minimum est de 1 ticket", maxMessage="Vous ne pouvez pas
+     * commander plus de 20 tickets")
      */
     private $ticketsNumber;
 
@@ -61,6 +68,8 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email()
+     * @Assert\NotBlank(message="Merci d'indiquer votre adresse email")
      */
     private $email;
 
@@ -262,7 +271,8 @@ class Booking
      */
     public function __construct()
     {
-        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tickets = new ArrayCollection();
+        $this->reservationDate = new \DateTime();
     }
 
     /**
