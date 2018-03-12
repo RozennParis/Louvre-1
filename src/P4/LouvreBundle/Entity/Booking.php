@@ -71,9 +71,7 @@ class Booking
     private $ticketsType;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tickets", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="P4LouvreBundle\Entity\Ticket", mappedBy="booking", cascade={"persist"})
      */
     private $tickets;
 

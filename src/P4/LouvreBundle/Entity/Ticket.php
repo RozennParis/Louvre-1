@@ -64,9 +64,8 @@ class Ticket
     private $price;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="booking", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="P4LouvreBundle\Entity\Booking", inversedBy="tickets")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $booking;
 
