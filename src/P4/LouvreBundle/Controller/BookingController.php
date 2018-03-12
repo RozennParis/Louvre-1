@@ -8,6 +8,6 @@ class BookingController extends Controller
 {
     public function homeAction()
     {
-    return $this->render('P4LouvreBundle:Booking:home.html.twig');
+    return $this->render('P4LouvreBundle:Home:home.html.twig');
     }
 }

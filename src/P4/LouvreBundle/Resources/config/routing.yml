@@ -1,7 +1,3 @@
-p4_louvre_homepage:
-    path:     /
-    defaults: { _controller: P4LouvreBundle:Default:index }
-
 p4_louvre_home:
     path:    /
     defaults: { _controller: P4LouvreBundle:Booking:home}
