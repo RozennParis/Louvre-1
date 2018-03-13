@@ -2,4 +2,8 @@
 
 {% block title %}{{ parent() }} - Billetterie {% endblock %}
 
-{% block content %} page billetterie {% endblock %}
+{% block content %}
+<div class="well">
+    {{ form(form) }}
+</div>
+{% endblock %}
