@@ -1,3 +1,19 @@
-p4_louvre_home:
+p4_louvre_homepage:
     path:    /
-    defaults: { _controller: P4LouvreBundle:Booking:home}
+    defaults: { _controller: P4LouvreBundle:Booking:homepage}
+
+p4_louvre_ticketing:
+    path:    /billetterie
+    defaults: { _controller: P4LouvreBundle:Booking:ticketing}
+
+p4_louvre_visitorInfo:
+    path:    /coordonnées
+    defaults: { _controller: P4LouvreBundle:Booking:visitorInfo}
+
+p4_louvre_orderSummary:
+    path:    /récapitulatif
+    defaults: { _controller: P4LouvreBundle:Booking:orderSummary}
+
+p4_louvre_orderConfirmation:
+    path:    /confirmation
+    defaults: { _controller: P4LouvreBundle:Booking:orderConfirmation}
