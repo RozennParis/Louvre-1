@@ -2,4 +2,6 @@
 
 {% block title %}{{ parent() }} - Coordonnées des visiteurs {% endblock %}
 
-{% block content %} page Coordonnées des visiteurs {% endblock %}
+{% block content %} <div class="well">
+    {{ form(form) }}
+    </div>{% endblock %}

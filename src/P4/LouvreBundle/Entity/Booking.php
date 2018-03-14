@@ -33,9 +33,9 @@ class Booking
 
 
     /**
-     * @var \DateTime
+     * @var date
      *
-     * @ORM\Column(name="visitDate", type="datetime")
+     * @ORM\Column(name="visitDate", type="date")
      * @Assert\Date()
      */
     private $visitDate;
@@ -81,9 +81,9 @@ class Booking
     private $totalAmount;
 
     /**
-     * @var bool
+     * @var string
      *
-     * @ORM\Column(name="ticketsType", type="boolean")
+     * @ORM\Column(name="ticketsType", type="string")
      */
     private $ticketsType;
 

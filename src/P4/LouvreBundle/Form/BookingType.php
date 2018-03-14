@@ -1,7 +1,5 @@
 <?php
-
 namespace P4\LouvreBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -9,7 +7,6 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 class BookingType extends AbstractType
 {
     /**
@@ -18,14 +15,39 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('visitDate', DateType::class)
-            ->add('ticketsNumber', ChoiceType::class)
-            ->add('ticketsType', ChoiceType::class)
-            ->add('email', EmailType::class)
-            ->add('save', SubmitType::class);
-
+            ->add('visitDate', DateType::class,[
+                'label'=> 'Date de la visite'
+            ])
+            ->add('ticketsNumber', ChoiceType::class, [
+                'label'=>'Nombre de billets',
+                'choices'=>[
+                    '1'=>1,
+                    '2'=>2,
+                    '3'=>3,
+                    '4'=>4,
+                    '5'=>5,
+                    '6'=>6,
+                    '7'=>7,
+                    '8'=>8,
+                    '9'=>9,
+                    '10'=>10
+                ]
+            ])
+            ->add('ticketsType', ChoiceType::class,[
+                'label'=>'Type de billet',
+                'choices' =>[
+                    'Journée' => 'Journée',
+                    'Demi-journée'=>'Demi-journée',
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label'=>'Adresse email'
+            ])
+            ->add('save', SubmitType::class,[
+                'label'=>'Valider'
+            ]);
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -35,7 +57,6 @@ class BookingType extends AbstractType
             'data_class' => 'P4\LouvreBundle\Entity\Booking'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -43,6 +64,4 @@ class BookingType extends AbstractType
     {
         return 'p4_louvrebundle_booking';
     }
-
-
 }
