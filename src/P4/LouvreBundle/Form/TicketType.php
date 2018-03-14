@@ -26,15 +26,15 @@ class TicketType extends AbstractType
                 'label'=> 'Prénom'
             ])
             ->add('country', CountryType::class,[
-                'label'=>'Pays',
-                'placeholder'=>'France'
+                'label'=>'Pays'
             ])
             ->add('birthDate' , BirthdayType::class,[
                 'label'=> 'Date de naissance',
                 'format'=> 'dd,MM,yyyy'
             ])
             ->add('reducedPrice' , CheckboxType::class,[
-                'label'=> 'Tarif réduit'
+                'label'=> 'Tarif réduit',
+                'required'=> 'false'
             ])
             ->add('save', SubmitType::class,[
                 'label'=> 'Valider'

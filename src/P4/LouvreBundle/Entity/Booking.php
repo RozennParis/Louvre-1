@@ -33,7 +33,7 @@ class Booking
 
 
     /**
-     * @var date
+     * @var \DateTime
      *
      * @ORM\Column(name="visitDate", type="date")
      * @Assert\Date()
@@ -43,7 +43,7 @@ class Booking
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="reservationDate", type="datetimetz")
+     * @ORM\Column(name="reservationDate", type="datetime")
      * @Assert\DateTime()
      */
     private $reservationDate;
@@ -68,7 +68,7 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\Email()
+     * @Assert\Email(message="Merci d'entrer une adresse email valide")
      * @Assert\NotBlank(message="Merci d'indiquer votre adresse email")
      */
     private $email;

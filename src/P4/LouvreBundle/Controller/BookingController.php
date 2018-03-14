@@ -26,7 +26,7 @@ class BookingController extends Controller
             $em= $this->getDoctrine()->getManager();
             $em->persist($booking);
             $em->flush();
-            $request->getSession()->getFlashBag()->add('commande','ticketing ok');
+            $request->getSession();
             return $this->redirectToRoute('p4_louvre_visitorInfo',array('id' => $booking->getId()));
         }
         return $this->render('P4LouvreBundle:Booking:ticketing.html.twig',array('form' => $form->createView(),
@@ -41,7 +41,7 @@ class BookingController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($ticket);
             $em->flush();
-            $request->getSession()->getFlashBag()->add('ticket','ticket ok');
+            $request->getSession();
             return $this->redirectToRoute('p4_louvre_orderSummary',array('id'=>$ticket->getId()));
         }
         return $this->render('P4LouvreBundle:Booking:visitorInfo.html.twig',array('form'=> $form->createView(),));

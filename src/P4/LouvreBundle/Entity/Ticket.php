@@ -36,7 +36,7 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
-     * @Assert\Length(min="2", max="30")
+     * @Assert\Length(min="2",minMessage="Merci d'entrer plus de 2 lettres", max="30")
      * @Assert\NotBlank(message="Le prénom doit être renseigné")
      * @Assert\Type(type="string")
      */
@@ -46,7 +46,7 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
-     * @Assert\Length(min="2", max="30")
+     * @Assert\Length(min="2",minMessage="Merci d'entrer plus de 2 lettres", max="30")
      * @Assert\NotBlank(message="Le nom doit être renseigné")
      * @Assert\Type(type="string")
      */

@@ -17,7 +17,8 @@ class BookingType extends AbstractType
         $builder
             ->add('visitDate', DateType::class,[
                 'label'=> 'Date de la visite',
-                'format'=> 'dd,MM,yyyy',
+                'widget'=>'single_text',
+
             ])
             ->add('ticketsNumber', ChoiceType::class, [
                 'label'=>'Nombre de billets',
