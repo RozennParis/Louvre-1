@@ -3,7 +3,6 @@
 namespace P4\LouvreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,6 +13,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Booking
 {
+
+    const TICKET_DAY = true;
+    const TICKET_HALF_DAY = false;
     /**
      * @var int
      *
@@ -24,68 +26,66 @@ class Booking
     private $id;
 
     /**
-     * @var Ticket
-     * @ORM\OneToMany(targetEntity="P4\LouvreBundle\Entity\Ticket", mappedBy="booking", cascade={"persist"})
+     * @var Ticket[]
+     * @ORM\OneToMany(targetEntity="P4\LouvreBundle\Entity\Ticket" , mappedBy="booking", cascade={"persist"})
      * @Assert\Valid()
      */
     private $tickets;
 
-
-
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="visitDate", type="date")
+     * @ORM\Column(name="visitDate", type="datetime")
      * @Assert\Date()
      */
+
     private $visitDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="reservationDate", type="datetime")
+     * @ORM\Column(name="purchaseDate", type="datetime")
      * @Assert\DateTime()
      */
-    private $reservationDate;
+    private $purchaseDate;
 
     /**
-     * @var string
+     * @var bool
      *
-     * @ORM\Column(name="reservationCode", type="string", length=255)
+     * @ORM\Column(name="ticketType", type="boolean")
+     * @Assert\NotNull()
      */
-    private $reservationCode;
+    private $ticketType;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="ticketsNumber", type="integer")
-     * @Assert\Range(min="1",max="20", minMessage="La commande minimum est de 1 ticket", maxMessage="Vous ne pouvez pas
-     * commander plus de 20 tickets")
+     * @ORM\Column(name="totalPrice", type="integer")
      */
-    private $ticketsNumber;
+    private $totalPrice;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bookingCode", type="string", length=255)
+     */
+    private $bookingCode;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\Email(message="Merci d'entrer une adresse email valide")
-     * @Assert\NotBlank(message="Merci d'indiquer votre adresse email")
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="totalAmount", type="integer")
+     * @ORM\Column(name="nbTickets", type="integer")
      */
-    private $totalAmount;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ticketsType", type="string")
-     */
-    private $ticketsType;
+    private $nbTickets;
 
 
     /**
@@ -123,75 +123,99 @@ class Booking
     }
 
     /**
-     * Set reservationDate
+     * Set purchaseDate
      *
-     * @param \DateTime $reservationDate
+     * @param \DateTime $purchaseDate
      *
      * @return Booking
      */
-    public function setReservationDate($reservationDate)
+    public function setPurchaseDate($purchaseDate)
     {
-        $this->reservationDate = $reservationDate;
+        $this->purchaseDate = $purchaseDate;
 
         return $this;
     }
 
     /**
-     * Get reservationDate
+     * Get purchaseDate
      *
      * @return \DateTime
      */
-    public function getReservationDate()
+    public function getPurchaseDate()
     {
-        return $this->reservationDate;
+        return $this->purchaseDate;
     }
 
     /**
-     * Set reservationCode
+     * Set ticketType
      *
-     * @param string $reservationCode
+     * @param boolean $ticketType
      *
      * @return Booking
      */
-    public function setReservationCode($reservationCode)
+    public function setTicketType($ticketType)
     {
-        $this->reservationCode = $reservationCode;
+        $this->ticketType = $ticketType;
 
         return $this;
     }
 
     /**
-     * Get reservationCode
+     * Get ticketType
      *
-     * @return string
+     * @return bool
      */
-    public function getReservationCode()
+    public function getTicketType()
     {
-        return $this->reservationCode;
+        return $this->ticketType;
     }
 
     /**
-     * Set ticketsNumber
+     * Set totalPrice
      *
-     * @param integer $ticketsNumber
+     * @param integer $totalPrice
      *
      * @return Booking
      */
-    public function setTicketsNumber($ticketsNumber)
+    public function setTotalPrice($totalPrice)
     {
-        $this->ticketsNumber = $ticketsNumber;
+        $this->totalPrice = $totalPrice;
 
         return $this;
     }
 
     /**
-     * Get ticketsNumber
+     * Get totalPrice
      *
      * @return int
      */
-    public function getTicketsNumber()
+    public function getTotalPrice()
     {
-        return $this->ticketsNumber;
+        return $this->totalPrice;
+    }
+
+    /**
+     * Set bookingCode
+     *
+     * @param string $bookingCode
+     *
+     * @return Booking
+     */
+    public function setBookingCode($bookingCode)
+    {
+        $this->bookingCode = $bookingCode;
+
+        return $this;
+    }
+
+    /**
+     * Get bookingCode
+     *
+     * @return string
+     */
+    public function getBookingCode()
+    {
+        return $this->bookingCode;
     }
 
     /**
@@ -219,60 +243,35 @@ class Booking
     }
 
     /**
-     * Set totalAmount
+     * Set nbTickets
      *
-     * @param integer $totalAmount
+     * @param integer $nbTickets
      *
      * @return Booking
      */
-    public function setTotalAmount($totalAmount)
+    public function setNbTickets($nbTickets)
     {
-        $this->totalAmount = $totalAmount;
+        $this->nbTickets = $nbTickets;
 
         return $this;
     }
 
     /**
-     * Get totalAmount
+     * Get nbTickets
      *
      * @return int
      */
-    public function getTotalAmount()
+    public function getNbTickets()
     {
-        return $this->totalAmount;
+        return $this->nbTickets;
     }
-
-    /**
-     * Set ticketsType
-     *
-     * @param boolean $ticketsType
-     *
-     * @return Booking
-     */
-    public function setTicketsType($ticketsType)
-    {
-        $this->ticketsType = $ticketsType;
-
-        return $this;
-    }
-
-    /**
-     * Get ticketsType
-     *
-     * @return bool
-     */
-    public function getTicketsType()
-    {
-        return $this->ticketsType;
-    }
-    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->tickets = new ArrayCollection();
-        $this->reservationDate = new \DateTime();
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->purchaseDate = new\DateTime();
     }
 
     /**

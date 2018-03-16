@@ -5,6 +5,7 @@ namespace P4\LouvreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * Ticket
  *
@@ -13,6 +14,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Ticket
 {
+
+    const REDUCED_PRICE = true;
+    const NO_REDUCED_PRICE = false;
     /**
      * @var int
      *
@@ -21,7 +25,6 @@ class Ticket
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
 
     /**
      * @var Booking
@@ -36,8 +39,7 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
-     * @Assert\Length(min="2",minMessage="Merci d'entrer plus de 2 lettres", max="30")
-     * @Assert\NotBlank(message="Le prénom doit être renseigné")
+     * @Assert\NotBlank()
      * @Assert\Type(type="string")
      */
     private $firstName;
@@ -46,8 +48,7 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
-     * @Assert\Length(min="2",minMessage="Merci d'entrer plus de 2 lettres", max="30")
-     * @Assert\NotBlank(message="Le nom doit être renseigné")
+     * @Assert\NotBlank()
      * @Assert\Type(type="string")
      */
     private $lastName;
@@ -56,9 +57,7 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
-     * @Assert\Length(min="2", max="30")
-     * @Assert\NotBlank(message="Merci d'indiquer votre pays")
-     * @Assert\Type(type="string")
+     * @Assert\NotBlank()
      */
     private $country;
 
@@ -66,6 +65,7 @@ class Ticket
      * @var \DateTime
      *
      * @ORM\Column(name="birthDate", type="datetime")
+     * @Assert\Date()
      */
     private $birthDate;
 
@@ -74,7 +74,7 @@ class Ticket
      *
      * @ORM\Column(name="reducedPrice", type="boolean")
      */
-    private $reducedPrice;
+    private $reducedPrice = self::NO_REDUCED_PRICE;
 
     /**
      * @var int
@@ -82,6 +82,7 @@ class Ticket
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
+
 
     /**
      * Get id

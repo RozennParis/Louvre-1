@@ -4,7 +4,8 @@
 
 {% block content %}
 
-    <div class="well">
-        {{ form(form) }}
-    </div>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="VALIDER" class="btn btn-primary" href="{{ path('visitorInfo') }}"/>
+        {{ form_end(form) }}
 {% endblock %}
