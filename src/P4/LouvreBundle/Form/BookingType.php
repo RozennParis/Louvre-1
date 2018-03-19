@@ -17,17 +17,19 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('visitDate',DateType::class,[
+            ->add('visitDate',DateType::class,array(
                 'widget'=>'single_text',
-            ])
-            ->add('ticketType',ChoiceType::class,[
-                'choices'=>[
+                'html5'=>'false',
+                'attr'=>array('class'=>'js-datepicker'),
+            ))
+            ->add('ticketType',ChoiceType::class,array(
+                'choices'=>array(
                     'Journée' =>'Journée',
                     'Demi-journée' =>'Demi-journée',
-                ]
-            ])
-            ->add('nbTickets',ChoiceType::class,[
-                'choices'=>[
+                )
+            ))
+            ->add('nbTickets',ChoiceType::class,array(
+                'choices'=>array(
                     '1'=>1,
                     '2'=>2,
                     '3'=>3,
@@ -38,8 +40,8 @@ class BookingType extends AbstractType
                     '8'=>8,
                     '9'=>9,
                     '10'=>10
-                ]
-            ])
+                )
+            ))
             ->add('email',EmailType::class);
     }
     
@@ -58,7 +60,7 @@ class BookingType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'p4_louvrebundle_booking';
+        return 'p4_louvreBundle_stepOne';
     }
 
 

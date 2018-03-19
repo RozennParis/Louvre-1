@@ -1,0 +1,21 @@
+{% extends "P4LouvreBundle::base.html.twig" %}
+
+{% block title %}{{ parent() }} - Accueil {% endblock %}
+
+{% block body %}
+    <div id="homepage">
+        <img src="{{ asset('img/Louvre.png') }}" class="img-thumbnail" alt="Musée du Louvre">
+        <div class="container">
+            <div class="jumbotron jumbotron-fluid">
+                <h1 class="display-3">Musée du Louvre</h1>
+                <p class="lead">Bienvenue sur la billetterie du Musée du Louvre</p>
+                <hr class="my-4">
+                <p>Commandez vos billets d'entrée en ligne</p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="{{ path('p4_louvre_stepOne') }}" role="button">COMMANDER</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

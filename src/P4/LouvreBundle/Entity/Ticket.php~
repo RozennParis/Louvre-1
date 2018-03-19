@@ -237,5 +237,28 @@ class Ticket
     {
         return $this->price;
     }
-}
 
+    /**
+     * Set booking
+     *
+     * @param \P4\LouvreBundle\Entity\Booking $booking
+     *
+     * @return Ticket
+     */
+    public function setBooking(\P4\LouvreBundle\Entity\Booking $booking)
+    {
+        $this->booking = $booking;
+
+        return $this;
+    }
+
+    /**
+     * Get booking
+     *
+     * @return \P4\LouvreBundle\Entity\Booking
+     */
+    public function getBooking()
+    {
+        return $this->booking;
+    }
+}

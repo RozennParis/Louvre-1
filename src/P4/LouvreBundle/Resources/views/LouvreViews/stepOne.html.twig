@@ -2,10 +2,15 @@
 
 {% block title %}{{ parent() }} - Billetterie {% endblock %}
 
-{% block content %}
-
+{% block body %}
+    <div class="well">
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="VALIDER" class="btn btn-primary" href="{{ path('visitorInfo') }}"/>
+        <input type="submit" value="VALIDER" class="btn btn-primary" href="{{ path('p4_louvre_stepTwo') }}"/>
         {{ form_end(form) }}
+
+    </div>
+
+
+
 {% endblock %}

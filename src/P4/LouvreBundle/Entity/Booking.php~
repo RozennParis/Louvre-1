@@ -4,6 +4,7 @@ namespace P4\LouvreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Booking
@@ -44,7 +45,7 @@ class Booking
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="purchaseDate", type="datetimetz")
+     * @ORM\Column(name="purchaseDate", type="datetime")
      * @Assert\DateTime()
      */
     private $purchaseDate;
@@ -67,8 +68,7 @@ class Booking
     /**
      * @var string
      *
-     * @ORM\Column(name="bookingCode", type="string", length=255, unique=true)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="bookingCode", type="string", length=255)
      */
     private $bookingCode;
 
@@ -266,5 +266,47 @@ class Booking
     {
         return $this->nbTickets;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tickets = new ArrayCollection();
+        $this->purchaseDate = new\DateTime();
+    }
 
+    /**
+     * Add ticket
+     *
+     * @param Ticket $ticket
+     *
+     * @return Booking
+     */
+    public function addTicket(Ticket $ticket)
+    {
+        $this->tickets[] = $ticket;
+        $ticket->setBooking($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove ticket
+     *
+     * @param Ticket $ticket
+     */
+    public function removeTicket(Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+}

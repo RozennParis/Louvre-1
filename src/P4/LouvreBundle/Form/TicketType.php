@@ -19,10 +19,16 @@ class TicketType extends AbstractType
     {
         $builder
             ->add('firstName',TextType::class)
-            ->add('lastName', TextType::class)
+            ->add('lastName',TextType::class)
             ->add('country', CountryType::class)
-            ->add('birthDate',BirthdayType::class)
-            ->add('reducedPrice',CheckboxType::class);
+            ->add('birthDate',BirthdayType::class,array(
+                'widget'=>'single_text',
+                'html5'=>'false',
+                'attr'=> ['class'=>'js-datepicker',],
+                ))
+            ->add('reducedPrice',CheckboxType::class,array(
+                'required'=>false,
+    ));
     }
     
     /**
@@ -40,7 +46,7 @@ class TicketType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'p4_louvrebundle_ticket';
+        return 'p4_louvreBundle_stepTwo';
     }
 
 

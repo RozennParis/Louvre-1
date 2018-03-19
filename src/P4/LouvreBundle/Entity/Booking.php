@@ -4,6 +4,7 @@ namespace P4\LouvreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Booking
@@ -26,8 +27,10 @@ class Booking
     private $id;
 
     /**
-     * @var Ticket[]
-     * @ORM\OneToMany(targetEntity="P4\LouvreBundle\Entity\Ticket" , mappedBy="booking", cascade={"persist"})
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="P4\LouvreBundle\Entity\Ticket" , mappedBy="booking", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
     private $tickets;
@@ -270,20 +273,21 @@ class Booking
      */
     public function __construct()
     {
-        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tickets = new ArrayCollection();
         $this->purchaseDate = new\DateTime();
     }
 
     /**
      * Add ticket
      *
-     * @param \P4\LouvreBundle\Entity\Ticket $ticket
+     * @param Ticket $ticket
      *
      * @return Booking
      */
-    public function addTicket(\P4\LouvreBundle\Entity\Ticket $ticket)
+    public function addTicket(Ticket $ticket)
     {
         $this->tickets[] = $ticket;
+        $ticket->setBooking($this);
 
         return $this;
     }
@@ -291,9 +295,9 @@ class Booking
     /**
      * Remove ticket
      *
-     * @param \P4\LouvreBundle\Entity\Ticket $ticket
+     * @param Ticket $ticket
      */
-    public function removeTicket(\P4\LouvreBundle\Entity\Ticket $ticket)
+    public function removeTicket(Ticket $ticket)
     {
         $this->tickets->removeElement($ticket);
     }

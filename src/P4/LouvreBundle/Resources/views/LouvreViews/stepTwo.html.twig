@@ -1,0 +1,23 @@
+{% extends "P4LouvreBundle::base.html.twig" %}
+
+{% block title %}{{ parent() }} - Coordonnées des visiteurs {% endblock %}
+
+{% block body %}
+
+        <div class="well">
+            {{ form_start(form)}}
+
+                <div class="form-group">
+                        {{ form_row(form.firstName) }}
+                        {{ form_row(form.lastName) }}
+                        {{ form_widget(form.country) }}
+                        {{ form_widget(form.birthDate) }}
+                        {{ form_widget(form.reducedPrice) }}
+                </div>
+
+                <input type="submit" value="VALIDER" class="btn btn-primary" href="{{ path('p4_louvre_stepThree') }}"/>
+                {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+
+{% endblock %}

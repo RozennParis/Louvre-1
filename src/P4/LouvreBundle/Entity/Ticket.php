@@ -1,11 +1,8 @@
 <?php
-
 namespace P4\LouvreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
-
 /**
  * Ticket
  *
@@ -14,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Ticket
 {
-
     const REDUCED_PRICE = true;
     const NO_REDUCED_PRICE = false;
     /**
@@ -25,16 +21,12 @@ class Ticket
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var Booking
-     *
      * @ORM\ManyToOne(targetEntity="P4\LouvreBundle\Entity\Booking", inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
      */
     private $booking;
-
-
     /**
      * @var string
      *
@@ -43,7 +35,6 @@ class Ticket
      * @Assert\Type(type="string")
      */
     private $firstName;
-
     /**
      * @var string
      *
@@ -52,7 +43,6 @@ class Ticket
      * @Assert\Type(type="string")
      */
     private $lastName;
-
     /**
      * @var string
      *
@@ -60,7 +50,6 @@ class Ticket
      * @Assert\NotBlank()
      */
     private $country;
-
     /**
      * @var \DateTime
      *
@@ -68,22 +57,18 @@ class Ticket
      * @Assert\Date()
      */
     private $birthDate;
-
     /**
      * @var bool
      *
      * @ORM\Column(name="reducedPrice", type="boolean")
      */
     private $reducedPrice = self::NO_REDUCED_PRICE;
-
     /**
      * @var int
      *
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
-
-
     /**
      * Get id
      *
@@ -93,7 +78,6 @@ class Ticket
     {
         return $this->id;
     }
-
     /**
      * Set firstName
      *
@@ -104,10 +88,8 @@ class Ticket
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
-
         return $this;
     }
-
     /**
      * Get firstName
      *
@@ -117,7 +99,6 @@ class Ticket
     {
         return $this->firstName;
     }
-
     /**
      * Set lastName
      *
@@ -128,10 +109,8 @@ class Ticket
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
-
         return $this;
     }
-
     /**
      * Get lastName
      *
@@ -141,7 +120,6 @@ class Ticket
     {
         return $this->lastName;
     }
-
     /**
      * Set country
      *
@@ -152,10 +130,8 @@ class Ticket
     public function setCountry($country)
     {
         $this->country = $country;
-
         return $this;
     }
-
     /**
      * Get country
      *
@@ -165,7 +141,6 @@ class Ticket
     {
         return $this->country;
     }
-
     /**
      * Set birthDate
      *
@@ -176,10 +151,8 @@ class Ticket
     public function setBirthDate($birthDate)
     {
         $this->birthDate = $birthDate;
-
         return $this;
     }
-
     /**
      * Get birthDate
      *
@@ -189,7 +162,6 @@ class Ticket
     {
         return $this->birthDate;
     }
-
     /**
      * Set reducedPrice
      *
@@ -200,10 +172,8 @@ class Ticket
     public function setReducedPrice($reducedPrice)
     {
         $this->reducedPrice = $reducedPrice;
-
         return $this;
     }
-
     /**
      * Get reducedPrice
      *
@@ -213,7 +183,6 @@ class Ticket
     {
         return $this->reducedPrice;
     }
-
     /**
      * Set price
      *
@@ -224,10 +193,8 @@ class Ticket
     public function setPrice($price)
     {
         $this->price = $price;
-
         return $this;
     }
-
     /**
      * Get price
      *
@@ -237,7 +204,6 @@ class Ticket
     {
         return $this->price;
     }
-
     /**
      * Set booking
      *
@@ -248,10 +214,8 @@ class Ticket
     public function setBooking(\P4\LouvreBundle\Entity\Booking $booking)
     {
         $this->booking = $booking;
-
         return $this;
     }
-
     /**
      * Get booking
      *
