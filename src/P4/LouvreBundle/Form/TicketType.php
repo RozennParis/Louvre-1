@@ -41,13 +41,4 @@ class TicketType extends AbstractType
         ));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'p4_louvreBundle_stepTwo';
-    }
-
-
 }

@@ -3,21 +3,66 @@
 {% block title %}{{ parent() }} - Coordonnées des visiteurs {% endblock %}
 
 {% block body %}
-
+    <div class="container">
         <div class="well">
-            {{ form_start(form)}}
-
-                <div class="form-group">
-                        {{ form_row(form.firstName) }}
-                        {{ form_row(form.lastName) }}
-                        {{ form_widget(form.country) }}
-                        {{ form_widget(form.birthDate) }}
-                        {{ form_widget(form.reducedPrice) }}
+                <div class="row col-md-12 box_booking center-block">
+                        <p>Date de votre réservation : {{ app.session.get('booking').purchaseDate|date('d/m/Y') }}</p>
+                        <p>Date de votre visite : {{ app.session.get('booking').visitDate|date('d/m/Y') }}</p>
+                        <p>Type de billet : {{ app.session.get('booking').ticketType }}</p>
+                        <p>Nombres de billets reservé(s) : {{ app.session.get('booking').nbTickets }}</p>
+                        <p>Vos billets vont être envoyés sur l'adresse email : {{ app.session.get('booking').email }}</p>
+                        <p>Merci de bien vouloir renseigner les informations de chaques visiteurs ci-dessous</p>
                 </div>
 
-                <input type="submit" value="VALIDER" class="btn btn-primary" href="{{ path('p4_louvre_stepThree') }}"/>
-                {{ form_rest(form) }}
+            {{form_start(form)}}
+            {% for ticket in form.tickets %}
+                    <div class="row col-md-6 col-md-6 box_booking center-block">
+                            <h3>Billet N°{{ loop.index }}</h3>
+                            <div class="row">
+                                    <div class="col-md-10">
+                                            <div class="form-group">
+                                                {{ form_row(ticket.lastName)}}
+                                            </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-10">
+                                            <div class="form-group">
+                                                {{ form_row(ticket.firstName)}}
+                                            </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-10">
+                                            <div class="form-group">
+                                                {{ form_row(ticket.country,{'attr':{'class': 'form-control'}}) }}
+                                            </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-10">
+                                            <div class="form-group">
+                                                {{ form_row(ticket.birthDate,{'attr':{'class': 'form-control'}}) }}
+                                            </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-10">
+                                            <div class="form-group">
+                                                {{ form_row(ticket.reducedPrice,{'attr':{'class': 'form-control'}}) }}
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            {% endfor %}
+                <div class="row">
+                        <div class="col-md-12">
+                                <div class="form-group">
+                                        <input type="submit" value="VALIDER"  href="{{ path('p4_louvre_stepThree') }}"/>
+                                </div>
+                        </div>
+                </div>
             {{ form_end(form) }}
         </div>
-
+    </div>
 {% endblock %}

@@ -3,14 +3,48 @@
 {% block title %}{{ parent() }} - Billetterie {% endblock %}
 
 {% block body %}
-    <div class="well">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="VALIDER" class="btn btn-primary" href="{{ path('p4_louvre_stepTwo') }}"/>
-        {{ form_end(form) }}
 
+    <div class="container">
+        <div class="well">
+            {{ form_start(form) }}
+            <div class="row col-md-12" >
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                            {{ form_row(form.visitDate) }}
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form_row(form.nbTickets)}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form_row(form.ticketType)}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {{ form_row(form.email)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="submit" value="VALIDER"  href="{{ path('p4_louvre_stepTwo') }}"/>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
     </div>
-
-
-
 {% endblock %}
