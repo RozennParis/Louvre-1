@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use P4\LouvreBundle\Form\BookingType;
 use P4\LouvreBundle\Form\TicketsBookingType;
+//use P4\LouvreBundle\Service\PriceCalculation;
+//use P4\LouvreBundle\Manager\BookingManager;
 
 /**
  * Class LouvreController
@@ -30,21 +32,11 @@ class LouvreController extends Controller
     public function stepOneAction(Request $request)
     {
         $booking = new Booking();
+        //$booking = $bookingManager->startBooking($request);
         $form = $this->createForm(BookingType::class,$booking);
 
         if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
         {
-            /*$nbTickets = $form->get('nbTickets')->getData();
-            for($i = 0;$i< $nbTickets; $i++)
-            {
-                $ticket = new Ticket();
-                $booking->addTicket($ticket);
-            }
-            for($i = 0;$i> $nbTickets;$i++)
-            {
-                $ticket = $booking->getTickets()->last();
-                $booking->removeTicket($ticket);
-            }*/
             while(count($booking->getTickets())< $booking->getNbTickets())
             {
                 $ticket = new Ticket();
@@ -55,8 +47,8 @@ class LouvreController extends Controller
                 $ticket = $booking->getTickets()->last();
                 $booking->removeTicket($ticket);
             }
-
             $this->get('session')->set('booking',$booking);
+            //$bookingManager->prepareBooking($booking);
             return $this->redirectToRoute('p4_louvre_stepTwo');
         }
         return $this->render('P4LouvreBundle:LouvreViews:stepOne.html.twig',array('form' => $form->createView(),
@@ -75,11 +67,11 @@ class LouvreController extends Controller
         {
             throw new \Exception();
         }
-
         $form = $this->createForm(TicketsBookingType::class,$booking);
 
         if($form->handleRequest($request)->isValid())
         {
+            //$priceCalculation->priceCalculation($booking);
             $this->get('session')->set('booking',$booking);
             return $this->redirectToRoute('p4_louvre_stepThree');
         }
@@ -89,6 +81,7 @@ class LouvreController extends Controller
     public function stepThreeAction(Request $request)
     {
         $booking = $this->get('session')->get('booking');
+        $booking->setBookingCode(uniqid());
         return $this->render('P4LouvreBundle:LouvreViews:stepThree.html.twig',array('booking'=>$booking));
     }
 

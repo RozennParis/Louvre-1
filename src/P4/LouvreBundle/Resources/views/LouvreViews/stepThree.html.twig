@@ -6,10 +6,16 @@
 
     <div class="container">
         <h2>RECAPITULATIF DE VOTRE COMMANDE</h2>
+        
             <div class="row col-md-12">
                 <div class="row">
                     <div class="col-md-4">
                         Date de votre commande : {{ booking.purchaseDate|date('d/m/Y') }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        Numéro de commande : {{ booking.bookingCode }}
                     </div>
                 </div>
                 <div class="row">
@@ -38,6 +44,7 @@
                     <th>firstName</th>
                     <th>Country</th>
                     <th>reducedPrice</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -48,6 +55,7 @@
                         <td>{{ ticket.firstName }}</td>
                         <td>{{ ticket.country }}</td>
                         <td>{{ ticket.reducedPrice }}</td>
+
                     </tr>
                 {% endfor %}
                 </tbody>

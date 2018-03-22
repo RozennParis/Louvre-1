@@ -40,6 +40,7 @@ class Booking
      *
      * @ORM\Column(name="visitDate", type="datetime")
      * @Assert\Date()
+     * @Assert\GreaterThanOrEqual("today")
      */
 
     private $visitDate;
