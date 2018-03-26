@@ -14,3 +14,17 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+     # makes classes in src/AppBundle available to be used as services
+        # this creates a service per class whose id is the fully-qualified class name
+    P4\LouvreBundle\:
+        resource: '../../src/P4/LouvreBundle/*'
+             #you can exclude directories or files
+             #but if a service is unused, it's removed anyway
+        exclude: '../../src/P4/LouvreBundle/{Entity,Repository,Tests}'
+
+        # controllers are imported separately to make sure they're public
+        # and have a tag that allows actions to type-hint services
+    P4\LouvreBundle\Controller\:
+        resource: '../../src/P4/LouvreBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']

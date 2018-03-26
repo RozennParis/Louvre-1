@@ -1,65 +1,63 @@
 {% extends "P4LouvreBundle::base.html.twig" %}
 
-{% block title %}{{ parent() }} - Récapitulatif de votre commande {% endblock %}
+{% block title %}{{ parent() }} - Coordonnées des visiteurs {% endblock %}
 
 {% block body %}
 
-    <div class="container">
-        <h2>RECAPITULATIF DE VOTRE COMMANDE</h2>
-        
-            <div class="row col-md-12">
-                <div class="row">
-                    <div class="col-md-4">
-                        Date de votre commande : {{ booking.purchaseDate|date('d/m/Y') }}
-                    </div>
+        <div id="homepageStepTwo">
+                <div class="container">
+                        <div class="jumbotron jumbotron-fluid">
+                                <h2 class="display-3">ORDER SUMMARY</h2>
+                                <hr class="my-4">
+                                <ul>
+                                        <li><span>PurchaseDate : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
+                                        <li><span>BookingCode : </span>{{ booking.bookingCode }}</li>
+                                        <li><span>Visitdate : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                                        <li><span>You have booking : </span>{{ booking.nbTickets }} billet(s)</li>
+                                        <li><span>TicketType : </span>{{ booking.ticketType }}</li>
+                                </ul>
+                        </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        Numéro de commande : {{ booking.bookingCode }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        Vous avez réservez : {{ booking.nbTickets }} billet(s)
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        Date de votre visite : {{ booking.visitDate|date('d/m/Y') }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        Type de billet : {{ booking.ticketType }}
-                    </div>
-                </div>
-            </div>
-
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-condensed">
-                <thead class="">
-                <tr>
-                    <th>#</th>
-                    <th>lastName</th>
-                    <th>firstName</th>
-                    <th>Country</th>
-                    <th>reducedPrice</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                {% for ticket in booking.tickets %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ ticket.lastName }}</td>
-                        <td>{{ ticket.firstName }}</td>
-                        <td>{{ ticket.country }}</td>
-                        <td>{{ ticket.reducedPrice }}</td>
-
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
         </div>
-    </div>
+        <div id="homepage">
+                <div class="container">
+                                <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-condensed">
+                                                <thead class="">
+                                                        <tr>
+                                                        <th>Visitor</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                        <th>TotalAmount</th>
+                                                        </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {% for ticket in booking.tickets %}
+                                                        <tr>
+                                                                <td>
+                                                                    <ul>
+                                                                            <li><span>Visitor {{ loop.index }} : </span>{{ ticket.lastName }} {{ ticket.firstName }}</li>
+                                                                            <li><span>Price {{ ticket.price }} </span></li>
+
+                                                                    </ul>
+                                                                </td>
+                                                                <td>{{ ticket.price }}</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                        </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                                <tfoot>
+                                                <tr>
+                                                        <td></td>
+                                                        <td>Total :</td>
+                                                        <td>{{ booking.nbTickets }} Ticket(s)</td>
+                                                        <td>{{ booking.totalPrice }}</td>
+                                                </tr>
+                                                </tfoot>
+                                        </table>
+                                </div>
+                        </div>
+                        </div>
 {% endblock %}

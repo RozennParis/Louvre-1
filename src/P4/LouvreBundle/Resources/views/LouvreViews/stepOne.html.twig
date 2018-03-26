@@ -1,49 +1,121 @@
 {% extends "P4LouvreBundle::base.html.twig" %}
 
-{% block title %}{{ parent() }} - Billetterie {% endblock %}
+{% block title %}{{ parent() }} - Accueil {% endblock %}
 
 {% block body %}
-
-    <div class="container">
-        <div class="well">
-            {{ form_start(form) }}
+    <div id="homepage">
+        <div class="container">
+            <div class="jumbotron jumbotron-fluid">
+                <h1 class="display-3">MUSEE DU LOUVRE</h1>
+                <hr class="my-4">
+                <h2>BILLETTERIE</h2>
+            </div>
+        </div>
+    </div>
+    <div class="contentpage">
+        <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                            {{ form_row(form.visitDate) }}
+                <div class="infos">
+                    <div class="col-md-6">
+                        <div class="horaires">
+                            <div class="well">
+                                <div class="card-header">SCHEDULE</div>
+                                <hr class="my-4">
+                                    <div class="card-body text-secondary">
+                                        <ul>
+                                            <li>Monday : 9 h - 18 h</li>
+                                            <li>Tuesday : Fermé</li>
+                                            <li>Wenesday : 9 h - 21h45</li>
+                                            <li>Thursday : 9 h - 18 h</li>
+                                            <li>Friday : 9 h - 21h45</li>
+                                            <li>Saturday : 9 h - 18 h</li>
+                                            <li>Sunday : 9 h - 18 h</li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="tarifs">
+                            <div class="well">
+                                <div class="card-header">PRICES</div>
+                                <hr class="my-4">
+                                    <div class="table">
+                                        <ul>
+                                                <li>Normal : 16 euros </li>
+                                                <li>Children : 8 euros (1)</li>
+                                                <li>Senior : 12 euros (2)</li>
+                                                <li>Reduced : 10 euros (3)</li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="col-md-6">
+                        <div class="text">
+                            <div class="well">
+                                <div class="card-header">COMMANDEZ VOS BILLETS EN LIGNE</div>
+                            </div>
+                        </div>
+                        <div class="formulaire">
+                            <div class="well">
+                                {{ form_start(form) }}
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                {{ form_row(form.visitDate) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                {{ form_row(form.nbTickets)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                {{ form_row(form.ticketType)}}
+                                                <i class="fa fa-exclamation-triangle"></i> Billet demi-journée : Entrée à partir de 14 heures
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                              {{ form_row(form.email)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input type="submit" value="VALIDER"  href="{{ path('p4_louvre_stepTwo') }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                                {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <ul>
+                                <li>(1) Jusqu'à 12 ans .Gratuit pour les moins de 4 ans</li>
+                                <li>(2) A partir de 60 ans</li>
+                                <li>(3) Sous conditions . Un justificatif vous sera demandé à l'entrée (Etudiants, militaires, Personnel du musée etc)</li>
+                            </ul>
                         </div>
                     </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {{ form_row(form.nbTickets)}}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {{ form_row(form.ticketType)}}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {{ form_row(form.email)}}
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="submit" value="VALIDER"  href="{{ path('p4_louvre_stepTwo') }}"/>
-                    </div>
-                </div>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
+
 {% endblock %}
+

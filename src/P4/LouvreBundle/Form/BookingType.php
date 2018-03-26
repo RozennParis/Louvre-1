@@ -17,33 +17,34 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('visitDate',DateType::class,array(
-                'widget'=>'single_text',
-                'html5'=>'false',
-                'attr'=>array('class'=>'js-datepicker'),
+            ->add('visitDate', DateType::class, array(
+                'widget' => 'single_text',
+                'html5' => 'false',
+                'attr' => array('class' => 'js-datepicker'),
             ))
-            ->add('ticketType',ChoiceType::class,array(
-                'choices'=>array(
-                    'Journée' =>'Journée',
-                    'Demi-journée' =>'Demi-journée',
+            ->add('ticketType', ChoiceType::class, array(
+                'choices' => array(
+                    'Journée' => 'Journée',
+                    'Demi-journée' => 'Demi-journée',
                 )
             ))
-            ->add('nbTickets',ChoiceType::class,array(
-                'choices'=>array(
-                    '1'=>1,
-                    '2'=>2,
-                    '3'=>3,
-                    '4'=>4,
-                    '5'=>5,
-                    '6'=>6,
-                    '7'=>7,
-                    '8'=>8,
-                    '9'=>9,
-                    '10'=>10
+            ->add('nbTickets', ChoiceType::class, array(
+                'choices' => array(
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                    '6' => 6,
+                    '7' => 7,
+                    '8' => 8,
+                    '9' => 9,
+                    '10' => 10
                 )
             ))
-            ->add('email',EmailType::class);
+            ->add('email', EmailType::class);
     }
+
     
     /**
      * {@inheritdoc}

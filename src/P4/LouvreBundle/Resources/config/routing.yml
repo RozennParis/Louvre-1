@@ -1,9 +1,5 @@
-p4_louvre_homepage:
-    path:    /
-    defaults: { _controller: P4LouvreBundle:Louvre:homepage }
-
 p4_louvre_stepOne:
-    path:    /stepOne
+    path:    /
     defaults: { _controller: P4LouvreBundle:Louvre:stepOne }
 
 p4_louvre_stepTwo:
@@ -13,3 +9,4 @@ p4_louvre_stepTwo:
 p4_louvre_stepThree:
     path:    /stepThree
     defaults: { _controller: P4LouvreBundle:Louvre:stepThree }
+
