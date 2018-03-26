@@ -4,12 +4,11 @@ namespace P4\LouvreBundle\Controller;
 use P4\LouvreBundle\Service\PriceCalculation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use P4\LouvreBundle\Entity\Booking;
-use P4\LouvreBundle\Entity\Ticket;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use P4\LouvreBundle\Form\BookingType;
 use P4\LouvreBundle\Form\TicketsBookingType;
-//use P4\LouvreBundle\Manager\BookingManager;
+use P4\LouvreBundle\Manager\BookingManager;
 
 /**
  * Class LouvreController
@@ -20,29 +19,18 @@ class LouvreController extends Controller
 
     /**
      * @param Request $request
+     * @param BookingManager $bookingManager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function stepOneAction(Request $request)
+    public function stepOneAction(Request $request,BookingManager $bookingManager)
     {
         $booking = new Booking();
-        //$booking = $bookingManager->startBooking($request);
         $form = $this->createForm(BookingType::class,$booking);
 
         if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
         {
-            while(count($booking->getTickets())< $booking->getNbTickets())
-            {
-                $ticket = new Ticket();
-                $booking->addTicket($ticket);
-            }
-            while(count($booking->getTickets()) > $booking->getNbTickets())
-            {
-                $ticket = $booking->getTickets()->last();
-                $booking->removeTicket($ticket);
-            }
-
+            $bookingManager->startBooking($booking);
             $this->get('session')->set('booking',$booking);
-            //$bookingManager->prepareBooking($booking);
             return $this->redirectToRoute('p4_louvre_stepTwo');
         }
         return $this->render('P4LouvreBundle:LouvreViews:stepOne.html.twig',array('form' => $form->createView(),
@@ -53,16 +41,11 @@ class LouvreController extends Controller
      * @param Request $request
      * @param PriceCalculation $priceCalculation
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @throws \Exception
      */
     public function stepTwoAction(Request $request, PriceCalculation $priceCalculation)
     {
 
         $booking = $this->get('session')->get('booking');
-        if(!$booking)
-        {
-            throw new \Exception();
-        }
 
         $form = $this->createForm(TicketsBookingType::class,$booking);
         $form->handleRequest($request);
