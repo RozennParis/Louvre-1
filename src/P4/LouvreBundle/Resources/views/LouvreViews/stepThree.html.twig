@@ -1,20 +1,20 @@
 {% extends "P4LouvreBundle::base.html.twig" %}
 
-{% block title %}{{ parent() }} - Coordonnées des visiteurs {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Visitor information'|trans }} {% endblock %}
 
 {% block body %}
 
         <div id="homepageStepTwo">
                 <div class="container">
                         <div class="jumbotron jumbotron-fluid">
-                                <h2 class="display-3">ORDER SUMMARY</h2>
+                                <h2 class="display-3">{{ 'ORDER SUMMARY'|trans }}</h2>
                                 <hr class="my-4">
                                 <ul>
-                                        <li><span>PurchaseDate : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
-                                        <li><span>BookingCode : </span>{{ booking.bookingCode }}</li>
-                                        <li><span>Visitdate : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
-                                        <li><span>You have booking : </span>{{ booking.nbTickets }} billet(s)</li>
-                                        <li><span>TicketType : </span>{{ booking.ticketType }}</li>
+                                        <li><span>{{ 'PurchaseDate'|trans }} : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
+                                        <li><span>{{ 'BookingCode'|trans }} : </span>{{ booking.bookingCode }}</li>
+                                        <li><span>{{ 'Visitdate'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                                        <li><span>{{ 'You have booked'|trans }} : </span>{{ booking.nbTickets }} {{ 'Ticket(s)'|trans }}</li>
+                                        <li><span>{{ 'TicketType'|trans }} : </span>{{ booking.ticketType }}</li>
                                 </ul>
                         </div>
                 </div>
@@ -25,10 +25,10 @@
                                         <table class="table table-bordered table-hover table-condensed">
                                                 <thead class="">
                                                         <tr>
-                                                        <th>Visitor</th>
-                                                        <th>Price</th>
-                                                        <th>Quantity</th>
-                                                        <th>TotalAmount</th>
+                                                        <th>{{ 'Visitor'|trans }}</th>
+                                                        <th>{{ 'Price'|trans }}</th>
+                                                        <th>{{ 'Quantity'|trans }}</th>
+                                                        <th>{{ 'TotalAmount'|trans }}</th>
                                                         </tr>
                                                 </thead>
 
@@ -37,8 +37,8 @@
                                                         <tr>
                                                                 <td>
                                                                     <ul>
-                                                                            <li><span>Visitor {{ loop.index }} : </span>{{ ticket.lastName }} {{ ticket.firstName }}</li>
-                                                                            <li><span>Price {{ ticket.price }} </span></li>
+                                                                            <li><span>{{ 'Visitor'|trans }} {{ loop.index }} : </span>{{ ticket.lastName }} {{ ticket.firstName }}</li>
+                                                                            <li><span>{{ 'Price'|trans }} {{ ticket.price }} </span></li>
 
                                                                     </ul>
                                                                 </td>
@@ -51,8 +51,8 @@
                                                 <tfoot>
                                                 <tr>
                                                         <td></td>
-                                                        <td>Total :</td>
-                                                        <td>{{ booking.nbTickets }} Ticket(s)</td>
+                                                        <td>{{ 'TotalAmount'|trans }} :</td>
+                                                        <td>{{ booking.nbTickets }} {{ 'Ticket(s)'|trans }})</td>
                                                         <td>{{ booking.totalPrice }}</td>
                                                 </tr>
                                                 </tfoot>

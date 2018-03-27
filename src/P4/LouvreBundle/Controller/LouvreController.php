@@ -4,6 +4,7 @@ namespace P4\LouvreBundle\Controller;
 use P4\LouvreBundle\Service\PriceCalculation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use P4\LouvreBundle\Entity\Booking;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use P4\LouvreBundle\Form\BookingType;
@@ -20,7 +21,7 @@ class LouvreController extends Controller
     /**
      * @param Request $request
      * @param BookingManager $bookingManager
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      */
     public function stepOneAction(Request $request,BookingManager $bookingManager)
     {
@@ -68,6 +69,7 @@ class LouvreController extends Controller
         $booking->setBookingCode(uniqid());
         return $this->render('P4LouvreBundle:LouvreViews:stepThree.html.twig',array('booking'=>$booking));
     }
+
 
 
 

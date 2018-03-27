@@ -1,14 +1,14 @@
 {% extends "P4LouvreBundle::base.html.twig" %}
 
-{% block title %}{{ parent() }} - Accueil {% endblock %}
+{% block title %}{{ parent() }} - {{ 'Welcome'|trans }} {% endblock %}
 
 {% block body %}
     <div id="homepage">
         <div class="container">
             <div class="jumbotron jumbotron-fluid">
-                <h1 class="display-3">MUSEE DU LOUVRE</h1>
+                <h1 class="display-3">{{ 'LOUVRE MUSEUM'|trans }}</h1>
                 <hr class="my-4">
-                <h2>BILLETTERIE</h2>
+                <h2>{{ 'TICKETING'|trans }}</h2>
             </div>
         </div>
     </div>
@@ -19,31 +19,31 @@
                     <div class="col-md-6">
                         <div class="horaires">
                             <div class="well">
-                                <div class="card-header">SCHEDULE</div>
+                                <div class="card-header">{{ 'SCHEDULES'|trans }}</div>
                                 <hr class="my-4">
                                     <div class="card-body text-secondary">
                                         <ul>
-                                            <li>Monday : 9 h - 18 h</li>
-                                            <li>Tuesday : Fermé</li>
-                                            <li>Wenesday : 9 h - 21h45</li>
-                                            <li>Thursday : 9 h - 18 h</li>
-                                            <li>Friday : 9 h - 21h45</li>
-                                            <li>Saturday : 9 h - 18 h</li>
-                                            <li>Sunday : 9 h - 18 h</li>
+                                            <li>{{ 'Monday'|trans }} : 9 h - 18 h</li>
+                                            <li>{{ 'Tuesday'|trans }} : {{ 'Closed'|trans }}</li>
+                                            <li>{{ 'Wenesday'|trans }} : 9 h - 21h45</li>
+                                            <li>{{ 'Thursday'|trans }} : 9 h - 18 h</li>
+                                            <li>{{ 'Friday'|trans }} : 9 h - 21h45</li>
+                                            <li>{{ 'Saturday'|trans }} : 9 h - 18 h</li>
+                                            <li>{{ 'Sunday'|trans }} : 9 h - 18 h</li>
                                         </ul>
                                     </div>
                             </div>
                         </div>
                         <div class="tarifs">
                             <div class="well">
-                                <div class="card-header">PRICES</div>
+                                <div class="card-header">{{ 'PRICES'|trans }}</div>
                                 <hr class="my-4">
                                     <div class="table">
                                         <ul>
-                                                <li>Normal : 16 euros </li>
-                                                <li>Children : 8 euros (1)</li>
-                                                <li>Senior : 12 euros (2)</li>
-                                                <li>Reduced : 10 euros (3)</li>
+                                                <li>{{ 'Normal'|trans }} : 16 euros </li>
+                                                <li>{{ 'Children'|trans }} : 8 euros (1)</li>
+                                                <li>{{ 'Senior'|trans }} : 12 euros (2)</li>
+                                                <li>{{ 'Reduced'|trans }} : 10 euros (3)</li>
                                         </ul>
                                     </div>
                             </div>
@@ -54,7 +54,7 @@
                     <div class="col-md-6">
                         <div class="text">
                             <div class="well">
-                                <div class="card-header">COMMANDEZ VOS BILLETS EN LIGNE</div>
+                                <div class="card-header">{{ 'ORDER YOUR TICKETS ONLINE'|trans }}</div>
                             </div>
                         </div>
                         <div class="formulaire">
@@ -78,7 +78,7 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 {{ form_row(form.ticketType)}}
-                                                <i class="fa fa-exclamation-triangle"></i> Billet demi-journée : Entrée à partir de 14 heures
+                                                <i class="fa fa-exclamation-triangle"></i> {{ 'Half-day Ticket : Entry from 14 hours'|trans }}
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <input type="submit" value="VALIDER"  href="{{ path('p4_louvre_stepTwo') }}"/>
+                                                <input type="submit" value="{{ 'SUBMIT'|trans }}"  href="{{ path('p4_louvre_stepTwo') }}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -107,9 +107,9 @@
                     <div class="col-md-12">
                         <div class="well">
                             <ul>
-                                <li>(1) Jusqu'à 12 ans .Gratuit pour les moins de 4 ans</li>
-                                <li>(2) A partir de 60 ans</li>
-                                <li>(3) Sous conditions . Un justificatif vous sera demandé à l'entrée (Etudiants, militaires, Personnel du musée etc)</li>
+                                <li>(1) {{ 'Up to 12 years old .Free for children under 4 years old'|trans }}</li>
+                                <li>(2) {{ 'From 60 years old'|trans }}</li>
+                                <li>(3) {{ 'Under conditions . A proof will be requested at the entrance (Students, military, museum staff etc)'|trans }}</li>
                             </ul>
                         </div>
                     </div>
