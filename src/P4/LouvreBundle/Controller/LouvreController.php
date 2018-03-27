@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use P4\LouvreBundle\Form\BookingType;
 use P4\LouvreBundle\Form\TicketsBookingType;
 use P4\LouvreBundle\Manager\BookingManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Class LouvreController
@@ -19,6 +20,7 @@ class LouvreController extends Controller
 {
 
     /**
+     * @Route("/", name="stepOne")
      * @param Request $request
      * @param BookingManager $bookingManager
      * @return RedirectResponse|Response
@@ -32,13 +34,14 @@ class LouvreController extends Controller
         {
             $bookingManager->startBooking($booking);
             $this->get('session')->set('booking',$booking);
-            return $this->redirectToRoute('p4_louvre_stepTwo');
+            return $this->redirectToRoute('stepTwo');
         }
         return $this->render('P4LouvreBundle:LouvreViews:stepOne.html.twig',array('form' => $form->createView(),
         ));
     }
 
     /**
+     * @Route("/Informations", name="stepTwo")
      * @param Request $request
      * @param PriceCalculation $priceCalculation
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -54,12 +57,13 @@ class LouvreController extends Controller
         {
             $priceCalculation->PriceCalculation($booking);
             $this->get('session')->set('booking',$booking);
-            return $this->redirectToRoute('p4_louvre_stepThree');
+            return $this->redirectToRoute('stepThree');
         }
         return $this->render('P4LouvreBundle:LouvreViews:stepTwo.html.twig', array('form' => $form->createView()));
     }
 
     /**
+     * @Route("/Summary", name="stepThree")
      * @param Request $request
      * @return Response
      */
