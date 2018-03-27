@@ -35,6 +35,8 @@
                 <div id="nav" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ path('stepOne') }}">Accueil</a></li>
+                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR</a></li>
+                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a></li>
                     </ul>
                 </div>
             </div>

@@ -13,6 +13,7 @@ use P4\LouvreBundle\Manager\BookingManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
+ * @Route("/{_locale}", defaults={"_locale" : "en"}, requirements={"_locale": "en|fr"})
  * Class LouvreController
  * @package P4\LouvreBundle\Controller
  */
