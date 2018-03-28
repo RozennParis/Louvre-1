@@ -18,14 +18,28 @@ class PriceCalculation
     const PRICE_NORMAL = 16;
     const PRICE_REDUCED = 10;
 
+    // visit Duration
+    const FULL_DAY = 1;
+    const HALF_DAY = 0.5;
 
-    public function PriceCalculation(Booking $booking) {
+    private $visitDuration;
+
+    public function PriceCalculation(Booking $booking)
+    {
+        if($booking->getTicketType())
+        {
+            $this->visitDuration = self::FULL_DAY;
+        }else{
+            $this->visitDuration = self::HALF_DAY;
+        }
 
         $tickets = $booking->getTickets();
+        $visitDate = $booking->getVisitDate();
         $totalPrice = 0;
 
         foreach ($tickets as $ticket) {
-            $age = $ticket->getBirthDate()->diff($booking->getVisitDate())->format('%y');
+            $price = 0;
+            $age = $ticket->getBirthDate()->diff($visitDate)->format('%y');
 
             if ($age < self::AGE_BB) {
                 $price = self::PRICE_BB;
@@ -39,6 +53,8 @@ class PriceCalculation
             if ($ticket->getReducedPrice() && $price > self::PRICE_REDUCED) {
                 $price = self::PRICE_REDUCED;
             }
+
+            $price = $price * $this->visitDuration;
 
             $ticket->setPrice($price);
 

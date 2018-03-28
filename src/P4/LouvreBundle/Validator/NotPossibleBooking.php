@@ -11,4 +11,5 @@ use Symfony\Component\Validator\Constraint;
 class NotPossibleBooking extends Constraint
 {
     public $message = "Il n'est pas possible de réserver pour les jours fériés";
+
 }

@@ -16,9 +16,14 @@ class NotClosedDaysValidator extends ConstraintValidator
 
     public function validate($visitDate, Constraint $constraint)
     {
-        if($visitDate->format('N') == self::TUESDAY || $visitDate->format('N') == self::SUNDAY)
+        if($visitDate->format('N') == self::TUESDAY)
         {
-            $this->context->buildViolation($constraint->message)
+            $this->context->buildViolation($constraint->message1)
+                ->addViolation();
+        }
+        if($visitDate->format('N') == self::SUNDAY)
+        {
+            $this->context->buildViolation($constraint->message2)
                 ->addViolation();
         }
     }

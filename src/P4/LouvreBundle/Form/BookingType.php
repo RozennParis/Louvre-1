@@ -24,9 +24,11 @@ class BookingType extends AbstractType
             ))
             ->add('ticketType', ChoiceType::class, array(
                 'choices' => array(
-                    'Journée' => 'Journée',
-                    'Demi-journée' => 'Demi-journée',
-                )
+                    'Day' => true,
+                    'Half-day' => false,
+                ),
+                'expanded'=> true
+
             ))
             ->add('nbTickets', ChoiceType::class, array(
                 'choices' => array(

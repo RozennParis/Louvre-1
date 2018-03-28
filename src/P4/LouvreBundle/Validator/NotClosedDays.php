@@ -10,5 +10,9 @@ use Symfony\Component\Validator\Constraint;
  */
 class NotClosedDays extends Constraint
 {
-    public $message = "Le Musée est fermé le mardi et il n'est pas possible de réserver pour le dimanche";
+    public $message1 = "Le Musée est fermé le mardi";
+    public $message2 = "Il n'est pas possible de réserver pour le Dimanche";
+
+
+
 }
