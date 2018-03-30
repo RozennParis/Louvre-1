@@ -11,10 +11,10 @@
                                 <hr class="my-4">
                                 <ul>
                                         <li><span>{{ 'purchaseDate'|trans }} : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
-                                        <li><span>{{ 'bookingCode'|trans }} : </span>{{ booking.bookingCode }}</li>
-                                        <li><span>{{ 'visitdate'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                                        <li><span>{{ 'booking code'|trans }} : </span>{{ booking.bookingCode }}</li>
+                                        <li><span>{{ 'visit date'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
                                         <li><span>{{ 'you have booked'|trans }} : </span>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }}</li>
-                                        <li><span>{{ 'ticketType'|trans }} : </span>{{ booking.ticketType }}</li>
+                                        <li><span>{{ 'ticket type'|trans }} : </span>{{ booking.ticketType }}</li>
                                 </ul>
                         </div>
                 </div>
@@ -28,7 +28,7 @@
                                                         <th>{{ 'visitor'|trans }}</th>
                                                         <th>{{ 'price'|trans }}</th>
                                                         <th>{{ 'quantity'|trans }}</th>
-                                                        <th>{{ 'totalamount'|trans }}</th>
+                                                        <th>{{ 'total amount'|trans }}</th>
                                                         </tr>
                                                 </thead>
 
@@ -51,7 +51,7 @@
                                                 <tfoot>
                                                 <tr>
                                                         <td></td>
-                                                        <td>{{ 'totalamount'|trans }} :</td>
+                                                        <td>{{ 'total amount'|trans }} :</td>
                                                         <td>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }})</td>
                                                         <td>{{ booking.totalPrice }}</td>
                                                 </tr>

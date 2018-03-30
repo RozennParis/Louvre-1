@@ -15,6 +15,7 @@ class BookingManager
      * BookingManager constructor.
      * @param SessionInterface $session
      * @param EntityManagerInterface $em
+     * @param \Swift_Mailer $mailer
      */
     public function __construct(SessionInterface $session, EntityManagerInterface $em)
     {
@@ -68,6 +69,7 @@ class BookingManager
     public function startBooking(Booking $booking)
     {
         // faire if > et if <
+        
         while (count($booking->getTickets()) < $booking->getNbTickets()) {
             $ticket = new Ticket();
             $booking->addTicket($ticket);
@@ -77,16 +79,17 @@ class BookingManager
             $booking->removeTicket($ticket);
         }
         $this->setSession($booking);
+
     }
 
-
+    /**
+     * @param Booking $booking
+     */
     public function finishBooking(Booking $booking)
     {
-        //$this->setSession($booking);
+        $this->setSession($booking);
         $this->em->persist($booking);
         $this->em->flush();
-        $this->setSession($booking);
-
         //envoi de l'email
     }
 }

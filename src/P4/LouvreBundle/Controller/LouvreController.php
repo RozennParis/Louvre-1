@@ -17,7 +17,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  */
 class LouvreController extends Controller
 {
-
     /**
      * @Route("/", name="stepOne")
      * @param Request $request
@@ -32,12 +31,12 @@ class LouvreController extends Controller
         if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
         {
             $bookingManager->startBooking($booking);
+
             return $this->redirectToRoute('stepTwo');
         }
         return $this->render(':Louvre:stepOne.html.twig',array('form' => $form->createView(),
         ));
     }
-
     /**
      * @Route("/informations", name="stepTwo")
      * @param Request $request
@@ -86,42 +85,36 @@ class LouvreController extends Controller
         $booking = $bookingManager->getBooking();
         \Stripe\Stripe::setApiKey("sk_test_a2vkPyuLgme3hbfLJ0b0YtTx");
 
-        // Get the credit card details submitted by the form
         $token = $_POST['stripeToken'];
 
-        // Create a charge: this will charge the user's card
         try {
             $charge = \Stripe\Charge::create(array(
-                "amount" => $booking->getTotalPrice() * 100, // Amount in cents
+                "amount" => $booking->getTotalPrice() * 100,
                 "currency" => "eur",
                 "source" => $token,
                 "description" => "ticketing"
             ));
-            //$this->addFlash("success", "Bravo ça marche !");
+            $this->addFlash("success","Votre Paiement a abouti");
+            $bookingManager->finishBooking($booking);
+            return $this->redirectToRoute("stepFour");
 
         } catch (\Stripe\Error\Card $e) {
 
-            $this->addFlash("error", "Snif ça marche pas :(");
+            $this->addFlash("error", "Votre paiement n'a pas abouti ");
             return $this->redirectToRoute("stepThree");
-            // The card has been declined
         }
-        $bookingManager->finishBooking($booking);
-        return $this->redirectToRoute("stepFour");
     }
 
     /**
-     * @Route("/success", name="stepFour")
+     * @Route("/email", name="stepFour")
+     * @param Request $request
+     * @param BookingManager $bookingManager
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
-        public function stepFourAction()
+    public function stepFourAction(Request $request, BookingManager $bookingManager)
     {
-        return $this->render(':Louvre:stepFour.html.twig');
+        $booking = $bookingManager->getBooking();
+        return $this->render(':Louvre:email.html.twig',array('booking'=> $booking));
     }
-
-
-
-
-
-
-
-
 }

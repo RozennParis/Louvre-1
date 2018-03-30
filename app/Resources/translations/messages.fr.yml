@@ -43,24 +43,26 @@ ticket : billet
 last name : nom
 first name : prénom
 country : pays
-nirth date : date de naissance
+birth date : date de naissance
 reduced price : tarif réduit
 
 visitor information : informations visiteurs
 order summary : récapitulatif de la commande
 purchaseDate : date de la commande
-bookingCode : code de réservation
-visitdate : date de la visite
+booking code : code de réservation
 you have booked : vous avez réservé
-ticketType : type de billet
+ticket Type : type de billet
 visitor : visiteur
 price : tarif
 quantity : quantité
-totalamount : montant total
+total amount : montant total
 
 payment : paiement
 buy : acheter
+yes : oui
+no : non
 
-
+the louvre museum thanks you for your order placed on the : le musée du louvre vous remercie pour votre commande passée le
+price ticket(s) : tarif du/des billet(s)
 
 

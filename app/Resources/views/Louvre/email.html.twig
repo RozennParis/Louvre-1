@@ -1,0 +1,45 @@
+<p><img style="width: 300px" src= "{{ asset('../web/img/logo.jpg') }}" alt = "Logo Louvre"></p>
+<h2>{{ 'the louvre museum thanks you for your order placed on the'|trans|upper }} {{ booking.purchaseDate|date('d/m/Y') }}</h2>
+<hr class="my-4">
+{% for message in app.flashes('success') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+        <ul>
+            <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ booking.bookingCode }}</li>
+            <li><span>{{ 'visit date'|trans|capitalize }} :  </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+            <li><span>{{ 'ticket(s)'|trans|capitalize }} : </span>{{ booking.ticketType }}</li>
+        </ul>
+
+            <hr class="my-4">
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>{{ 'last name'|trans|capitalize }}</th>
+                    <th>{{ 'first name'|trans|capitalize }}</th>
+                    <th>{{ 'birth date'|trans|capitalize }}</th>
+                    <th>{{ 'country'|trans|capitalize }}</th>
+                    <th>{{ 'reduced price'|trans|capitalize }}</th>
+                    <th>{{ 'price ticket(s)'|trans|capitalize }}</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for ticket in booking.tickets %}
+                <tr>
+                    <td>{{ ticket.lastName|upper }}</td>
+                    <td>{{ ticket.firstName|upper }}</td>
+                    <td>{{ ticket.birthDate|date('d/m/Y') }}</td>
+                    <td>{{ ticket.country|upper }}</td>
+                    <td>{% if ticket.reducedPrice %}{{ 'yes'|trans }}{% else %}{{ 'no'|trans }}{% endif %}</td>
+                    <td>{{ ticket.price|upper }}</td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+<hr class="my-4">
+        <p><span>{{ 'total amount'|trans }} : </span> {{ booking.totalPrice|number_format(2,',',' ') }} euros</p>
+
+
