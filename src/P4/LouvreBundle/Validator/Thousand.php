@@ -10,5 +10,4 @@ use Symfony\Component\Validator\Constraint;
  */
 class Thousand extends Constraint
 {
-
 }

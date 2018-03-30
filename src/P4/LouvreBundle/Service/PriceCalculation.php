@@ -22,15 +22,18 @@ class PriceCalculation
     const FULL_DAY = 1;
     const HALF_DAY = 0.5;
 
-    private $visitDuration;
+    private $coefficient;
 
     public function PriceCalculation(Booking $booking)
     {
-        if($booking->getTicketType())
+        switch ($booking->getTicketType())
         {
-            $this->visitDuration = self::FULL_DAY;
-        }else{
-            $this->visitDuration = self::HALF_DAY;
+            case Booking::BOOKING_FULL_DAY:
+                $this->coefficient = self::FULL_DAY;
+                break;
+            case Booking::BOOKING_HALF_DAY:
+                $this->coefficient = self::HALF_DAY;
+                break;
         }
 
         $tickets = $booking->getTickets();
@@ -54,7 +57,7 @@ class PriceCalculation
                 $price = self::PRICE_REDUCED;
             }
 
-            $price = $price * $this->visitDuration;
+            $price = $price * $this->coefficient;
 
             $ticket->setPrice($price);
 

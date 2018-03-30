@@ -1,0 +1,83 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} - {{ 'visitor information'|trans }} {% endblock %}
+
+{% block body %}
+
+        <div id="homepageStepTwo">
+                <div class="container">
+                        <div class="jumbotron jumbotron-fluid">
+                                <h2 class="display-3">{{ 'order summary'|trans }}</h2>
+                                <hr class="my-4">
+                                <ul>
+                                        <li><span>{{ 'purchaseDate'|trans }} : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
+                                        <li><span>{{ 'bookingCode'|trans }} : </span>{{ booking.bookingCode }}</li>
+                                        <li><span>{{ 'visitdate'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                                        <li><span>{{ 'you have booked'|trans }} : </span>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }}</li>
+                                        <li><span>{{ 'ticketType'|trans }} : </span>{{ booking.ticketType }}</li>
+                                </ul>
+                        </div>
+                </div>
+        </div>
+        <div id="homepage">
+                <div class="container">
+                                <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-condensed">
+                                                <thead class="">
+                                                        <tr>
+                                                        <th>{{ 'visitor'|trans }}</th>
+                                                        <th>{{ 'price'|trans }}</th>
+                                                        <th>{{ 'quantity'|trans }}</th>
+                                                        <th>{{ 'totalamount'|trans }}</th>
+                                                        </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {% for ticket in booking.tickets %}
+                                                        <tr>
+                                                                <td>
+                                                                    <ul>
+                                                                            <li><span>{{ 'visitor'|trans }} {{ loop.index }} : </span>{{ ticket.lastName }} {{ ticket.firstName }}</li>
+                                                                            <li><span>{{ 'price'|trans }} {{ ticket.price }} </span></li>
+
+                                                                    </ul>
+                                                                </td>
+                                                                <td>{{ ticket.price }}</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                        </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                                <tfoot>
+                                                <tr>
+                                                        <td></td>
+                                                        <td>{{ 'totalamount'|trans }} :</td>
+                                                        <td>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }})</td>
+                                                        <td>{{ booking.totalPrice }}</td>
+                                                </tr>
+                                                </tfoot>
+                                        </table>
+                                </div>
+
+
+                        </div>
+                <div class="container">
+                        <div class="jumbotron jumbotron-fluid">
+                                <form action="{{ path('checkout') }}" method="POST">
+                                        <script
+                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                data-key="pk_test_PqtahYtpdpmyehENH6z7TvqE"
+                                                data-amount="{{ booking.totalPrice *100 }}"
+                                                data-name="{{ 'louvre museum'|trans }}"
+                                                data-description="{{ 'payment'|trans }}"
+                                                data-locale="auto"
+                                                data-currency="eur"
+                                                data-label="{{ 'buy'|trans }}">
+                                        </script>
+
+
+                                </form>
+                        </div>
+                </div>
+        </div>
+{% endblock %}

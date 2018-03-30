@@ -1,14 +1,14 @@
-{% extends "P4LouvreBundle::base.html.twig" %}
+{% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} - {{ 'Welcome'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'welcome'|trans }} {% endblock %}
 
 {% block body %}
     <div id="homepage">
         <div class="container">
             <div class="jumbotron jumbotron-fluid">
-                <h1 class="display-3">{{ 'LOUVRE MUSEUM'|trans }}</h1>
+                <h1 class="display-3">{{ 'louvre museum'|trans|upper }}</h1>
                 <hr class="my-4">
-                <h2>{{ 'TICKETING'|trans }}</h2>
+                <h2>{{ 'ticketing'|trans|upper }}</h2>
             </div>
         </div>
     </div>
@@ -19,31 +19,31 @@
                     <div class="col-md-6">
                         <div class="horaires">
                             <div class="well">
-                                <div class="card-header">{{ 'SCHEDULES'|trans }}</div>
+                                <div class="card-header">{{ 'schedules'|trans|upper }}</div>
                                 <hr class="my-4">
                                     <div class="card-body text-secondary">
                                         <ul>
-                                            <li>{{ 'Monday'|trans }} : 9 h - 18 h</li>
-                                            <li>{{ 'Tuesday'|trans }} : {{ 'Closed'|trans }}</li>
-                                            <li>{{ 'Wenesday'|trans }} : 9 h - 21h45</li>
-                                            <li>{{ 'Thursday'|trans }} : 9 h - 18 h</li>
-                                            <li>{{ 'Friday'|trans }} : 9 h - 21h45</li>
-                                            <li>{{ 'Saturday'|trans }} : 9 h - 18 h</li>
-                                            <li>{{ 'Sunday'|trans }} : 9 h - 18 h</li>
+                                            <li>{{ 'monday'|trans|capitalize }} : 9 h - 18 h</li>
+                                            <li>{{ 'tuesday'|trans|capitalize }} : {{ 'closed'|trans }}</li>
+                                            <li>{{ 'wenesday'|trans|capitalize }} : 9 h - 21h45</li>
+                                            <li>{{ 'thursday'|trans|capitalize }} : 9 h - 18 h</li>
+                                            <li>{{ 'friday'|trans|capitalize }} : 9 h - 21h45</li>
+                                            <li>{{ 'saturday'|trans|capitalize }} : 9 h - 18 h</li>
+                                            <li>{{ 'sunday'|trans|capitalize }} : 9 h - 18 h</li>
                                         </ul>
                                     </div>
                             </div>
                         </div>
                         <div class="tarifs">
                             <div class="well">
-                                <div class="card-header">{{ 'PRICES'|trans }}</div>
+                                <div class="card-header">{{ 'prices'|trans|upper }}</div>
                                 <hr class="my-4">
                                     <div class="table">
                                         <ul>
-                                                <li>{{ 'Normal'|trans }} : 16 euros </li>
-                                                <li>{{ 'Children'|trans }} : 8 euros (1)</li>
-                                                <li>{{ 'Senior'|trans }} : 12 euros (2)</li>
-                                                <li>{{ 'Reduced'|trans }} : 10 euros (3)</li>
+                                                <li>{{ 'normal'|trans|capitalize }} : 16 euros </li>
+                                                <li>{{ 'children'|trans|capitalize }} : 8 euros (1)</li>
+                                                <li>{{ 'senior'|trans|capitalize }} : 12 euros (2)</li>
+                                                <li>{{ 'reduced'|trans|capitalize }} : 10 euros (3)</li>
                                         </ul>
                                     </div>
                             </div>
@@ -54,7 +54,7 @@
                     <div class="col-md-6">
                         <div class="text">
                             <div class="well">
-                                <div class="card-header">{{ 'ORDER YOUR TICKETS ONLINE'|trans }}</div>
+                                <div class="card-header">{{ 'order your tickets online'|trans|upper }}</div>
                             </div>
                         </div>
                         <div class="formulaire">
@@ -78,7 +78,7 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 {{ form_row(form.ticketType)}}
-                                                <i class="fa fa-exclamation-triangle"></i> {{ 'Half-day Ticket : Entry from 14 hours'|trans }}
+                                                <i class="fa fa-exclamation-triangle"></i> {{ 'half-day ticket : entry from 14 hours'|trans }}
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +93,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <input type="submit" value="{{ 'SUBMIT'|trans }}"  href="{{ path('stepTwo') }}"/>
+                                                <input type="submit" value="{{ 'submit'|trans }}"  href="{{ path('stepTwo') }}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -107,9 +107,9 @@
                     <div class="col-md-12">
                         <div class="well">
                             <ul>
-                                <li>(1) {{ 'Up to 12 years old .Free for children under 4 years old'|trans }}</li>
-                                <li>(2) {{ 'From 60 years old'|trans }}</li>
-                                <li>(3) {{ 'Under conditions . A proof will be requested at the entrance (Students, military, museum staff etc)'|trans }}</li>
+                                <li>(1) {{ 'up to 12 years old .free for children under 4 years old'|trans }}</li>
+                                <li>(2) {{ 'from 60 years old'|trans }}</li>
+                                <li>(3) {{ 'under conditions . a proof will be requested at the entrance (students, military, museum staff etc)'|trans }}</li>
                             </ul>
                         </div>
                     </div>

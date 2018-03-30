@@ -3,6 +3,7 @@ namespace P4\LouvreBundle\Validator;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
+use P4\LouvreBundle\Entity\Booking;
 
 /**
  * Class NotPossibleBookingValidator
@@ -10,10 +11,10 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class NotPossibleBookingValidator extends ConstraintValidator
 {
-
-    public function validate($date, Constraint $constraint)
-    {
-        $year = intval(date('Y'));
+    public function validate($date , Constraint $constraint)
+    { // changer =-> ne pas mettre les jours féries de l'année en cours
+        // MAIS ceux de l'année de la date de la visite!
+        $year = intval($date->format('Y'));
         $timestamp = $date->getTimestamp();
 
         $easterDate = easter_date($year);

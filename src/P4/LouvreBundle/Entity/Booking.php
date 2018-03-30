@@ -7,7 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use P4\LouvreBundle\Validator\NotBeforeTwo;
 use P4\LouvreBundle\Validator\NotPossibleBooking;
-use P4\LouvreBundle\Validator\NotClosedDays;
+use P4\LouvreBundle\Validator\NotClosedTuesday;
+use P4\LouvreBundle\Validator\NotClosedSunday;
 
 /**
  * Booking
@@ -18,8 +19,8 @@ use P4\LouvreBundle\Validator\NotClosedDays;
 class Booking
 {
 
-    //const BOOKING_FULL_DAY = true;
-    //const BOOKING_HALF_DAY = false;
+    const BOOKING_FULL_DAY = true;
+    const BOOKING_HALF_DAY = false;
 
     /**
      * @var int
@@ -47,7 +48,8 @@ class Booking
      * @Assert\GreaterThanOrEqual("today")
      * @NotBeforeTwo()
      * @NotPossibleBooking()
-     * @NotClosedDays()
+     * @NotClosedSunday()
+     * @NotClosedTuesday()
      */
 
     private $visitDate;

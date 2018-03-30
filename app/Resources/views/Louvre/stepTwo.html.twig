@@ -1,21 +1,21 @@
-{% extends "P4LouvreBundle::base.html.twig" %}
+{% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} - {{ 'Ticketing'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'ticketing'|trans }} {% endblock %}
 
 {% block body %}
 
     <div id="homepageStepTwo">
         <div class="container">
             <div class="jumbotron jumbotron-fluid">
-                <h2 class="display-3">{{ 'YOUR RESERVATION'|trans }}</h2>
+                <h2 class="display-3">{{ 'your reservation'|trans }}</h2>
                 <hr class="my-4">
                 <ul>
-                    <li><span>{{ 'Date of your Reservation'|trans }} :</span> {{ app.session.get('booking').purchaseDate|date('d/m/Y') }}</li>
-                    <li><span>{{ 'Date of your visit'|trans }} : </span>{{ app.session.get('booking').visitDate|date('d/m/Y') }}</li>
-                    <li><span>{{ 'Ticket Type'|trans }} :</span> {{ app.session.get('booking').ticketType }}</li>
-                    <li><span>{{ 'Number of reserved tickets'|trans }} :</span> {{ app.session.get('booking').nbTickets }}</li>
-                    <li><span>{{ 'Your ticket(s) will be sent to the email address'|trans }} :</span> {{ app.session.get('booking').email }}</li>
-                    <li>{{ 'Please fill in the information of each visitor below'|trans }}</li>
+                    <li><span>{{ 'date of your reservation'|trans }} :</span> {{ app.session.get('booking').purchaseDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'date of your visit'|trans }} : </span>{{ app.session.get('booking').visitDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'ticket Type'|trans }} :</span> {{ app.session.get('booking').ticketType }}</li>
+                    <li><span>{{ 'number of reserved tickets'|trans }} :</span> {{ app.session.get('booking').nbTickets }}</li>
+                    <li><span>{{ 'your ticket(s) will be sent to the email address'|trans }} :</span> {{ app.session.get('booking').email }}</li>
+                    <li>{{ 'please fill in the information of each visitor below'|trans }}</li>
                 </ul>
             </div>
         </div>
@@ -28,7 +28,7 @@
             {% for ticket in form.tickets %}
                 <div class="row">
                     <div class="col-md-6 col-md-6">
-                        <h3>{{ 'Ticket'|trans }} N°{{ loop.index }}</h3>
+                        <h3>{{ 'ticket'|trans }} N°{{ loop.index }}</h3>
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group">
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <input type="submit" value="{{ 'SUBMIT'|trans }}"  href="{{ path('stepThree') }}"/>
+                        <input type="submit" value="{{ 'submit'|trans }}"  href="{{ path('stepThree') }}"/>
                     </div>
                 </div>
             </div>

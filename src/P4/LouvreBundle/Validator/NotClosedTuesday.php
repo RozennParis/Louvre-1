@@ -4,14 +4,11 @@ namespace P4\LouvreBundle\Validator;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Class NotBeforeTwo
+ * Class NotClosedTuesday
  * @package P4\LouvreBundle\Validator
  * @Annotation
  */
-class NotBeforeTwo extends Constraint
+class NotClosedTuesday extends Constraint
 {
-    public $message = "";
-
-
-
+    public $message = "Le Musée est fermé le mardi";
 }
