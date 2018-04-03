@@ -17,14 +17,15 @@ class EmailSending
     public function SendEmail(Booking $booking)
     {
 
-        $message = (new \Swift_Message('ticket booking'))
+        $message = \Swift_Message::newInstance()
+            ->setSubject('ticketing')
             ->setFrom('stephaniehoussinparis@gmail.com')
             ->setTo($booking->getEmail())
+            ->setCharset('utf-8')
+            ->setContentType('text/html')
             ->setBody(
-                $this->twig->render('Louvre/email.html.twig', array(
-                    'booking' => $booking)),
-                'text/html'
-            );
+                $this->twig->render('Email/email.html.twig', array(
+                    'booking' => $booking)));
         $this->mailer->send($message);
 
     }

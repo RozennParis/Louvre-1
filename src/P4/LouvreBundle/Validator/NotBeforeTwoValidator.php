@@ -10,7 +10,7 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class NotBeforeTwoValidator extends ConstraintValidator
 {
-    public function validate($entity, Constraint $constraint)
+    public function validate($value, Constraint $constraint)
     {
 
     }

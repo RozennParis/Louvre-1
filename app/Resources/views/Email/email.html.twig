@@ -1,15 +1,11 @@
 <p><img style="width: 300px" src= "{{ asset('../web/img/logo.jpg') }}" alt = "Logo Louvre"></p>
-<h2>{{ 'the louvre museum thanks you for your order placed on the'|trans|upper }} {{ app.session.get('booking').purchaseDate|date('d/m/Y') }}</h2>
+<h2>{{ 'the louvre museum thanks you for your order placed on the'|trans|upper }} {{ booking.purchaseDate|date('d/m/Y') }}</h2>
 <hr class="my-4">
-{% for message in app.flashes('success') %}
-    <div class="flash-notice">
-        {{ message }}
-    </div>
-{% endfor %}
+
         <ul>
-            <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ app.session.get('booking').bookingCode }}</li>
-            <li><span>{{ 'visit date'|trans|capitalize }} :  </span>{{ app.session.get('booking').visitDate|date('d/m/Y') }}</li>
-            <li><span>{{ 'ticket(s)'|trans|capitalize }} : </span>{{ app.session.get('booking').ticketType }}</li>
+            <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ booking.bookingCode }}</li>
+            <li><span>{{ 'visit date'|trans|capitalize }} :  </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+            <li><span>{{ 'ticket(s)'|trans|capitalize }} : </span>{{ booking.ticketType }}</li>
         </ul>
 
             <hr class="my-4">
@@ -40,6 +36,6 @@
                 </tbody>
             </table>
 <hr class="my-4">
-        <p><span>{{ 'total amount'|trans }} : </span> {{ app.session.get('booking').totalPrice|number_format(2,',',' ') }} euros</p>
+        <p><span>{{ 'total amount'|trans }} : </span> {{ booking.totalPrice|number_format(2,',',' ') }} euros</p>
 
 

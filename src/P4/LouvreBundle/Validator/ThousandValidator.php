@@ -10,8 +10,10 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class ThousandValidator extends ConstraintValidator
 {
-   public function validate($value, Constraint $constraint)
+
+    public function validate($value, Constraint $constraint)
    {
-       // TODO: Implement validate() method.
+
+
    }
 }

@@ -10,11 +10,11 @@
                 <h2 class="display-3">{{ 'your reservation'|trans }}</h2>
                 <hr class="my-4">
                 <ul>
-                    <li><span>{{ 'date of your reservation'|trans }} :</span> {{ app.session.get('booking').purchaseDate|date('d/m/Y') }}</li>
-                    <li><span>{{ 'date of your visit'|trans }} : </span>{{ app.session.get('booking').visitDate|date('d/m/Y') }}</li>
-                    <li><span>{{ 'ticket Type'|trans }} :</span> {{ app.session.get('booking').ticketType }}</li>
-                    <li><span>{{ 'number of reserved tickets'|trans }} :</span> {{ app.session.get('booking').nbTickets }}</li>
-                    <li><span>{{ 'your ticket(s) will be sent to the email address'|trans }} :</span> {{ app.session.get('booking').email }}</li>
+                    <li><span>{{ 'date of your reservation'|trans }} :</span> {{ booking.purchaseDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'date of your visit'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'ticket Type'|trans }} :</span> {{ booking.ticketType }}</li>
+                    <li><span>{{ 'number of reserved tickets'|trans }} :</span> {{ booking.nbTickets }}</li>
+                    <li><span>{{ 'your ticket(s) will be sent to the email address'|trans }} :</span> {{ booking.email }}</li>
                     <li>{{ 'please fill in the information of each visitor below'|trans }}</li>
                 </ul>
             </div>

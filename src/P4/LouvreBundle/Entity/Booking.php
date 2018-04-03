@@ -21,6 +21,7 @@ class Booking
 
     const BOOKING_FULL_DAY = true;
     const BOOKING_HALF_DAY = false;
+    const MAX_TICKETS = 1000;
 
     /**
      * @var int

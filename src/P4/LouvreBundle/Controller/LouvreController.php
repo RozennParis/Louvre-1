@@ -56,7 +56,7 @@ class LouvreController extends Controller
             $priceCalculation->PriceCalculation($booking);
             return $this->redirectToRoute('stepThree');
         }
-        return $this->render(':Louvre:stepTwo.html.twig', array('form' => $form->createView()));
+        return $this->render(':Louvre:stepTwo.html.twig', array('form' => $form->createView(),'booking'=> $booking));
     }
 
     /**
