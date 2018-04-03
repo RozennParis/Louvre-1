@@ -6,6 +6,7 @@ use P4\LouvreBundle\Entity\Booking;
 use P4\LouvreBundle\Entity\Ticket;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use P4\LouvreBundle\Service\EmailSending;
 class BookingManager
 {
     private $session;
@@ -15,12 +16,13 @@ class BookingManager
      * BookingManager constructor.
      * @param SessionInterface $session
      * @param EntityManagerInterface $em
-     * @param \Swift_Mailer $mailer
+     * @param EmailSending $emailSending
      */
-    public function __construct(SessionInterface $session, EntityManagerInterface $em)
+    public function __construct(SessionInterface $session, EntityManagerInterface $em, EmailSending $emailSending)
     {
         $this->session = $session;
         $this->em = $em;
+        $this->emailSending = $emailSending;
     }
 
     /**
@@ -87,9 +89,12 @@ class BookingManager
      */
     public function finishBooking(Booking $booking)
     {
-        $this->setSession($booking);
+        //$this->setSession($booking);
         $this->em->persist($booking);
         $this->em->flush();
         //envoi de l'email
+
+         $this->emailSending->SendEmail($booking);
+         $this->setSession($booking);
     }
 }

@@ -9,6 +9,7 @@ use P4\LouvreBundle\Form\BookingType;
 use P4\LouvreBundle\Form\TicketsBookingType;
 use P4\LouvreBundle\Manager\BookingManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/{_locale}", defaults={"_locale" : "en"}, requirements={"_locale": "en|fr"})
@@ -83,7 +84,7 @@ class LouvreController extends Controller
     public function checkoutAction(Request $request,BookingManager $bookingManager)
     {
         $booking = $bookingManager->getBooking();
-        \Stripe\Stripe::setApiKey("sk_test_a2vkPyuLgme3hbfLJ0b0YtTx");
+         \Stripe\Stripe::setApiKey("sk_test_a2vkPyuLgme3hbfLJ0b0YtTx");
 
         $token = $_POST['stripeToken'];
 
@@ -94,7 +95,7 @@ class LouvreController extends Controller
                 "source" => $token,
                 "description" => "ticketing"
             ));
-            $this->addFlash("success","Votre Paiement a abouti");
+
             $bookingManager->finishBooking($booking);
             return $this->redirectToRoute("stepFour");
 
@@ -106,15 +107,17 @@ class LouvreController extends Controller
     }
 
     /**
-     * @Route("/email", name="stepFour")
+     * @Route("/recap", name="stepFour")
      * @param Request $request
      * @param BookingManager $bookingManager
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function stepFourAction(Request $request, BookingManager $bookingManager)
+    public function stepFourAction(Request $request, BookingManager $bookingManager, SessionInterface $session)
     {
+
         $booking = $bookingManager->getBooking();
-        return $this->render(':Louvre:email.html.twig',array('booking'=> $booking));
+        $session->clear();
+        return $this->render(':Louvre:stepFour.html.twig',array('booking'=> $booking));
     }
 }

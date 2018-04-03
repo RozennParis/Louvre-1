@@ -29,3 +29,6 @@ services:
         resource: '../../src/P4/LouvreBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+
+    P4\LouvreBundle\Service\EmailSending:
+        arguments: ["@twig","@mailer"]
