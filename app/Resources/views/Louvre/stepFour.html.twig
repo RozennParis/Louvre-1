@@ -7,17 +7,13 @@
     <div id="homepageStepFour">
         <div class="container">
             <div class="jumbotron jumbotron-fluid">
-                <h2 class="display-3">{{ 'louvre museum thanks you for your booking' |trans }}</h2>
-                <h2 class="display-3">{{ 'number'|trans }} : {{ booking.bookingCode }}</h2>
+
+                <h2 class="display-3">{{ 'louvre museum thanks you for your booking' |trans }} : {{ booking.id }}</h2>
+                <h2 class="display-3">{{ 'booking code'|trans }} : {{ booking.bookingcode }} </h2>
                 <hr class="my-4">
+                <p>{{ 'a summary of your order has just been sent to the following email address'|trans }} : {{ booking.email }}</p>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="well">
-            <p>{{ 'a summary of your order has just been sent to the following email address'|trans }} : {{ booking.email }}</p>
-
-        </div>
-    </div>
 {% endblock %}

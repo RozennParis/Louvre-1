@@ -3,7 +3,6 @@ namespace P4\LouvreBundle\Validator;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use P4\LouvreBundle\Entity\Booking;
 
 /**
  * Class NotPossibleBookingValidator

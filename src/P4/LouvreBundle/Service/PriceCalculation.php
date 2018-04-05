@@ -24,7 +24,7 @@ class PriceCalculation
 
     private $coefficient;
 
-    public function PriceCalculation(Booking $booking)
+    public function priceCalculation(Booking $booking)
     {
         switch ($booking->getTicketType())
         {

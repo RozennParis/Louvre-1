@@ -14,7 +14,7 @@ class EmailSending
         $this->mailer = $mailer;
     }
 
-    public function SendEmail(Booking $booking)
+    public function sendEmail(Booking $booking)
     {
 
         $message = \Swift_Message::newInstance()

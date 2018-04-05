@@ -89,12 +89,32 @@ class BookingManager
      */
     public function finishBooking(Booking $booking)
     {
-        //$this->setSession($booking);
         $this->em->persist($booking);
         $this->em->flush();
-        //envoi de l'email
 
-         $this->emailSending->SendEmail($booking);
-         $this->setSession($booking);
+        $this->emailSending->sendEmail($booking);
+
     }
+
+    public function close()
+    {
+        $this->session->clear();
+    }
+
+    /**
+     * @param $id
+     * @return null|object|Booking
+     * @throws Exception
+     */
+    public function recBooking($id)
+    {
+        $booking = $this->em->getRepository('P4LouvreBundle:Booking')->find($id);
+        if(!$booking)
+        {
+            throw new Exception('erreur');
+        }
+
+        return $booking;
+    }
+
 }
