@@ -1,6 +1,7 @@
 <?php
 namespace P4\LouvreBundle\Controller;
 
+use P4\LouvreBundle\Service\BookingPay;
 use P4\LouvreBundle\Service\PriceCalculation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -73,35 +74,27 @@ class LouvreController extends Controller
 
     /**
      * @Route("/checkout", name="checkout")
+     * @param Request $request
      * @param BookingManager $bookingManager
+     * @param BookingPay $bookingPay
      * @return RedirectResponse
      * @throws \Exception
      */
 
-    public function checkoutAction(BookingManager $bookingManager)
+    public function checkoutAction(Request $request, BookingManager $bookingManager,BookingPay $bookingPay)
     {
         $booking = $bookingManager->getBooking();
-        \Stripe\Stripe::setApiKey("sk_test_a2vkPyuLgme3hbfLJ0b0YtTx");
 
-        $token = $_POST['stripeToken'];
-
-        try {
-            $charge = \Stripe\Charge::create(array(
-                "amount" => $booking->getTotalPrice() * 100,
-                "currency" => "eur",
-                "source" => $token,
-                "description" => "ticketing"
-            ));
-
-        } catch (\Stripe\Error\Card $e) {
-
-            $this->addFlash("error", "Votre paiement n'a pas abouti ");
-            return $this->redirectToRoute("stepThree");
+        if($request->isMethod('POST'))
+        {
+            $transactionId = $bookingPay->bookingPay($booking, $request->get('stripeToken'));
+            if(false !== $transactionId)
+            {
+                $bookingManager->finishBooking($booking);
+                $this->get('session')->set('id',$booking->getId());
+                $bookingManager->close();
+            }
         }
-
-        $bookingManager->finishBooking($booking);
-        $this->get('session')->set('id',$booking->getId());
-        $bookingManager->close();
         return $this->redirectToRoute("stepFour", array(
             'id' => $booking->getId()));
     }
