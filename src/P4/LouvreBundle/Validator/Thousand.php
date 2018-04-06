@@ -10,7 +10,9 @@ use Symfony\Component\Validator\Constraint;
  */
 class Thousand extends Constraint
 {
-
+    /**
+     * @var string
+     */
     public $message = "Impossible de réserver pour ce jour";
 
 

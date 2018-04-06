@@ -10,6 +10,10 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class NotPossibleBookingValidator extends ConstraintValidator
 {
+    /**
+     * @param mixed $date
+     * @param Constraint $constraint
+     */
     public function validate($date , Constraint $constraint)
     { // changer =-> ne pas mettre les jours féries de l'année en cours
         // MAIS ceux de l'année de la date de la visite!

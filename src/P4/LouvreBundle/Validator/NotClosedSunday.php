@@ -10,5 +10,8 @@ use Symfony\Component\Validator\Constraint;
  */
 class NotClosedSunday extends Constraint
 {
+    /**
+     * @var string
+     */
     public $message = "Il n'est pas possible de réserver pour le Dimanche";
 }

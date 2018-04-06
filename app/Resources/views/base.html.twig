@@ -8,7 +8,7 @@
     <title>{% block title %}{{ 'ticket office of the louvre museum'|trans }}{% endblock %}</title>
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     {% endblock %}
@@ -49,12 +49,14 @@
 </div>
 
 <div id="footer">
-    {% block footer %}{% endblock %}
+    {% block footer %}
+    {% endblock %}
 </div>
 <div id="js">
 {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </div>
 {% endblock %}
 

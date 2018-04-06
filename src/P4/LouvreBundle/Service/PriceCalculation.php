@@ -3,6 +3,10 @@ namespace P4\LouvreBundle\Service;
 
 use P4\LouvreBundle\Entity\Booking;
 
+/**
+ * Class PriceCalculation
+ * @package P4\LouvreBundle\Service
+ */
 class PriceCalculation
 {
 
@@ -24,6 +28,10 @@ class PriceCalculation
 
     private $coefficient;
 
+    /**
+     * @param Booking $booking
+     * @return Booking
+     */
     public function priceCalculation(Booking $booking)
     {
         switch ($booking->getTicketType())

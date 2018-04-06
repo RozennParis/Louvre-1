@@ -4,7 +4,6 @@ namespace P4\LouvreBundle\Controller;
 use P4\LouvreBundle\Service\BookingPay;
 use P4\LouvreBundle\Service\PriceCalculation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use P4\LouvreBundle\Form\BookingType;
 use P4\LouvreBundle\Form\TicketsBookingType;
@@ -22,7 +21,7 @@ class LouvreController extends Controller
      * @Route("/", name="stepOne")
      * @param Request $request
      * @param BookingManager $bookingManager
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function stepOneAction(Request $request,BookingManager $bookingManager)
     {
@@ -38,12 +37,13 @@ class LouvreController extends Controller
         return $this->render(':Louvre:stepOne.html.twig',array('form' => $form->createView(),
         ));
     }
+
     /**
      * @Route("/informations", name="stepTwo")
      * @param Request $request
      * @param PriceCalculation $priceCalculation
      * @param BookingManager $bookingManager
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
     public function stepTwoAction(Request $request, PriceCalculation $priceCalculation, BookingManager $bookingManager)
@@ -77,7 +77,7 @@ class LouvreController extends Controller
      * @param Request $request
      * @param BookingManager $bookingManager
      * @param BookingPay $bookingPay
-     * @return RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Exception
      */
 
@@ -90,11 +90,14 @@ class LouvreController extends Controller
             $transactionId = $bookingPay->bookingPay($booking, $request->get('stripeToken'));
             if(false !== $transactionId)
             {
-                $bookingManager->finishBooking($booking);
+                $locale = $request->getLocale();
+                $bookingManager->finishBooking($booking,$locale);
                 $this->get('session')->set('id',$booking->getId());
+                $this->addFlash("success","Le paiement a bien été effectué !");
                 $bookingManager->close();
             }
         }
+
         return $this->redirectToRoute("stepFour", array(
             'id' => $booking->getId()));
     }

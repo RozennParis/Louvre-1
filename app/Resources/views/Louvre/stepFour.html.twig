@@ -3,11 +3,18 @@
 {% block title %}{{ parent() }} - {{ 'ticketing'|trans }} {% endblock %}
 
 {% block body %}
-
+    <div class="container">
+        <div class="progress">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100"
+                 aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                Etape 4/4
+            </div>
+        </div>
+    </div>
     <div id="homepageStepFour">
         <div class="container">
             <div class="jumbotron jumbotron-fluid">
-
+                <p class="bg-success">Votre paiement a été accepté !</p>
                 <h2 class="display-3">{{ 'louvre museum thanks you for your booking' |trans }} : {{ booking.id }}</h2>
                 <h2 class="display-3">{{ 'booking code'|trans }} : {{ booking.bookingcode }} </h2>
                 <hr class="my-4">

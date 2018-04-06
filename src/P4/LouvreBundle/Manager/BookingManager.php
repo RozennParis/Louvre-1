@@ -7,6 +7,11 @@ use P4\LouvreBundle\Entity\Ticket;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use P4\LouvreBundle\Service\EmailSending;
+
+/**
+ * Class BookingManager
+ * @package P4\LouvreBundle\Manager
+ */
 class BookingManager
 {
     private $session;
@@ -51,11 +56,18 @@ class BookingManager
         }
         return $booking;
     }
+
+    /**
+     * @param Booking $booking
+     */
     public function setBooking(Booking $booking)
     {
         $this->setSession($booking);
     }
 
+    /**
+     * @return mixed
+     */
     public function getSession()
     {
         
@@ -63,11 +75,17 @@ class BookingManager
           
     }
 
+    /**
+     * @param Booking $booking
+     */
     public function setSession(Booking $booking)
     {
         $this->session->set('booking',$booking);
     }
 
+    /**
+     * @param Booking $booking
+     */
     public function startBooking(Booking $booking)
     {
         // faire if > et if <
@@ -87,15 +105,24 @@ class BookingManager
     /**
      * @param Booking $booking
      */
-    public function finishBooking(Booking $booking)
+    public function finishBooking(Booking $booking,$locale)
     {
         $this->em->persist($booking);
         $this->em->flush();
 
-        $this->emailSending->sendEmail($booking);
+        if($locale = 'fr')
+        {
+            $this->emailSending->sendEmailFr($booking);
+        }
+        else{
+            $this->emailSending->sendEmailEn($booking);
+        }
 
     }
 
+    /**
+     *
+     */
     public function close()
     {
         $this->session->clear();

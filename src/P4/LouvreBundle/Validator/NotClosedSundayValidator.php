@@ -13,6 +13,10 @@ class NotClosedSundayValidator extends ConstraintValidator
 
     const SUNDAY = 7;
 
+    /**
+     * @param mixed $visitDate
+     * @param Constraint $constraint
+     */
     public function validate($visitDate, Constraint $constraint)
     {
 

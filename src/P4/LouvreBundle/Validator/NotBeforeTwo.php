@@ -10,6 +10,9 @@ use Symfony\Component\Validator\Constraint;
  */
 class NotBeforeTwo extends Constraint
 {
+    /**
+     * @var string
+     */
     public $message = "";
 
 
