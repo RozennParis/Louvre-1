@@ -15,6 +15,7 @@ use P4\LouvreBundle\Validator\NotClosedSunday;
  *
  * @ORM\Table(name="booking")
  * @ORM\Entity(repositoryClass="P4\LouvreBundle\Repository\BookingRepository")
+ * @NotBeforeTwo()
  */
 class Booking
 {
@@ -45,8 +46,11 @@ class Booking
      *
      * @ORM\Column(name="visitDate", type="datetime")
      * @Assert\Date()
-     * @Assert\GreaterThanOrEqual("today")
-     * @NotBeforeTwo()
+     * @Assert\Range(
+     *     min="today",
+     *     max="+18 months",
+     *     minMessage="you can not book for a date earlier than today",
+     *     maxMessage="reservations can only be made for the next 18 months")
      * @NotPossibleBooking()
      * @NotClosedSunday()
      * @NotClosedTuesday()

@@ -13,8 +13,12 @@ class NotBeforeTwo extends Constraint
     /**
      * @var string
      */
-    public $message = "";
 
+    public $message = "Attention vous ne pouvez pas réserver de billet journée après 14 heures ";
+    public function getTargets()
+    {
+        return self::CLASS_CONSTRAINT;
+    }
 
 
 }

@@ -3,10 +3,12 @@
 namespace P4\LouvreBundle\Form;
 
 use P4\LouvreBundle\Entity\Booking;
+use P4\LouvreBundle\Service\EmailSending;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,19 +26,21 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('visitDate', DateType::class, array(
+                'html5' => 'true',
+                'label' => 'visit date',
                 'widget' => 'single_text',
-                'html5' => 'false',
-                'attr' => array('class' => 'js-datepicker'),
             ))
             ->add('ticketType', ChoiceType::class, array(
                 'choices' => array(
-                    'Day' => Booking::BOOKING_FULL_DAY,
-                    'Half-day' => Booking::BOOKING_HALF_DAY,
+                    'day' => Booking::BOOKING_FULL_DAY,
+                    'half-day' => Booking::BOOKING_HALF_DAY,
                 ),
-                'expanded'=> true
+                'expanded'=> Booking::BOOKING_FULL_DAY,
+                'label' => 'ticket type'
 
             ))
             ->add('nbTickets', ChoiceType::class, array(
+                'label' => 'tickets(s) quantity',
                 'choices' => array(
                     '1' => 1,
                     '2' => 2,
@@ -50,7 +54,12 @@ class BookingType extends AbstractType
                     '10' => 10
                 )
             ))
-            ->add('email', EmailType::class);
+            ->add('email', RepeatedType::class, array(
+                'type' => EmailType::class,
+                'required' => true,
+                'first_options' => array('label' => 'email'),
+                'second_options' => array('label' => 'email confirmation')
+            ));
     }
 
 

@@ -11,11 +11,27 @@ use Symfony\Component\Validator\ConstraintValidator;
 class NotBeforeTwoValidator extends ConstraintValidator
 {
     /**
-     * @param mixed $value
+     * @param mixed $booking
      * @param Constraint $constraint
      */
-   public function validate($value, Constraint $constraint)
+   public function validate($booking, Constraint $constraint)
    {
-       // TODO: Implement validate() method.
+       $currentDateTime = new \DateTime();
+       $date = $booking->getVisitDate()->format('d-m-Y');
+       $currentDate = date('d-m-Y');
+
+       $hour = $currentDateTime->format('H');
+
+       if($hour > 14 && $currentDate == $date)
+       {
+           $ticketType = $booking->getTicketType();
+           if($ticketType == "day")
+           {
+               $this->context->buildViolation($constraint->message)
+                   ->atPath('ticketType')
+                   ->addViolation();
+           }
+       }
+
    }
 }

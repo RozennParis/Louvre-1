@@ -16,22 +16,42 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TicketType extends AbstractType
 {
+    protected $minYear, $maxYear;
+
+    public function __construct()
+    {
+        $now = new \DateTime('now');
+        $this->maxYear = (int) $now->format('Y');
+        $this->minYear = $this->maxYear -120;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName',TextType::class)
-            ->add('lastName',TextType::class)
-            ->add('country', CountryType::class)
+            ->add('lastName',TextType::class,array(
+                'label' => 'last name'
+            ))
+            ->add('firstName',TextType::class,array(
+                'label' => 'first name'
+            ))
+            ->add('country', CountryType::class,array(
+                'label' => 'country',
+                'preferred_choices' => array('FR')
+            ))
             ->add('birthDate',BirthdayType::class,array(
-                'widget'=>'single_text',
-                'html5'=>'false',
-                'attr'=> ['class'=>'js-datepicker',],
+                'label' => 'birth date',
+                'html5'=>'true',
+                'format' => 'dd/MM/yyy',
+                'years' => range($this->minYear, $this->maxYear)
+
                 ))
             ->add('reducedPrice',CheckboxType::class,array(
+                'label' => 'reduced price',
                 'required'=>false,
     ));
     }

@@ -1,4 +1,4 @@
-
+step : étape
 louvre museum : musee du louvre
 ticket office of the louvre museum : billetterie du musée du louvre
 welcome : bienvenue
@@ -20,7 +20,9 @@ reduced : réduit
 order your tickets online : commandez vos billets en ligne
 visit date : date de la visite
 nb tickets : nombre de Billets
+tickets(s) quantity : nombre de billet(s)
 ticket type : type de billet
+email confirmation : confirmation email
 day : journée
 half-day : demi-journée
 "half-day ticket : entry from 14 hours" : "billet demi-journée : entrée à partir de 14 heures"
@@ -68,3 +70,7 @@ louvre museum thanks you for your booking : le musée du louvre vous remercie po
 number : numéro
 
 a summary of your order has just been sent to the following email address : un récapitulatif de votre commande vient de vous être envoyé à l'adresse email suivante
+you can not book for a date earlier than today : vous ne pouvez pas réserver pour une date antérieure à aujourd'hui
+reservations can only be made for the next 18 months : les réservations ne peuvent se faire que pour les 18 prochains mois
+
+the length is too short: la longueur est trop courte
