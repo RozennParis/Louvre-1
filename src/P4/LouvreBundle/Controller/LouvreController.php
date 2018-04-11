@@ -39,7 +39,7 @@ class LouvreController extends Controller
     }
 
     /**
-     * @Route("/informations", name="stepTwo")
+     * @Route("/tickets", name="stepTwo")
      * @param Request $request
      * @param PriceCalculation $priceCalculation
      * @param BookingManager $bookingManager
@@ -69,6 +69,10 @@ class LouvreController extends Controller
     {
         $booking = $bookingManager->getBooking();
         $booking->setBookingCode(uniqid());
+        if($booking->getTotalPrice() == 0)
+        {
+            return $this->render(':Louvre:stepThreeFree.html.twig',array('booking'=>$booking));
+        }
         return $this->render(':Louvre:stepThree.html.twig',array('booking'=>$booking));
     }
 
@@ -93,7 +97,7 @@ class LouvreController extends Controller
                 $locale = $request->getLocale();
                 $bookingManager->finishBooking($booking,$locale);
                 $this->get('session')->set('id',$booking->getId());
-                $this->addFlash("success","Le paiement a bien été effectué !");
+                //$this->addFlash("success","Le paiement a bien été effectué !");
                 $bookingManager->close();
             }
         }

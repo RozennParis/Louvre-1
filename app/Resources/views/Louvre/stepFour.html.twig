@@ -1,24 +1,30 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} - {{ 'ticketing'|trans }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'order summary'|trans|capitalize }} {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="progress">
             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100"
                  aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                Etape 4/4
+                {{ 'step' |trans }} 4/4
             </div>
         </div>
     </div>
     <div id="homepageStepFour">
         <div class="container">
             <div class="jumbotron jumbotron-fluid">
-                <p class="bg-success">Votre paiement a été accepté !</p>
-                <h2 class="display-3">{{ 'louvre museum thanks you for your booking' |trans }} : {{ booking.id }}</h2>
-                <h2 class="display-3">{{ 'booking code'|trans }} : {{ booking.bookingcode }} </h2>
+                <p class="bg-success">{{ 'your payment has been accepted ! your order is validated !'|trans|capitalize }}</p>
+                <h2 class="display-3">{{ 'louvre museum thanks you for your booking' |trans|capitalize }} n° {{ booking.id }}</h2>
+                <h2 class="display-3">{{ 'booking code'|trans|capitalize }} : {{ booking.bookingcode }} </h2>
                 <hr class="my-4">
-                <p>{{ 'a summary of your order has just been sent to the following email address'|trans }} : {{ booking.email }}</p>
+                <p>{{ 'an email has just been sent to the following address'|trans|capitalize }} : {{ booking.email }}</p>
+                <p>{{ 'This email features'|trans|capitalize }} :</p>
+                <ul>
+                    <li>{{ 'the summary of your order'|trans|capitalize }}</li>
+                    <li>{{ 'your ticket(s)'|trans|capitalize }}</li>
+                </ul>
+
             </div>
         </div>
     </div>

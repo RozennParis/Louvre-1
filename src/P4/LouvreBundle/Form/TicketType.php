@@ -2,6 +2,7 @@
 
 namespace P4\LouvreBundle\Form;
 
+use P4\LouvreBundle\Entity\Ticket;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -62,7 +63,7 @@ class TicketType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'P4\LouvreBundle\Entity\Ticket'
+            'data_class' => Ticket::class
         ));
     }
 

@@ -3,7 +3,6 @@
 namespace P4\LouvreBundle\Form;
 
 use P4\LouvreBundle\Entity\Booking;
-use P4\LouvreBundle\Service\EmailSending;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -69,7 +68,7 @@ class BookingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'P4\LouvreBundle\Entity\Booking'
+            'data_class' => Booking::class
         ));
     }
 

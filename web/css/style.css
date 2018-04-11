@@ -8,17 +8,6 @@
     height: auto;
 }
 
-.navbar-inverse .navbar-brand
-{
-    color: white;
-    font-size: 25px;
-    font-family: Granjon;
-}
-h1.display-3
-{
-    font-family: Granjon;
-}
-
 .card
 {
 	border: 1px solid black;
@@ -47,6 +36,18 @@ li
 {
 	text-align: left;
 }
+
+body{
+	padding-top: 70px;
+}
+.navbar ul li
+{
+	padding-left: 10px;
+	padding-top: 15px;
+}
+
+
+
 
 
 

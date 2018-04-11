@@ -32,7 +32,6 @@ up to 12 years old .free for children under 4 years old : jusqu'à 12 ans. gratu
 from 60 years old : a partir de 60 ans
 under conditions . a proof will be requested at the entrance (students, military, museum staff etc): sous conditions . une preuve sera demandée à l'entrée (étudiants, militaires, personnel du musée, etc.)
 
-ticketing : billetterie
 your reservation : votre commande
 date of your reservation : date de votre commande
 date of your visit : date de votre visite
@@ -53,7 +52,6 @@ order summary : récapitulatif de la commande
 purchaseDate : date de la commande
 booking code : code de réservation
 you have booked : vous avez réservé
-ticket Type : type de billet
 visitor : visiteur
 price : tarif
 quantity : quantité
@@ -69,8 +67,29 @@ price ticket(s) : tarif du/des billet(s)
 louvre museum thanks you for your booking : le musée du louvre vous remercie pour votre commande
 number : numéro
 
-a summary of your order has just been sent to the following email address : un récapitulatif de votre commande vient de vous être envoyé à l'adresse email suivante
+
+an email has just been sent to the following address : un email vient de vous être envoyé à l'adresse suivante
+This email features : cet email comporte
 you can not book for a date earlier than today : vous ne pouvez pas réserver pour une date antérieure à aujourd'hui
 reservations can only be made for the next 18 months : les réservations ne peuvent se faire que pour les 18 prochains mois
-
+summary : récapitulatif
 the length is too short: la longueur est trop courte
+next: suivant
+conditions : conditions
+ticket price : tarif du billet
+euros: euros
+total amount of your order: montant total de votre commande
+thank you to proceed to the payment : Merci de procéder au paiement
+your payment has been accepted ! your order is validated ! : votre paiement a été accepté ! votre commande est validée !
+the summary of your order : le récapitulatif de votre commande
+your ticket(s) : votre ou vos billet(s)
+visitor(s): visiteur(s)
+
+do not forget to bring your proof ! : n'oubliez pas de vous munir de votre justificatif
+thank you for your trust: merci pour votre confiance
+
+the louvre museum team: l'équipe du musée du louvre
+admission is free for children under 4 years old ! : l'entrée est gratuite pour les enfants de moins de 4 ans !
+terms and conditions: conditions générales de ventes
+
+fictional site realized as part of a training : site fictif realisé dans le cadre d'une formation

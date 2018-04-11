@@ -35,4 +35,4 @@ services:
 
     P4\LouvreBundle\Service\BookingPay:
         arguments:
-            $secretKey: '%stripe_private_key%'
+            $secretKey: 'sk_test_a2vkPyuLgme3hbfLJ0b0YtTx'

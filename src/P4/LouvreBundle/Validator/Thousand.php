@@ -10,10 +10,13 @@ use Symfony\Component\Validator\Constraint;
  */
 class Thousand extends Constraint
 {
-    /**
-     * @var string
-     */
-    public $message = "Impossible de réserver pour ce jour";
+
+    public $message = "Impossible de réserver pour ce jour , la capacité d'accueil est atteinte";
+
+    public function getTargets()
+    {
+        return self::CLASS_CONSTRAINT;
+    }
 
 
 }

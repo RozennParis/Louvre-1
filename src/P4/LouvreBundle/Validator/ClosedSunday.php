@@ -4,11 +4,11 @@ namespace P4\LouvreBundle\Validator;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Class NotClosedSunday
+ * Class ClosedSunday
  * @package P4\LouvreBundle\Validator
  * @Annotation
  */
-class NotClosedSunday extends Constraint
+class ClosedSunday extends Constraint
 {
     /**
      * @var string

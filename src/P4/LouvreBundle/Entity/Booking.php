@@ -3,12 +3,13 @@
 namespace P4\LouvreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use P4\LouvreBundle\Validator\Thousand;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use P4\LouvreBundle\Validator\NotBeforeTwo;
 use P4\LouvreBundle\Validator\NotPossibleBooking;
-use P4\LouvreBundle\Validator\NotClosedTuesday;
-use P4\LouvreBundle\Validator\NotClosedSunday;
+use P4\LouvreBundle\Validator\ClosedTuesday;
+use P4\LouvreBundle\Validator\ClosedSunday;
 
 /**
  * Booking
@@ -16,12 +17,14 @@ use P4\LouvreBundle\Validator\NotClosedSunday;
  * @ORM\Table(name="booking")
  * @ORM\Entity(repositoryClass="P4\LouvreBundle\Repository\BookingRepository")
  * @NotBeforeTwo()
+ * @Thousand()
  */
 class Booking
 {
 
     const BOOKING_FULL_DAY = true;
     const BOOKING_HALF_DAY = false;
+    const MAX_TICKETS_PER_DAY = 1000;
 
     /**
      * @var int
@@ -51,9 +54,9 @@ class Booking
      *     max="+18 months",
      *     minMessage="you can not book for a date earlier than today",
      *     maxMessage="reservations can only be made for the next 18 months")
+     * @ClosedSunday()
+     * @ClosedTuesday()
      * @NotPossibleBooking()
-     * @NotClosedSunday()
-     * @NotClosedTuesday()
      */
 
     private $visitDate;

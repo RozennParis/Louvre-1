@@ -2,6 +2,7 @@
 
 namespace P4\LouvreBundle\Form;
 
+use P4\LouvreBundle\Entity\Booking;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,6 +34,7 @@ class TicketsBookingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'=>'P4\LouvreBundle\Entity\Booking'));
+            'data_class'=> Booking::class
+        ));
     }
 }
