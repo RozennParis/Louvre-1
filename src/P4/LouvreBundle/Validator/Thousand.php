@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
 class Thousand extends Constraint
 {
 
-    public $message = "Impossible de réserver pour ce jour , la capacité d'accueil est atteinte";
+    public $message = "Can not reserve for this day, capacity is reached";
 
     public function getTargets()
     {

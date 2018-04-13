@@ -99,7 +99,6 @@ class BookingManager
             $booking->removeTicket($ticket);
         }
         $this->setSession($booking);
-
     }
 
     /**
@@ -117,7 +116,6 @@ class BookingManager
         else{
             $this->emailSending->sendEmailEn($booking);
         }
-
     }
 
     /**
@@ -140,8 +138,6 @@ class BookingManager
         {
             throw new Exception('erreur');
         }
-
         return $booking;
     }
-
 }

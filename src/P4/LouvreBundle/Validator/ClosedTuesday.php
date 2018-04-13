@@ -13,5 +13,5 @@ class ClosedTuesday extends Constraint
     /**
      * @var string
      */
-    public $message = "Le Musée est fermé le mardi";
+    public $message = "The museum is closed on Tuesdays";
 }

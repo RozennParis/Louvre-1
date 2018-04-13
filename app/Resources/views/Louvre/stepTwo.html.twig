@@ -17,7 +17,7 @@
             <ul>
                 <li><span>{{ 'date of your reservation'|trans }} :</span> {{ booking.purchaseDate|date('d/m/Y') }}</li>
                 <li><span>{{ 'date of your visit'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
-                <li><span>{{ 'ticket type'|trans|capitalize }} : </span>{% if booking.ticketType == 1 %} {{ 'day'|trans }} {% else %} {{ 'half-day'|trans }} {% endif %}</li>
+                <li><span>{{ 'ticket type'|trans|capitalize }} : </span>{{ booking.ticketTypeLabel |trans }}</li>
                 <li><span>{{ 'number of reserved tickets'|trans }} :</span> {{ booking.nbTickets }}</li>
                 <li><span>{{ 'your ticket(s) will be sent to the email address'|trans }} :</span> {{ booking.email }}</li>
                 <li>{{ 'please fill in the information of each visitor below'|trans }}</li>
@@ -45,6 +45,7 @@
                         </div>
                         <div class="col-md-10">
                             {{ form_row(ticket.birthDate) }}
+                            {{ form_widget(ticket.birthDate) }}
                         </div>
                         <div class="col-md-10">
                             {{ form_row(ticket.reducedPrice) }}
@@ -55,7 +56,8 @@
                     <div class="form-group row">
                         <div class="col-md-6 col-md-6">
                             <hr class="my-4">
-                            <button type="submit" class="btn btn-primary" name="submit">{{ 'next'|trans }}</button>
+                            <a class="button-back" href="{{ path('stepOne') }}"> <button class="btn btn-light" name="return" type="button"> {{ 'back'|trans }}</button></a>
+                            <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans }}</button>
                         </div>
                     </div>
             {{ form_end(form) }}
@@ -63,4 +65,7 @@
         </div>
     </div>
 
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 {% endblock %}

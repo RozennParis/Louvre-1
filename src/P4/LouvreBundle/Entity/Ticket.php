@@ -31,10 +31,10 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Type(type="string")
+     * @Assert\NotBlank(groups={"Ticket"})
+     * @Assert\Type(type="string",groups={"Ticket"})
      * @Assert\Length(
-     *     min = 2
+     *     min = 2, groups={"Ticket"}
      * )
      */
     private $firstName;
@@ -42,10 +42,10 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Type(type="string")
+     * @Assert\NotBlank(groups={"Ticket"})
+     * @Assert\Type(type="string", groups={"Ticket"})
      * @Assert\Length(
-     *     min =2
+     *     min =2, groups={"Ticket"}
      * )
      */
     private $lastName;
@@ -53,15 +53,15 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Ticket"})
      */
     private $country;
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="birthDate", type="datetime")
-     * @Assert\Date()
-     * @Assert\LessThanOrEqual("today")
+     * @Assert\Date(groups={"Ticket"})
+     * @Assert\LessThanOrEqual("today", groups={"Ticket"})
      */
     private $birthDate;
     /**
@@ -189,6 +189,12 @@ class Ticket
     public function getReducedPrice()
     {
         return $this->reducedPrice;
+    }
+
+    public function getReducedPriceLabel()
+    {
+        return $this->reducedPrice ? "yes , do not forget to bring your proof !" : "no";
+
     }
     /**
      * Set price

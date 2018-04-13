@@ -36,7 +36,6 @@ class BookingPay
   {
      Stripe::setApiKey($this->secretKey);
 
-
       try {
           $charge = Charge::create(array(
               "amount" => $booking->getTotalPrice() * 100,

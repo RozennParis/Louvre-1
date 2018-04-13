@@ -18,7 +18,7 @@
                                         <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ booking.bookingCode }}</li>
                                         <li><span>{{ 'visit date'|trans|capitalize }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
                                         <li><span>{{ 'you have booked'|trans|capitalize }} : </span>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }}</li>
-                                        <li><span>{{ 'ticket type'|trans|capitalize }} : </span>{% if booking.ticketType == 1 %} {{ 'day'|trans }} {% else %} {{ 'half-day'|trans }} {% endif %}</li>
+                                        <li><span>{{ 'ticket type'|trans|capitalize }} : </span> {{ booking.ticketTypeLabel |trans }}</li>
                                 </ul>
                 </div>
 
@@ -30,7 +30,7 @@
                                         <tr>
                                                 <td><strong>{{ 'visitor'|trans|capitalize }} {{ loop.index }}</strong></td>
                                                 <td>{{ ticket.firstName }} {{ ticket.lastName }}</td>
-                                                <td>{{ 'ticket'|trans|capitalize }} : {% if booking.ticketType == 1 %} {{ 'day'|trans }} {% else %} {{ 'half-day'|trans }} {% endif %}</td>
+                                                <td>{{ 'ticket'|trans|capitalize }} : {{ booking.ticketTypeLabel |trans }} </td>
                                                 <td>{{ 'price'|trans|capitalize }} : {{ ticket.price }} {{ 'euros'|trans }}</td>
                                         </tr>
                                 {% endfor %}
@@ -38,6 +38,11 @@
                         </table>
                         </div>
                 </div>
+            <div class="jumbotron jumbotron-fluid">
+
+                <a class="button-back" href="{{ path('stepTwo') }}"> <button class="btn btn-light" name="return" type="button"> {{ 'modify my information'|trans }}</button></a>
+                <a class="button-back" href="{{ path('stepOne') }}"> <button class="btn btn-light" name="return" type="button"> {{ 'modify my order'|trans }}</button></a>
+            </div>
             <div class="jumbotron jumbotron-fluid">
                 <h2 class="display-3">{{ 'total amount of your order'|trans|capitalize }} :  {{ booking.totalPrice }} {{ 'euros'|trans }} </h2>
                 <hr class="my-4">

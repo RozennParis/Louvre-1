@@ -5,7 +5,7 @@
 <ul>
     <li><span>{{ 'booking code'|capitalize }} : </span>{{ booking.bookingCode }}</li>
     <li><span>{{ 'visit date'|capitalize }} :  </span>{{ booking.visitDate|date('d/m/Y') }}</li>
-    <li><span>{{ 'ticket'|capitalize }} : {% if booking.ticketType == 1 %} {{ 'day' }} {% else %} {{ 'half-day' }} {% endif %}</li>
+    <li><span>{{ 'ticket'|capitalize }} : {{ booking.ticketTypeLabel |trans }}</li>
 </ul>
 
 <hr class="my-4">
@@ -15,8 +15,7 @@
     <p>{{ 'first name'|capitalize }} : {{ ticket.firstName|upper }}</p>
     <p>{{ 'birth date'|capitalize }} : {{ ticket.birthDate|date('d/m/Y') }}</p>
     <p>{{ 'country'|capitalize }} : {{ ticket.country|upper }}</p>
-    <p>{{ 'reduced price'|capitalize }} : {% if ticket.reducedPrice %}{{ 'yes' }}{% else %}{{ 'no' }}{% endif %}</p>
-    <p>{% if ticket.reducedPrice %}<span>{{ 'do not forget to bring your proof !'|capitalize }}</span>{% else %}{{ '' }}{% endif %}</p>
+    <p>{{ 'reduced price'|trans|capitalize }} : {{ ticket.reducedPriceLabel }}</p>
     <p>{{ 'ticket price'|capitalize }} :  {{ ticket.price|upper }}</p>
 
 

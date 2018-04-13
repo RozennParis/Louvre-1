@@ -16,8 +16,8 @@ use P4\LouvreBundle\Validator\ClosedSunday;
  *
  * @ORM\Table(name="booking")
  * @ORM\Entity(repositoryClass="P4\LouvreBundle\Repository\BookingRepository")
- * @NotBeforeTwo()
- * @Thousand()
+ * @NotBeforeTwo(groups={"Booking"})
+ * @Thousand(groups={"Booking"})
  */
 class Booking
 {
@@ -45,27 +45,25 @@ class Booking
     private $tickets;
 
     /**
-     * @var \DateTime
+     * @var \DateTime $visitDate
      *
      * @ORM\Column(name="visitDate", type="datetime")
-     * @Assert\Date()
+     * @Assert\Date(groups={"Booking"})
      * @Assert\Range(
      *     min="today",
      *     max="+18 months",
      *     minMessage="you can not book for a date earlier than today",
-     *     maxMessage="reservations can only be made for the next 18 months")
-     * @ClosedSunday()
-     * @ClosedTuesday()
-     * @NotPossibleBooking()
+     *     maxMessage="reservations can only be made for the next 18 months",groups={"Booking"})
+     * @ClosedSunday(groups={"Booking"})
+     * @ClosedTuesday(groups={"Booking"})
+     * @NotPossibleBooking(groups={"Booking"})
      */
 
     private $visitDate;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="purchaseDate", type="datetime")
-     * @Assert\DateTime()
+     * @ORM\Column(name="purchaseDate", type="date")
+     * @Assert\DateTime(groups={"Booking"})
      */
     private $purchaseDate;
 
@@ -73,7 +71,7 @@ class Booking
      * @var bool
      *
      * @ORM\Column(name="ticketType", type="boolean")
-     * @Assert\NotNull()
+     * @Assert\NotNull(groups={"Booking"})
      */
     private $ticketType;
 
@@ -95,8 +93,8 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\NotBlank(groups={"Booking"})
+     * @Assert\Email(groups={"Booking"})
      */
     private $email;
 
@@ -189,6 +187,11 @@ class Booking
     {
         return $this->ticketType;
     }
+
+    public function getTicketTypeLabel(){
+        return $this->ticketType ? "day" : "half-day";
+    }
+
 
     /**
      * Set totalPrice
@@ -292,6 +295,7 @@ class Booking
     {
         $this->tickets = new ArrayCollection();
         $this->purchaseDate = new\DateTime();
+        //$this->visitDate = new \DateTime();
     }
 
     /**

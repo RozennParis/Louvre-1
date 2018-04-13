@@ -1,0 +1,177 @@
+PHPUnit 5.7.27 by Sebastian Bergmann and contributors.
+
+Testing Project Test Suite
+[31;1mE[0m                                                                   1 / 1 (100%)<!DOCTYPE html>
+<!--<html lang="fr">-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ticket office of the louvre museum - welcome </title>
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    
+</head>
+<body>
+<div id="nav">
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top" >
+        <div class="container">
+        <a class="navbar-brand">
+            <a href="/en/"><img src="/../web/img/logo.jpg " alt="image louvre"/></a>
+        </a>
+           <ul class="navbar navbar-nav navbar-right">
+                    <li class="active"><a href="/en/">Accueil</a></li>
+                    <li><a href="/en/">EN</a></li>
+                    <li><a href="/fr/">FR</a></li>
+           </ul>
+        </div>
+    </div>
+
+        </div>
+
+
+
+<div id="body">
+    
+    <div class="container">
+        <div class="progress">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="25"
+                 aria-valuemin="0" aria-valuemax="100" style="width:25%">
+                step 1/4
+            </div>
+        </div>
+        <div class="jumbotron jumbotron-fluid">
+            <h1 class="display-3">LOUVRE MUSEUM</h1>
+            <hr class="my-4">
+            <h2>TICKETING</h2>
+        </div>
+        <div class="row">
+            <div class="infos">
+                <div class="col-md-6">
+                    <div class="horaires">
+                        <div class="well">
+                            <div class="card-header">SCHEDULES</div>
+                                <hr class="my-4">
+                                    <div class="card-body text-secondary">
+                                        <ul>
+                                            <li>Monday : 9 h - 18 h</li>
+                                            <li>Tuesday : closed</li>
+                                            <li>Wenesday : 9 h - 21h45</li>
+                                            <li>Thursday : 9 h - 18 h</li>
+                                            <li>Friday : 9 h - 21h45</li>
+                                            <li>Saturday : 9 h - 18 h</li>
+                                            <li>Sunday : 9 h - 18 h</li>
+                                        </ul>
+                                    </div><br/>
+
+                            <div class="card-header">PRICES</div>
+                            <hr class="my-4">
+                            <div class="card-body text-secondary">
+                                <ul>
+                                    <li>Normal : 16 euros </li>
+                                    <li>Children : 8 euros (1)</li>
+                                    <li>Senior : 12 euros (2)</li>
+                                    <li>Reduced : 10 euros (3)</li>
+                                </ul>
+                            </div><br/>
+
+                            <div class="card-header">CONDITIONS</div>
+                            <hr class="my-4">
+                            <div class="card-body text-secondary">
+                                <ul>
+                                    <li>(1) up to 12 years old .free for children under 4 years old</li>
+                                    <li>(2) from 60 years old</li>
+                                    <li>(3) under conditions . a proof will be requested at the entrance (students, military, museum staff etc)</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <div class="col-md-6">
+                    <div class="text">
+                        <div class="well">
+                            <div class="card-header">ORDER YOUR TICKETS ONLINE</div>
+                        </div>
+                    </div>
+                    <div class="formulaire">
+                        <div class="well">
+                            <form name="booking" method="post">
+                            <div class="form-group row">
+                                <div class="col-md-11">
+                                        <div class="form-group"><label class="control-label required" for="booking_visitDate">visit date</label><input type="text" id="booking_visitDate" name="booking[visitDate]" required="required" class="form-control" value="01/06/2018" /></div>
+                                        
+                                </div>
+                                <br/>
+                                <div class="col-md-11">
+                                    <div class="form-group"><label class="control-label required" for="booking_nbTickets">tickets(s) quantity</label><select id="booking_nbTickets" name="booking[nbTickets]" class="form-control"><option value="1" selected="selected">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+                                </div>
+                                <br/>
+                                <div class="col-md-11">
+                                    <div class="form-group"><label class="control-label required">ticket type</label><div id="booking_ticketType"><div class="radio">                                                                                <label for="booking_ticketType_0" class="required"><input type="radio" id="booking_ticketType_0" name="booking[ticketType]" required="required" value="1" checked="checked" /> day</label>
+    </div><div class="radio">                                                                                <label for="booking_ticketType_1" class="required"><input type="radio" id="booking_ticketType_1" name="booking[ticketType]" required="required" value="0" /> half-day</label>
+    </div></div></div>
+                                    <i class="fa fa-exclamation-triangle"></i> half-day ticket : entry from 14 hours
+                                </div>
+                                <div class="col-md-11">
+                                    <br/>
+                                    <div class="form-group">
+                                        <div class="form-group"><label class="control-label required" for="booking_email_first">email</label><input type="email" id="booking_email_first" name="booking[email][first]" required="required" class="form-control" value="stephanie.houssin@gmx.fr" /></div><div class="form-group"><label class="control-label required" for="booking_email_second">email confirmation</label><input type="email" id="booking_email_second" name="booking[email][second]" required="required" class="form-control" value="stephanie.houssin@gmx.fr" /></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <br/>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                            <input type="hidden" id="booking__token" name="booking[_token]" value="WOGhBYaae1xgmXKVKHvx0D1nmk6FPqyLhLpjpMfB5zI" /></form>
+
+    </div>
+</div>
+
+<div id="footer">
+            <div class="footer">
+
+                <div class="container-fluid text-center">
+                    <p><a href="">terms and conditions</a> - fictional site realized as part of a training- Stéphanie HOUSSIN</p>
+                </div>
+
+        </div>
+    </div>
+<div id="js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+</div>
+
+
+</body>
+</html>
+
+Time: 1.99 seconds, Memory: 24.00MB
+
+There was 1 error:
+
+1) Tests\P4\LouvreBundle\Controller\LouvreControllerTest::testFormBookingValid
+LogicException: The request was not redirected.
+
+C:\wamp64\www\Projet4\vendor\symfony\symfony\src\Symfony\Component\BrowserKit\Client.php:477
+C:\wamp64\www\Projet4\tests\P4\LouvreBundle\Controller\LouvreControllerTest.php:81
+
+[37;41mERRORS![0m
+[37;41mTests: 1[0m[37;41m, Assertions: 0[0m[37;41m, Errors: 1[0m[37;41m.[0m

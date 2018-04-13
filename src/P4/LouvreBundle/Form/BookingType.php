@@ -25,11 +25,17 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('visitDate', DateType::class, array(
-                'html5' => 'false',
-                'label' => 'visit date',
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy',
-                'attr' => ['class' => 'datepicker']
+                'label' => 'visit date',
+                'html5' => 'false',
+                'attr' => [
+                    'class' => 'form-control input-inline datepicker',
+                    'data-date-language' => 'fr',
+                    'data-date-format' => 'dd/mm/yyyy',
+                    'data-provide' => 'datepicker',
+                    'data-date-autoclose' => true
+                ],
             ))
             ->add('ticketType', ChoiceType::class, array(
                 'choices' => array(
@@ -63,16 +69,14 @@ class BookingType extends AbstractType
             ));
     }
 
-
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Booking::class
+            'data_class' => Booking::class,
+            'validation_groups' => array('Booking'),
         ));
     }
-
-
 }

@@ -2,67 +2,96 @@
 namespace Tests\P4\LouvreBundle\Controller;
 
 
+use P4\LouvreBundle\Entity\Booking;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class LouvreControllerTest extends WebTestCase
 {
 
-    // Verification que le code status de la reponse Http est bien 200
-    public function testStepOneIsUp()
+    // test premier step
+    private $client = null;
+
+    public function setUp()
     {
-        $client = self::createClient();
-        $client->request('GET', '/en/');
-        static::assertSame(
-            200, $client->getResponse()->getStatusCode()
+        $this->client = static::createClient();
+    }
+    public function testFirstStepIsUp()
+    {
+        $this->client->request('GET', '/fr/');
+        static::assertEquals(
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
         );
     }
-
-    public function testStepOneTitle()
+    // test fonctionnement sur le nombre de billet d'une commande
+    public function testBookingNbTickets()
     {
-        // chercher s'il y a 1 h1 dans la page
-        $client = static::createClient();
-        $client->request('GET', '/en/');
-
-        $this->assertSame(1, $client->filter('h1')->count());
+        $booking = new Booking();
+        $booking ->setNbTickets(2);
+        $result = $booking->getNbTickets();
+        $this->assertEquals(2, $result);
     }
+
+    // test commande complète jusqu'au paiement
 
     public function testFormBookingValid()
     {
         $client = static::createClient();
-        $crawler =$client->request('GET', '/en/');
+        $crawler =$client->request('GET', '/fr/');
 
+        $formBooking = $crawler->selectButton('submit')->form();
 
-        $formBooking = $crawler->selectButton('next')->form();
-
-        $formBooking['booking[visitDate]'] = '01/06/2018';
-        $formBooking['booking[nbTickets]'] = 1;
-        $formBooking['booking[ticketType]'] = true;
+        $formBooking['booking[visitDate]'] = '08/06/2018';
+        $formBooking['booking[nbTickets]'] = 2;
+        $formBooking['booking[ticketType]'] = 1;
         $formBooking['booking[email][first]'] = 'stephanie.houssin@gmx.fr';
         $formBooking['booking[email][second]'] = 'stephanie.houssin@gmx.fr';
 
         $crawler = $client->submit($formBooking);
-        dump($client->getResponse()->getStatusCode());
-        $this->assertTrue($client->getResponse()->isRedirect());
-        //$this->assertTrue($client->getResponse()->isRedirect('/en/tickets'));
+
+        $this->assertTrue($client->getResponse()->isRedirect('/fr/tickets'));
+
         $crawler = $client->followRedirect();
 
-        $this->assertContains("your reservation", $client->getResponse()->getContent());
+        $this->assertSame(1, $crawler->filter('html:contains(" date de naissance")')->count());
 
-        $formTickets = $crawler->selectButton('next')->form();
+        $formTickets = $crawler->selectButton('submit')->form();
 
         $formTickets['tickets_booking[tickets][0][firstName]'] = 'stephanie';
         $formTickets['tickets_booking[tickets][0][lastName]'] = 'Houssin';
-        $formTickets['tickets_booking[tickets][0][birthDate]'] = '17/07/1976';
+        $formTickets['tickets_booking[tickets][0][birthDate][day]'] = 22;
+        $formTickets['tickets_booking[tickets][0][birthDate][month]'] = 05;
+        $formTickets['tickets_booking[tickets][0][birthDate][year]'] = 1956;
         $formTickets['tickets_booking[tickets][0][country]'] = 'FR';
         $formTickets['tickets_booking[tickets][0][reducedPrice]'] = 1;
 
+        $formTickets['tickets_booking[tickets][1][firstName]'] = 'Enzo';
+        $formTickets['tickets_booking[tickets][1][lastName]'] = 'Houssin';
+        $formTickets['tickets_booking[tickets][1][birthDate][day]'] = 07;
+        $formTickets['tickets_booking[tickets][1][birthDate][month]'] = 11;
+        $formTickets['tickets_booking[tickets][1][birthDate][year]'] = 2012;
+        $formTickets['tickets_booking[tickets][1][country]'] = 'FR';
+
         $crawler = $client->submit($formTickets);
 
-        $this->assertTrue($client->getResponse()->isRedirect('/en/summary'));
+        $this->assertTrue($client->getResponse()->isRedirect('/fr/summary'));
+
         $crawler = $client->followRedirect();
 
-        $this->assertContains("your reservation", $client->getResponse()->getContent());
+        $this->assertSame(1, $crawler->filter('html:contains(" Code de réservation ")')->count());
 
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+ // Test sur le changement de langue
+    public function testSiteTransInFrench()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/en/');
+        $link = $crawler->selectLink('FR')->link();
+        $crawler = $client->click($link);
+        $this->assertSame(1, $crawler->filter('html:contains("MUSEE DU LOUVRE")')->count());
     }
 }

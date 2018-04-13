@@ -9,20 +9,16 @@ use P4\LouvreBundle\Entity\Booking;
  */
 class PriceCalculation
 {
-
-    //age
     const AGE_BB = 4;
     const AGE_CHILD = 12;
     const AGE_SENIOR = 60;
 
-    //price
     const PRICE_BB = 0;
     const PRICE_CHILD = 8;
     const PRICE_SENIOR = 12;
     const PRICE_NORMAL = 16;
     const PRICE_REDUCED = 10;
 
-    // visit Duration
     const FULL_DAY = 1;
     const HALF_DAY = 0.5;
 
@@ -66,17 +62,10 @@ class PriceCalculation
             }
 
             $price = $price * $this->coefficient;
-
             $ticket->setPrice($price);
-
             $totalPrice += $price;
         }
-
         $booking->setTotalPrice($totalPrice);
-
         return $booking;
-
     }
-
-
 }

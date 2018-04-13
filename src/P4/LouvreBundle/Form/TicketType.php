@@ -5,11 +5,13 @@ namespace P4\LouvreBundle\Form;
 use P4\LouvreBundle\Entity\Ticket;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 /**
  * Class TicketType
@@ -17,15 +19,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TicketType extends AbstractType
 {
-    protected $minYear, $maxYear;
-
-    public function __construct()
-    {
-        $now = new \DateTime('now');
-        $this->maxYear = (int) $now->format('Y');
-        $this->minYear = $this->maxYear -120;
-    }
-
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -44,13 +37,15 @@ class TicketType extends AbstractType
                 'label' => 'country',
                 'preferred_choices' => array('FR')
             ))
-            ->add('birthDate',BirthdayType::class,array(
+            ->add('birthDate',DateType::class,array(
+                'years' => range(date('Y'),date('Y')-120),
                 'label' => 'birth date',
-                'html5'=>'true',
-                'format' => 'dd/MM/yyy',
-                'years' => range($this->minYear, $this->maxYear)
-
+                'format' => 'dd/MM/yyyy',
+                'placeholder' => array(
+                    'year' => 'year', 'month' => 'month', 'day' => 'day'
+                ),
                 ))
+
             ->add('reducedPrice',CheckboxType::class,array(
                 'label' => 'reduced price',
                 'required'=>false,
@@ -63,7 +58,8 @@ class TicketType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Ticket::class
+            'data_class' => Ticket::class,
+            'validation_groups' => array('Ticket'),
         ));
     }
 

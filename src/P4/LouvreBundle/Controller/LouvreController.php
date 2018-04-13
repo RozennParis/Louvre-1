@@ -8,13 +8,15 @@ use Symfony\Component\HttpFoundation\Request;
 use P4\LouvreBundle\Form\BookingType;
 use P4\LouvreBundle\Form\TicketsBookingType;
 use P4\LouvreBundle\Manager\BookingManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/{_locale}", defaults={"_locale" : "en"}, requirements={"_locale": "en|fr"})
  * Class LouvreController
  * @package P4\LouvreBundle\Controller
  */
+
 class LouvreController extends Controller
 {
     /**
@@ -28,7 +30,9 @@ class LouvreController extends Controller
         $booking = $bookingManager->initBooking();
         $form = $this->createForm(BookingType::class,$booking);
 
-        if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
+       // if($request->isMethod('POST') &&  $form->handleRequest($request)->isValid())
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
         {
             $bookingManager->startBooking($booking);
 
@@ -69,10 +73,6 @@ class LouvreController extends Controller
     {
         $booking = $bookingManager->getBooking();
         $booking->setBookingCode(uniqid());
-        if($booking->getTotalPrice() == 0)
-        {
-            return $this->render(':Louvre:stepThreeFree.html.twig',array('booking'=>$booking));
-        }
         return $this->render(':Louvre:stepThree.html.twig',array('booking'=>$booking));
     }
 

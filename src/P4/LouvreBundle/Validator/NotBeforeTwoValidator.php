@@ -15,10 +15,10 @@ class NotBeforeTwoValidator extends ConstraintValidator
     public function validate($booking, Constraint $constraint)
     {
         $currentDateTime = new \DateTime();
-        $date = $booking->getVisitDate()->format('d/m/Y');
-        $currentDate = date('d/m/Y');
-        $hour = $currentDateTime->format('H');
-        if($hour > 14 && $currentDate == $date)
+        $date = $booking->getVisitDate()->format('d-m-y');
+        $currentDate = date('d-m-y');
+        $hour = $currentDateTime->format('H:i');
+        if($hour > 10 && $currentDate == $date)
         {
             $ticketType = $booking->getTicketType();
             if($ticketType == "day")

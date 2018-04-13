@@ -12,6 +12,7 @@
             </div>
         </div>
         <div class="jumbotron jumbotron-fluid">
+
             <h1 class="display-3">{{ 'louvre museum'|trans|upper }}</h1>
             <hr class="my-4">
             <h2>{{ 'ticketing'|trans|upper }}</h2>
@@ -72,9 +73,8 @@
                             {{ form_start(form) }}
                             <div class="form-group row">
                                 <div class="col-md-11">
-                                        {{ form_row(form.visitDate) }}
-                                        <span class="fi-bell"></span>
-                                        {{ form_widget(form.visitDate) }}
+                                    {{ form_row(form.visitDate) }}
+                                    {{ form_widget(form.visitDate) }}
                                 </div>
                                 <br/>
                                 <div class="col-md-11">
@@ -94,8 +94,9 @@
                                 <div class="col-md-8">
                                     <br/>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">{{ 'next'|trans }}</button>
+                                        <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans }}</button>
                                     </div>
+                                    {{ form_end(form) }}
                                 </div>
                             </div>
                         </div>
@@ -103,8 +104,15 @@
                 </div>
             </div>
         </div>
-                            {{ form_end(form) }}
-
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.fr.min.js"></script>
+
 {% endblock %}
 

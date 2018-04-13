@@ -27,7 +27,6 @@ class EmailSending
      * @param Booking $booking
      */
 
-
     public function sendEmailFr(Booking $booking)
     {
 
@@ -63,5 +62,4 @@ class EmailSending
                     'logo' => $logo)));
         $this->mailer->send($message);
     }
-
 }
