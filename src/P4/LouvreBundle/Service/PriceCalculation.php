@@ -2,6 +2,7 @@
 namespace P4\LouvreBundle\Service;
 
 use P4\LouvreBundle\Entity\Booking;
+use P4\LouvreBundle\Entity\Ticket;
 
 /**
  * Class PriceCalculation
@@ -47,6 +48,7 @@ class PriceCalculation
         foreach ($tickets as $ticket) {
             $price = 0;
             $age = $ticket->getBirthDate()->diff($visitDate)->format('%y');
+        
 
             if ($age < self::AGE_BB) {
                 $price = self::PRICE_BB;
@@ -68,4 +70,6 @@ class PriceCalculation
         $booking->setTotalPrice($totalPrice);
         return $booking;
     }
+
+
 }

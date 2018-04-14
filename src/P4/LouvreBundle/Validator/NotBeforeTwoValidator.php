@@ -18,7 +18,7 @@ class NotBeforeTwoValidator extends ConstraintValidator
         $date = $booking->getVisitDate()->format('d-m-y');
         $currentDate = date('d-m-y');
         $hour = $currentDateTime->format('H:i');
-        if($hour > 10 && $currentDate == $date)
+        if($hour > 14 && $currentDate == $date)
         {
             $ticketType = $booking->getTicketType();
             if($ticketType == "day")
