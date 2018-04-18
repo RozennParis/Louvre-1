@@ -1,4 +1,4 @@
-<p><img style="width: 300px" src= "{{ logo }}" alt = "Logo Louvre"></p>
+<p><img src= "{{ icon }}" alt = "icon Louvre"></p>
 <h2>{{ 'the louvre museum thanks you for your order placed on the'|upper }} {{ booking.purchaseDate|date('d/m/Y') }}</h2>
 <hr class="my-4">
 
@@ -17,14 +17,14 @@
     <p>{{ 'country'|capitalize }} : {{ ticket.country|upper }}</p>
     <p>{{ 'reduced price'|trans|capitalize }} : {{ ticket.reducedPriceLabel }}</p>
     <p>{{ 'ticket price'|capitalize }} :  {{ ticket.price|upper }}</p>
-
-
 {% endfor %}
-
 
 <hr class="my-4">
                 <p><span>{{ 'total amount'|capitalize }} : </span> {{ booking.totalPrice|number_format(2,',',' ') }} euros</p>
              <hr class="my-4">
+<hr class="my-4">
+<p><span>{{ 'order paid by credit card on'|capitalize }} : </span> {{ booking.purchaseDate|date('d/m/Y') }}</p>
+<hr class="my-4">
                 <p>{{ 'thank you for your trust'|capitalize }}</p>
                 <p> {{ 'the louvre museum team'|capitalize }}</p>
 

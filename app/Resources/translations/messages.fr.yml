@@ -30,8 +30,7 @@ email : email
 submit : valider
 up to 12 years old .free for children under 4 years old : jusqu'à 12 ans. gratuit pour les enfants de moins de 4 ans
 from 60 years old : a partir de 60 ans
-under conditions . a proof will be requested at the entrance (students, military, museum staff etc): sous conditions . une preuve sera demandée à l'entrée (étudiants, militaires, personnel du musée, etc.)
-
+under conditions . a proof will be requested at the entrance (students, military, museum staff etc): sous conditions , un justificatif vous sera demandé à l'entrée (étudiants, militaires, personnel du musée, etc.)
 your reservation : votre commande
 date of your reservation : date de votre commande
 date of your visit : date de votre visite
@@ -46,7 +45,6 @@ first name : prénom
 country : pays
 birth date : date de naissance
 reduced price : tarif réduit
-
 visitor information : informations visiteurs
 order summary : récapitulatif de la commande
 purchaseDate : date de la commande
@@ -56,18 +54,14 @@ visitor : visiteur
 price : tarif
 quantity : quantité
 total amount : montant total
-
 payment : paiement
 buy : acheter
 yes : oui
 no : non
-
 the louvre museum thanks you for your order placed on the : le musée du louvre vous remercie pour votre commande passée le
 price ticket(s) : tarif du/des billet(s)
 louvre museum thanks you for your booking : le musée du louvre vous remercie pour votre commande
 number : numéro
-
-
 an email has just been sent to the following address : un email vient de vous être envoyé à l'adresse suivante
 This email features : cet email comporte
 you can not book for a date earlier than today : vous ne pouvez pas réserver pour une date antérieure à aujourd'hui
@@ -84,19 +78,31 @@ your payment has been accepted ! your order is validated ! : votre paiement a é
 the summary of your order : le récapitulatif de votre commande
 your ticket(s) : votre ou vos billet(s)
 visitor(s): visiteur(s)
-
 yes , do not forget to bring your proof ! : oui , n'oubliez pas de vous munir de votre justificatif !
 thank you for your trust: merci pour votre confiance
-
 the louvre museum team: l'équipe du musée du louvre
 admission is free for children under 4 years old ! : l'entrée est gratuite pour les enfants de moins de 4 ans !
 terms and conditions: conditions générales de ventes
-
 fictional site realized as part of a training : site fictif realisé dans le cadre d'une formation
 back : retour
-
 modify my information : modifier mes informations
-modify my order : modifier ma commande
+cancel my order : annuler ma commande
 reset : supprimer
 month : mois
 year : année
+terms and conditions : conditions générales de ventes
+details of the order : détails de la commande
+your details : vos coordonnées
+confirmation : confirmation
+if you choose a reduced rate, a proof will be requested at the entrance of the museum : si vous choisissez un tarif réduit, un justificatif vous sera demandé à l'entrée du musée
+after 14 hours, it is no longer possible to book a day ticket for the same day : après 14 heures, il n'est plus possible de réserver un billet journée pour le jour même
+payment by credit card : paiement par carte bancaire
+booking : commande
+your order from : votre commande du
+order paid by credit card on : commande payée par carte bancaire le
+in this email you will find : dans cet email vous trouverez
+this email takes the place of a ticket, thank you to keep it because it will be asked at the entrance of the museum : cet email tient lieu de billet , merci de bien le conserver car il vous sera demandé à l'entrée du musée
+do not forget your proof if you chose a reduced rate, you will be asked at the entrance of the museum : n'oubliez pas votre justificatif si vous avez choisi un tarif réduit , il vous sera demandé à l'entrée du musée
+to leave : quitter
+Please check your information before paying: Merci de bien vouloir vérifier vos informations avant de procéder au paiement
+your ticket(s) : votre/vos billet(s)

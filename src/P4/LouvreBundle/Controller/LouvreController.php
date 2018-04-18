@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use P4\LouvreBundle\Form\BookingType;
 use P4\LouvreBundle\Form\TicketsBookingType;
 use P4\LouvreBundle\Manager\BookingManager;
-//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -119,5 +118,14 @@ class LouvreController extends Controller
 
         $booking = $bookingManager->recBooking($id);
         return $this->render(':Louvre:stepFour.html.twig',array('booking'=> $booking));
+    }
+
+    /**
+     * @Route("/cgv", name="cgv")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cgv()
+    {
+        return $this->render(':Louvre:cgv.html.twig');
     }
 }

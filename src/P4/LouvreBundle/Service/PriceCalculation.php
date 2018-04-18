@@ -2,7 +2,6 @@
 namespace P4\LouvreBundle\Service;
 
 use P4\LouvreBundle\Entity\Booking;
-use P4\LouvreBundle\Entity\Ticket;
 
 /**
  * Class PriceCalculation

@@ -1,9 +1,69 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ parent() }} - {{ ''|trans|capitalize }} {% endblock %}
+{% block title %}{{ parent() }} - {{ 'terms and conditions'|trans|capitalize }} {% endblock %}
 
 {% block body %}
 
+    <div class="container infos">
+        <div class="jumbotron jumbotron-fluid">
+            <h1 class="display-3">{{ 'terms and conditions'|trans|upper }}</h1>
+            <hr class="my-4">
+        </div>
+        <div class="jumbotron jumbotron-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <hr class="mb-4">
+                <h3>Accès au service</h3>
+                <hr class="mb-4">
+                <p>
+                    Les conditions générales de vente décrites ci-après détaillent les droits et obligations de la société ... (dénomination sociale) et de son client dans le cadre de la vente des marchandises suivantes : ... (le vendeur doit recenser les marchandises soumises aux CGV).
+                    Toute prestation accomplie par la société ... Le musée du Louvre implique donc l'adhésion sans réserve de l'acheteur aux présentes conditions générales de vente.
+                </p>
+                <hr class="mb-4">
+                <h3>Prix</h3>
+                <hr class="mb-4">
+                <p>
+                    Les prix des marchandises vendues sont ceux en vigueur au jour de la prise de commande. Ils sont libellés en euros et calculés hors taxes. Par voie de conséquence, ils seront majorés du taux de TVA et des frais de transport applicables au jour de la commande.
+                    La société ... Le musée du Louvre s'accorde le droit de modifier ses tarifs à tout moment. Toutefois, elle s'engage à facturer les marchandises commandées aux prix indiqués lors de l'enregistrement de la commande.
+                </p>
+                <hr class="mb-4">
+                <h3>Rabais et ristournes</h3>
+                <hr class="mb-4">
+                <p>
+                    Les tarifs proposés comprennent les rabais et ristournes que la société ... Le musée du Louvre serait amenée à octroyer compte tenu de ses résultats ou de la prise en charge par l'acheteur de certaines prestations.
+                </p>
+                <hr class="mb-4">
+                <h3>Escompte</h3>
+                <hr class="mb-4">
+                <p>
+                    Aucun escompte ne sera consenti en cas de paiement anticipé.
+                </p>
+                <hr class="mb-4">
+                <h3>Modalités de paiement</h3>
+                <hr class="mb-4">
+                <p>
+                    Le règlement des commandes s'effectue :<br><br>
 
+                    Paiement uniquement par carte bancaire ( Visa, MasterCard, Visa Electron, American Express )<br>
+                    Les autres moyens de paiement acceptés sont disponibles en contactant le support.<br><br>
+                    Lors de l'enregistrement de la commande, l'acheteur se doit de régler le montant global de la facture, le/les produit(s) sont envoyés dès réception du paiement.
+                </p>
+                <hr class="mb-4">
+                <h3>Force majeure</h3>
+                <hr class="mb-4">
+                <p>
+                    Le musée du Louvre ne pourra pas être mise en oeuvre si la non-exécution ou le retard dans l'exécution de l'une de ses obligations décrites dans les présentes conditions générales de vente découle d'un cas de force majeure. À ce titre, la force majeure s'entend de tout événement extérieur, imprévisible et irrésistible au sens de l'article 1148 du Code civil.
+                </p>
+                <hr class="mb-4">
+                <h3>Tribunal compétent</h3>
+                <hr class="mb-4">
+                <p>
+                    Tout litige relatif à l'interprétation et à l'exécution des présentes conditions générales de vente est soumis au droit français.
+                </p>
+                <hr class="mb-4">
+            </div>
+        </div>
+        </div>
+    </div>
 
 {% endblock %}

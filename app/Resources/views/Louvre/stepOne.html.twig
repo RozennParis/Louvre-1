@@ -5,106 +5,79 @@
 {% block body %}
 
     <div class="container">
-        <div class="progress">
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="25"
-                 aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                {{ 'step' |trans }} 1/4
+        <div class="row">
+            <div class="col-md-12">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100" style="width:25%">
+                    {{ 'step' |trans|capitalize}} 1 - {{ 'details of the order'|trans|capitalize }}
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="jumbotron jumbotron-fluid">
-
-            <h1 class="display-3">{{ 'louvre museum'|trans|upper }}</h1>
-            <hr class="my-4">
-            <h2>{{ 'ticketing'|trans|upper }}</h2>
         </div>
         <div class="row">
-            <div class="infos">
-                <div class="col-md-6">
-                    <div class="horaires">
-                        <div class="well">
-                            <div class="card-header">{{ 'schedules'|trans|upper }}</div>
-                                <hr class="my-4">
-                                    <div class="card-body text-secondary">
-                                        <ul>
-                                            <li>{{ 'monday'|trans|capitalize }} : 9 h - 18 h</li>
-                                            <li>{{ 'tuesday'|trans|capitalize }} : {{ 'closed'|trans }}</li>
-                                            <li>{{ 'wenesday'|trans|capitalize }} : 9 h - 21h45</li>
-                                            <li>{{ 'thursday'|trans|capitalize }} : 9 h - 18 h</li>
-                                            <li>{{ 'friday'|trans|capitalize }} : 9 h - 21h45</li>
-                                            <li>{{ 'saturday'|trans|capitalize }} : 9 h - 18 h</li>
-                                            <li>{{ 'sunday'|trans|capitalize }} : 9 h - 18 h</li>
-                                        </ul>
-                                    </div><br/>
-
-                            <div class="card-header">{{ 'prices'|trans|upper }}</div>
-                            <hr class="my-4">
-                            <div class="card-body text-secondary">
-                                <ul>
-                                    <li>{{ 'normal'|trans|capitalize }} : 16 euros </li>
-                                    <li>{{ 'children'|trans|capitalize }} : 8 euros (1)</li>
-                                    <li>{{ 'senior'|trans|capitalize }} : 12 euros (2)</li>
-                                    <li>{{ 'reduced'|trans|capitalize }} : 10 euros (3)</li>
-                                </ul>
-                            </div><br/>
-
-                            <div class="card-header">{{ 'conditions'|trans|upper }}</div>
-                            <hr class="my-4">
-                            <div class="card-body text-secondary">
-                                <ul>
-                                    <li>(1) {{ 'up to 12 years old .free for children under 4 years old'|trans }}</li>
-                                    <li>(2) {{ 'from 60 years old'|trans }}</li>
-                                    <li>(3) {{ 'under conditions . a proof will be requested at the entrance (students, military, museum staff etc)'|trans }}</li>
-                                </ul>
-                            </div>
-
+            <div class="col-md-6">
+                <h1>{{ 'louvre museum'|trans|upper }}</h1>
+                <hr class="my-4">
+                <h2><i class="fa fa-ticket"> {{ 'ticketing'|trans|upper }} </i></h2>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-3 col-md-offset-3">  <img src="{{ asset('../web/img/icon.png') }}"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <div class="card-header"> {{ 'schedules'|trans|upper }} </div>
+                        <div class="card-body text-secondary">
+                             <ul>
+                                 <li>{{ 'monday'|trans|capitalize }} : 9 h - 18 h</li>
+                                 <li>{{ 'tuesday'|trans|capitalize }} : {{ 'closed'|trans }}</li>
+                                 <li>{{ 'wenesday'|trans|capitalize }} : 9 h - 21h45</li>
+                                 <li>{{ 'thursday'|trans|capitalize }} : 9 h - 18 h</li>
+                                 <li>{{ 'friday'|trans|capitalize }} : 9 h - 21h45</li>
+                                 <li>{{ 'saturday'|trans|capitalize }} : 9 h - 18 h</li>
+                                 <li>{{ 'sunday'|trans|capitalize }} : 9 h - 18 h</li>
+                             </ul>
+                        </div><br/>
+                    <div class="card-header">{{ 'prices'|trans|upper }}</div>
+                        <div class="card-body text-secondary">
+                            <ul>
+                                <li>{{ 'normal'|trans|capitalize }} : 16 euros </li>
+                                <li>{{ 'children'|trans|capitalize }} : 8 euros (1)</li>
+                                <li>{{ 'senior'|trans|capitalize }} : 12 euros (2)</li>
+                                <li>{{ 'reduced'|trans|capitalize }} : 10 euros (3)</li>
+                            </ul>
+                        </div><br/>
+                    <div class="card-header">{{ 'conditions'|trans|upper }}</div>
+                        <div class="card-body text-secondary">
+                            <ul>
+                                <li>(1) {{ 'up to 12 years old .free for children under 4 years old'|trans|capitalize }}</li>
+                                <li>(2) {{ 'from 60 years old'|trans|capitalize }}</li>
+                                <li>(3) {{ 'under conditions . a proof will be requested at the entrance (students, military, museum staff etc)'|trans|capitalize }}</li>
+                            </ul>
                         </div>
-                    </div>
                 </div>
             </div>
-            <div class="form">
-                <div class="col-md-6">
-                    <div class="text">
-                        <div class="well">
-                            <div class="card-header">{{ 'order your tickets online'|trans|upper }}</div>
-                        </div>
+            <div class="col-md-6">
+                    <div class="well">
+                        <div class="card">{{ 'order your tickets online'|trans|upper }}</div>
+                        <hr class="my-4">
                     </div>
-                    <div class="formulaire">
-                        <div class="well">
-                            {{ form_start(form) }}
-                            <div class="form-group row">
-                                <div class="col-md-11">
-                                    {{ form_row(form.visitDate) }}
-                                    {{ form_widget(form.visitDate) }}
-                                </div>
-                                <br/>
-                                <div class="col-md-11">
-                                    {{ form_row(form.nbTickets)}}
-                                </div>
-                                <br/>
-                                <div class="col-md-11">
-                                    {{ form_row(form.ticketType)}}
-                                    <i class="fa fa-exclamation-triangle"></i> {{ 'half-day ticket : entry from 14 hours'|trans }}
-                                </div>
-                                <div class="col-md-11">
-                                    <br/>
-                                    <div class="form-group">
-                                        {{ form_row(form.email)}}
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <br/>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans }}</button>
-                                    </div>
-                                    {{ form_end(form) }}
-                                </div>
-                            </div>
-                        </div>
+                    <div class="well">
+                        {{ form_start(form) }}
+                        {{ form_row(form.visitDate) }}
+                        {{ form_row(form.ticketType) }}
+                        <p class="bg-danger"><i class="fa fa-warning"> {{ 'after 14 hours, it is no longer possible to book a day ticket for the same day'|trans|capitalize }}</i></p>
+                        {{ form_row(form.nbTickets) }}
+                        {{ form_row(form.email) }}
+                        <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans|upper }}</button>
                     </div>
-                </div>
+                        {{ form_end(form) }}
             </div>
         </div>
     </div>
+
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

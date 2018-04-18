@@ -4,63 +4,73 @@
 
 {% block body %}
     <div class="container">
-        <div class="progress">
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
-                 aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                {{ 'step' |trans }} 2/4
+        <div class="row">
+            <div class="col-md-12">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="50"
+                    aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                    {{ 'step' |trans|capitalize}} 2 - {{ 'your details'|trans|capitalize }}
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="jumbotron jumbotron-fluid">
-            <h2 class="display-3">{{ 'your reservation'|trans }}</h2>
-            <hr class="my-4">
-            <ul>
-                <li><span>{{ 'date of your reservation'|trans }} :</span> {{ booking.purchaseDate|date('d/m/Y') }}</li>
-                <li><span>{{ 'date of your visit'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
-                <li><span>{{ 'ticket type'|trans|capitalize }} : </span>{{ booking.ticketTypeLabel |trans }}</li>
-                <li><span>{{ 'number of reserved tickets'|trans }} :</span> {{ booking.nbTickets }}</li>
-                <li><span>{{ 'your ticket(s) will be sent to the email address'|trans }} :</span> {{ booking.email }}</li>
-                <li>{{ 'please fill in the information of each visitor below'|trans }}</li>
-            </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-3 col-md-offset-3">  <img src="{{ asset('../web/img/icon.png') }}"></div>
+            </div>
+            <div class="col-md-6">
+                <h1>{{ 'your reservation'|trans|upper }}</h1>
+                <hr class="my-4">
+                <ul>
+                    <li><span>{{ 'date of your reservation'|trans }} :</span> {{ booking.purchaseDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'date of your visit'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'ticket type'|trans|capitalize }} : </span>{{ booking.ticketTypeLabel |trans }}</li>
+                    <li><span>{{ 'number of reserved tickets'|trans }} :</span> {{ booking.nbTickets }}</li>
+                    <li><span>{{ 'your ticket(s) will be sent to the email address'|trans }} :</span> {{ booking.email }}</li>
+                </ul>
+            </div>
         </div>
 
+        <p class="bg-primary"><i class="fa fa-warning"> {{ 'please fill in the information of each visitor below'|trans|capitalize }}</i></p>
 
         <div class="form">
             <div class="well">
                 {{form_start(form)}}
                 {% for ticket in form.tickets %}
-                <div class="form-group row">
-                    <div class="col-md-6 col-md-6">
-
-                        <h3>{{ 'ticket'|trans }} N°{{ loop.index }}</h3>
-                        <hr class="my-4">
-                        <div class="col-md-10">
-                            {{ form_row(ticket.lastName)}}
-                        </div>
-                        <div class="col-md-10">
-                            {{ form_row(ticket.firstName)}}
-                        </div>
-                        <div class="col-md-10">
-                            {{ form_row(ticket.country) }}
-                        </div>
-                        <div class="col-md-10">
-                            {{ form_row(ticket.birthDate) }}
-                            {{ form_widget(ticket.birthDate) }}
-                        </div>
-                        <div class="col-md-10">
-                            {{ form_row(ticket.reducedPrice) }}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
                     <div class="form-group row">
                         <div class="col-md-6 col-md-6">
+
+                            <h3>{{ 'ticket'|trans|capitalize }} N°{{ loop.index }}</h3>
                             <hr class="my-4">
-                            <a class="button-back" href="{{ path('stepOne') }}"> <button class="btn btn-light" name="return" type="button"> {{ 'back'|trans }}</button></a>
-                            <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans }}</button>
+                            <div class="col-md-10">
+                                {{ form_row(ticket.lastName)}}
+                            </div>
+                            <div class="col-md-10">
+                                {{ form_row(ticket.firstName)}}
+                            </div>
+                            <div class="col-md-10">
+                                {{ form_row(ticket.country) }}
+                            </div>
+                            <div class="col-md-10">
+                                {{ form_row(ticket.birthDate) }}
+                                {{ form_widget(ticket.birthDate) }}
+                            </div>
+                            <div class="col-md-10">
+                                {{ form_row(ticket.reducedPrice) }}
+                                <p class="bg-danger"><i class="fa fa-warning"> {{ 'if you choose a reduced rate, a proof will be requested at the entrance of the museum'|trans|capitalize }}</i></p>
+                            </div>
                         </div>
                     </div>
-            {{ form_end(form) }}
+                {% endfor %}
+                <div class="form-group row">
+                    <div class="col-md-6 col-md-6">
+                        <hr class="my-4">
+                        <a class="button-back" href="{{ path('stepOne') }}"> <button class="btn btn-light" name="return" type="button"> {{ 'back'|trans|upper }}</button></a>
+                        <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans|upper }}</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

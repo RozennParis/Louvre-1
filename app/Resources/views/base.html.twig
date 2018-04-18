@@ -1,69 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{% block title %}{{ 'ticket office of the louvre museum'|trans }}{% endblock %}</title>
-
-    {% block stylesheets %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{{ 'ticket office of the louvre museum'|trans }}{% endblock %}</title>
+        {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+    </head>
 
-    {% endblock %}
-
-</head>
-<body>
-
-<div id="nav">
-
-{% block nav %}
-
-    <div class="navbar navbar-inverse navbar-fixed-top" >
-        <div class="container">
-        <a class="navbar-brand">
-            <a href="{{ path("stepOne") }}"><img src="{{ asset('../web/img/logo.jpg') }} " alt="image louvre"/></a>
-        </a>
-           <ul class="navbar navbar-nav navbar-right">
-                    <li class="active"><a href="{{ path('stepOne') }}">Accueil</a></li>
-                    <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a></li>
-                    <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR</a></li>
-           </ul>
-        </div>
-    </div>
-
-    {% endblock %}
-    </div>
-
-
-
-<div id="body">
-    {% block body %}{% endblock %}
-</div>
-
-<div id="footer">
-    {% block footer %}
-        <div class="footer">
-
-                <div class="container-fluid text-center">
-                    <p><a href="">{{ 'terms and conditions'|trans }}</a> - {{ 'fictional site realized as part of a training'|trans }}- Stéphanie HOUSSIN</p>
-                </div>
-
-        </div>
-    {% endblock %}
-</div>
-<div id="js">
-{% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-{% endblock %}
-</div>
-
-
-
-</body>
+    <body>
+        {% block nav %}
+            <div class="navbar navbar-inverse navbar-fixed-top" >
+                 <div class="container">
+                     <a class="navbar-brand">
+                        <a href="{{ path("stepOne") }}"><img src="{{ asset('../web/img/logo.jpg') }} " alt="image louvre"/></a>
+                    </a>
+                    <ul class="navbar navbar-nav navbar-right">
+                        <li class="active"><a href="{{ path('stepOne') }}">Accueil</a></li>
+                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a></li>
+                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR</a></li>
+                    </ul>
+                 </div>
+            </div>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}
+            <div class="footer">
+                <nav class="navbar navbar-inverse navbar-fixed-bottom">
+                    <div class="container-fluid text-center">
+                        <p><a href="{{ path('cgv')}}">{{ 'terms and conditions'|trans }}</a> - {{ 'fictional site realized as part of a training'|trans }} <a href="https://openclassrooms.com/">Openclassrooms</a></p>
+                    </div>
+                </nav>
+            </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {% endblock %}
+    </body>
 </html>

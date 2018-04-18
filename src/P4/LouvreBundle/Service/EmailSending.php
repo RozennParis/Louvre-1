@@ -2,6 +2,7 @@
 namespace P4\LouvreBundle\Service;
 use P4\LouvreBundle\Entity\Booking;
 
+
 /**
  * Class EmailSending
  * @package P4\LouvreBundle\Service
@@ -36,12 +37,12 @@ class EmailSending
             ->setTo($booking->getEmail())
             ->setCharset('utf-8')
             ->setContentType('text/html');
-            $logo = $message->embed(\Swift_Image::fromPath('img/logo.jpg'));
+            $icon = $message->embed(\Swift_Image::fromPath('img/icon.png'));
         $message
             ->setBody(
                 $this->twig->render('Email/emailFr.html.twig', array(
                     'booking' => $booking,
-                    'logo' => $logo)));
+                    'icon' => $icon)));
         $this->mailer->send($message);
     }
 
@@ -54,12 +55,12 @@ class EmailSending
             ->setTo($booking->getEmail())
             ->setCharset('utf-8')
             ->setContentType('text/html');
-        $logo = $message->embed(\Swift_Image::fromPath('img/logo.jpg'));
+        $icon = $message->embed(\Swift_Image::fromPath('img/icon.png'));
         $message
             ->setBody(
                 $this->twig->render('Email/emailEn.html.twig', array(
                     'booking' => $booking,
-                    'logo' => $logo)));
+                    'icon' => $icon)));
         $this->mailer->send($message);
     }
 }

@@ -6,7 +6,6 @@ use P4\LouvreBundle\Entity\Booking;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class LouvreControllerTest extends WebTestCase
 {
 
@@ -38,8 +37,8 @@ class LouvreControllerTest extends WebTestCase
 
     public function testFormBookingValid()
     {
-        $client = static::createClient();
-        $crawler =$client->request('GET', '/fr/');
+        //$client = static::createClient();
+        $crawler =$this->client->request('GET', '/fr/');
 
         $formBooking = $crawler->selectButton('submit')->form();
 
@@ -49,11 +48,11 @@ class LouvreControllerTest extends WebTestCase
         $formBooking['booking[email][first]'] = 'stephanie.houssin@gmx.fr';
         $formBooking['booking[email][second]'] = 'stephanie.houssin@gmx.fr';
 
-        $crawler = $client->submit($formBooking);
+        $crawler = $this->client->submit($formBooking);
 
-        $this->assertTrue($client->getResponse()->isRedirect('/fr/tickets'));
+        $this->assertTrue($this->client->getResponse()->isRedirect('/fr/tickets'));
 
-        $crawler = $client->followRedirect();
+        $crawler = $this->client->followRedirect();
 
         $this->assertSame(1, $crawler->filter('html:contains(" date de naissance")')->count());
 
@@ -74,24 +73,24 @@ class LouvreControllerTest extends WebTestCase
         $formTickets['tickets_booking[tickets][1][birthDate][year]'] = 2012;
         $formTickets['tickets_booking[tickets][1][country]'] = 'FR';
 
-        $crawler = $client->submit($formTickets);
+        $crawler = $this->client->submit($formTickets);
 
-        $this->assertTrue($client->getResponse()->isRedirect('/fr/summary'));
+        $this->assertTrue($this->client->getResponse()->isRedirect('/fr/summary'));
 
-        $crawler = $client->followRedirect();
+        $crawler = $this->client->followRedirect();
 
         $this->assertSame(1, $crawler->filter('html:contains(" Code de réservation ")')->count());
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
  // Test sur le changement de langue
     public function testSiteTransInFrench()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/en/');
+        //$client = static::createClient();
+        $crawler = $this->client->request('GET', '/en/');
         $link = $crawler->selectLink('FR')->link();
-        $crawler = $client->click($link);
+        $crawler = $this->client->click($link);
         $this->assertSame(1, $crawler->filter('html:contains("MUSEE DU LOUVRE")')->count());
     }
 }

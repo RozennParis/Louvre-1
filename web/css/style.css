@@ -1,25 +1,19 @@
-#homepage
-{
-    text-align: center;
-}
+
 .img-thumbnail
 {
     width: 1000px;
     height: auto;
 }
 
-.card
-{
-	border: 1px solid black;
-}
 .card-header
 {
 	font-weight: bold;
+	padding-bottom: 52px;
 }
-.jumbotron
-{
-	background-color: #f5f5f5;
+.card{
+	font-weight: bold;
 }
+
 ul
 {
 	list-style-type: none;
@@ -45,6 +39,24 @@ body{
 	padding-left: 10px;
 	padding-top: 15px;
 }
+.bg-success, .bg-danger
+{
+	padding: 10px;
+	margin-top: 20px;
+	margin-right: 30px;
+}
+.bg-primary
+{
+	padding: 10px;
+	margin-bottom: 40px;
+}
+.footer
+{
+	color : white;
+	margin-top: 50px;
+}
+
+
 
 
 
