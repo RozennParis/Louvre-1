@@ -113,4 +113,15 @@ class LouvreController extends Controller
     {
         return $this->render(':Louvre:cgv.html.twig');
     }
+
+    /**
+     * @Route("/cancel", name="cancel")
+     * @param BookingManager $bookingManager
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cancelBooking(BookingManager $bookingManager)
+    {
+        $bookingManager->close();
+        return $this->redirectToRoute('stepOne');
+    }
 }
