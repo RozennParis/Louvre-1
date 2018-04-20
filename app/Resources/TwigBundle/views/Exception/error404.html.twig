@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - {{ 'error'|trans }} {% endblock %}
+
+{% block body %}
+
+    <div class="container infos">
+        <div class="row">
+            <div class="col-md-12 order-md-1">
+                <h3>{{ 'can not find page'|trans }}</h3>
+                <hr class="mb-4">
+                <p class="small text-muted text-center">{{ 'sorry but you can not access this page because it does not exist or you can not access it'|trans }}
+                </p>
+                <div class="text-center">
+                    <a href="/"><button type="button" class="btn btn-primary">{{ 'return to the home'|trans }}</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

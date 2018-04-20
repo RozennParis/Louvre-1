@@ -85,10 +85,11 @@ class LouvreController extends Controller
             {
                 $bookingManager->finishBooking($booking);
                 $this->get('session')->set('id',$booking->getId());
-                //$this->addFlash("success","Le paiement a bien été effectué !");
+
                 $bookingManager->close();
             }
         }
+
         return $this->redirectToRoute("stepFour", array(
             'id' => $booking->getId()));
     }

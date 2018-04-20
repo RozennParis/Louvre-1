@@ -1,4 +1,18 @@
-
+@media (min-width: 768px) {
+	.container {
+		width: 750px;
+	}
+}
+@media (min-width: 992px) {
+	.container {
+		width: 970px;
+	}
+}
+@media (min-width: 1200px) {
+	.container {
+		width: 1170px;
+	}
+}
 .img-thumbnail
 {
     width: 1000px;
@@ -54,6 +68,16 @@ body{
 {
 	color : white;
 	margin-top: 50px;
+}
+#headerTitle {
+	margin-left: 20px;
+	font-size: 15px;
+	font-family: "PT Serif";
+	color: white;
+	font-style: normal;
+}
+.headerNav {
+	text-decoration: none;
 }
 
 

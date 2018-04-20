@@ -1,10 +1,13 @@
-
-<div class="bc-icons-2">
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
 <ol class="breadcrumb indigo lighten-4">
         {% if step >= 1 %}<li class="breadcrumb-item"><a href="{{ path('stepOne') }}">{{ '1 - order'|trans }}</a></li>{% endif %}
         {% if step >= 2 %}<li><a href="{{ path('stepTwo') }}">{{ '2 - informations'|trans }}</a></li>{% endif %}
         {% if step >= 3 %}<li><a href="{{ path('stepThree') }}">{{ '3 - summary / payment'|trans }}</a></li>{% endif %}
     </ol>
+    </div>
+</div>
 </div>
 
 

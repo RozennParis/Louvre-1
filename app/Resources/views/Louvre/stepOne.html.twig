@@ -5,7 +5,13 @@
 {% block body %}
 
     <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
         {% include 'Louvre/breadcrumb.html.twig' with{'step': 1 }only %}
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <h1>{{ 'louvre museum'|trans|upper }}</h1>
@@ -16,6 +22,7 @@
                 <div class="col-md-3 col-md-offset-3">  <img src="{{ asset('../web/img/icon.png') }}"></div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-6">
                 <div class="well">

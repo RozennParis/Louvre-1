@@ -17,17 +17,23 @@
         {% block nav %}
             <div class="navbar navbar-inverse navbar-fixed-top" >
                  <div class="container">
-                     <a class="navbar-brand">
-                        <a href="{{ path("stepOne") }}"><img src="{{ asset('../web/img/logo.jpg') }} " alt="image louvre"/></a>
+                     <a class="navbar-header">
+                        <a href="{{ path("stepOne") }}" id="logo" class="navbar-left headerNav"><img src="{{ asset('../web/img/iconinverse.png') }} " alt="image louvre"/>
+                            <span id="headerTitle">{{ 'louvre museum - ticketing'|trans|upper }}</span></a>
                     </a>
-                    <ul class="navbar navbar-nav navbar-right">
-                        <li class="active"><a href="{{ path('stepOne') }}">Accueil</a></li>
-                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a></li>
-                        <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR</a></li>
-                    </ul>
                  </div>
             </div>
         {% endblock %}
+
+        {% block language %}
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a>
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR</a>
+                    </div>
+                </div>
+        {% endblock %}
+
         {% block body %}{% endblock %}
         {% block footer %}
             <div class="footer">

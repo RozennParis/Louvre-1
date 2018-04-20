@@ -18,7 +18,7 @@ class BookingManager
      * BookingManager constructor.
      * @param SessionInterface $session
      * @param EntityManagerInterface $em
-     * @param Mailer $emailSending
+     * @param Mailer $mailer
      */
     public function __construct(SessionInterface $session, EntityManagerInterface $em, Mailer $mailer)
     {
@@ -91,8 +91,12 @@ class BookingManager
         }
         $this->setSession($booking);
     }
+
     /**
      * @param Booking $booking
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function finishBooking(Booking $booking)
     {

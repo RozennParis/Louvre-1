@@ -26,8 +26,10 @@ class Mailer
 
     /**
      * @param Booking $booking
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
-
     public function sendEmail(Booking $booking)
     {
 
