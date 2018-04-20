@@ -1,13 +1,11 @@
 <?php
 namespace P4\LouvreBundle\Manager;
-
 use Exception;
 use P4\LouvreBundle\Entity\Booking;
 use P4\LouvreBundle\Entity\Ticket;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use P4\LouvreBundle\Service\EmailSending;
-
+use P4\LouvreBundle\Service\Mailer;
 /**
  * Class BookingManager
  * @package P4\LouvreBundle\Manager
@@ -16,20 +14,18 @@ class BookingManager
 {
     private $session;
     private $em;
-
     /**
      * BookingManager constructor.
      * @param SessionInterface $session
      * @param EntityManagerInterface $em
-     * @param EmailSending $emailSending
+     * @param Mailer $emailSending
      */
-    public function __construct(SessionInterface $session, EntityManagerInterface $em, EmailSending $emailSending)
+    public function __construct(SessionInterface $session, EntityManagerInterface $em, Mailer $mailer)
     {
         $this->session = $session;
         $this->em = $em;
-        $this->emailSending = $emailSending;
+        $this->mailer = $mailer;
     }
-
     /**
      * @return Booking
      */
@@ -42,7 +38,6 @@ class BookingManager
         }
         return $booking;
     }
-
     /**
      * @return mixed
      * @throws Exception
@@ -56,7 +51,6 @@ class BookingManager
         }
         return $booking;
     }
-
     /**
      * @param Booking $booking
      */
@@ -64,17 +58,15 @@ class BookingManager
     {
         $this->setSession($booking);
     }
-
     /**
      * @return mixed
      */
     public function getSession()
     {
-        
-     return $this->session->get('booking');
-          
-    }
 
+        return $this->session->get('booking');
+
+    }
     /**
      * @param Booking $booking
      */
@@ -82,14 +74,13 @@ class BookingManager
     {
         $this->session->set('booking',$booking);
     }
-
     /**
      * @param Booking $booking
      */
     public function startBooking(Booking $booking)
     {
         // faire if > et if <
-        
+
         while (count($booking->getTickets()) < $booking->getNbTickets()) {
             $ticket = new Ticket();
             $booking->addTicket($ticket);
@@ -100,24 +91,16 @@ class BookingManager
         }
         $this->setSession($booking);
     }
-
     /**
      * @param Booking $booking
      */
-    public function finishBooking(Booking $booking,$locale)
+    public function finishBooking(Booking $booking)
     {
         $this->em->persist($booking);
         $this->em->flush();
+        $this->mailer->sendEmail($booking);
 
-        if($locale = 'fr')
-        {
-            $this->emailSending->sendEmailFr($booking);
-        }
-        else{
-            $this->emailSending->sendEmailEn($booking);
-        }
     }
-
     /**
      *
      */
@@ -125,7 +108,6 @@ class BookingManager
     {
         $this->session->clear();
     }
-
     /**
      * @param $id
      * @return null|object|Booking

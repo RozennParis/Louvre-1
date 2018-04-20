@@ -18,11 +18,7 @@
                         <p>{{ 'country'|trans|capitalize }} : {{ ticket.country|upper }}</p>
                         <p>{{ 'reduced price'|trans|capitalize }} : {{ ticket.reducedPriceLabel|trans }}</p>
                         <p>{{ 'ticket price'|trans|capitalize }} :  {{ ticket.price|upper }}</p>
-
-
                     {% endfor %}
-
-
             <hr class="my-4">
                 <p><span>{{ 'total amount'|trans|capitalize }} : </span> {{ booking.totalPrice|number_format(2,',',' ') }} euros</p>
              <hr class="my-4">

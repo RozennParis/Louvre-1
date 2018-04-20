@@ -4,17 +4,17 @@ use P4\LouvreBundle\Entity\Booking;
 
 
 /**
- * Class EmailSending
+ * Class Mailer
  * @package P4\LouvreBundle\Service
  */
-class EmailSending
+class Mailer
 {
 
     private $twig;
     private $mailer;
 
     /**
-     * EmailSending constructor.
+     * Mailer constructor.
      * @param \Twig_Environment $twig
      * @param \Swift_Mailer $mailer
      */
@@ -28,7 +28,7 @@ class EmailSending
      * @param Booking $booking
      */
 
-    public function sendEmailFr(Booking $booking)
+    public function sendEmail(Booking $booking)
     {
 
         $message = \Swift_Message::newInstance()
@@ -40,27 +40,11 @@ class EmailSending
             $icon = $message->embed(\Swift_Image::fromPath('img/icon.png'));
         $message
             ->setBody(
-                $this->twig->render('Email/emailFr.html.twig', array(
+                $this->twig->render('Email/confirmation.html.twig', array(
                     'booking' => $booking,
                     'icon' => $icon)));
         $this->mailer->send($message);
     }
 
-    public function sendEmailEn(Booking $booking)
-    {
 
-        $message = \Swift_Message::newInstance()
-            ->setSubject('ticketing of Louvre Museum')
-            ->setFrom('stephaniehoussinparis@gmail.com')
-            ->setTo($booking->getEmail())
-            ->setCharset('utf-8')
-            ->setContentType('text/html');
-        $icon = $message->embed(\Swift_Image::fromPath('img/icon.png'));
-        $message
-            ->setBody(
-                $this->twig->render('Email/emailEn.html.twig', array(
-                    'booking' => $booking,
-                    'icon' => $icon)));
-        $this->mailer->send($message);
-    }
 }

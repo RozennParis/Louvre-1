@@ -57,13 +57,8 @@ class PriceCalculationTest extends TestCase
         $booking->addTicket($ticket);
 
         $priceCalculation = new PriceCalculation();
-        $booking = $priceCalculation->priceCalculation($booking);
-        $tickets = $booking->getTickets();
-        foreach ($tickets as $ticket)
-        {
-            $price = $ticket->getPrice();
-        }
-        $this->assertEquals($expected, $price);
+        $priceCalculation->priceCalculation($booking);
+        $this->assertEquals($expected, $booking->getTotalPrice());
 
     }
     public function dataProvider()

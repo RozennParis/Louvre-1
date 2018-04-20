@@ -59,6 +59,7 @@ class BookingType extends AbstractType
                     '8' => 8,
                     '9' => 9,
                     '10' => 10
+
                 )
             ))
             ->add('email', RepeatedType::class, array(

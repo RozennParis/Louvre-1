@@ -4,15 +4,13 @@
 
 {% block body %}
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="100"
-                    aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                    {{ 'step' |trans|capitalize}} 4 - {{ 'confirmation'|trans|capitalize }}
-                    </div>
-                </div>
-            </div>
+        <div class="bc-icons-2">
+            <ol class="breadcrumb indigo lighten-4">
+                <li>{{ '1 - order'|trans }}</li>
+                <li>{{ '2 - informations'|trans }}</li>
+                <li>{{ '3 - summary / payment'|trans }}</li>
+                <li><a href="{{ path('stepFour', {'id': booking.id}) }} ">{{ '4 - confirmation'|trans }}</a></li>
+            </ol>
         </div>
         <div class="row">
             <div class="col-md-5">

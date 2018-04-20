@@ -24,14 +24,7 @@ class LouvreControllerTest extends WebTestCase
             $this->client->getResponse()->getStatusCode()
         );
     }
-    // test fonctionnement sur le nombre de billet d'une commande
-    public function testBookingNbTickets()
-    {
-        $booking = new Booking();
-        $booking ->setNbTickets(2);
-        $result = $booking->getNbTickets();
-        $this->assertEquals(2, $result);
-    }
+
 
     // test commande complète jusqu'au paiement
 
@@ -54,7 +47,7 @@ class LouvreControllerTest extends WebTestCase
 
         $crawler = $this->client->followRedirect();
 
-        $this->assertSame(1, $crawler->filter('html:contains(" date de naissance")')->count());
+        $this->assertEquals(2, $crawler->filter('label:contains("date de naissance")')->count());
 
         $formTickets = $crawler->selectButton('submit')->form();
 
@@ -79,7 +72,7 @@ class LouvreControllerTest extends WebTestCase
 
         $crawler = $this->client->followRedirect();
 
-        $this->assertSame(1, $crawler->filter('html:contains(" Code de réservation ")')->count());
+        $this->assertEquals(2, $crawler->filter('li:contains("Date")')->count());
 
         $this->assertTrue($this->client->getResponse()->isSuccessful());
     }

@@ -30,9 +30,10 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    P4\LouvreBundle\Service\EmailSending:
+    P4\LouvreBundle\Service\Mailer:
         arguments: ["@twig","@mailer"]
+
 
     P4\LouvreBundle\Service\BookingPay:
         arguments:
-            $secretKey: 'sk_test_a2vkPyuLgme3hbfLJ0b0YtTx'
+            $secretKey: '%stripe_private_key%'

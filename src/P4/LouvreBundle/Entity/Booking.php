@@ -10,7 +10,7 @@ use P4\LouvreBundle\Validator\NotBeforeTwo;
 use P4\LouvreBundle\Validator\NotPossibleBooking;
 use P4\LouvreBundle\Validator\ClosedTuesday;
 use P4\LouvreBundle\Validator\ClosedSunday;
-
+use P4\LouvreBundle\Validator\MaxBookingTickets;
 /**
  * Booking
  *
