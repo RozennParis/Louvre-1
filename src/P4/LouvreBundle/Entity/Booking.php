@@ -48,11 +48,6 @@ class Booking
      *
      * @ORM\Column(name="visitDate", type="datetime")
      * @Assert\Date(groups={"Booking"})
-     * @Assert\Range(
-     *     min="today",
-     *     max="+18 months",
-     *     minMessage="you can not book for a date earlier than today",
-     *     maxMessage="reservations can only be made for the next 18 months",groups={"Booking"})
      * @ClosedSunday(groups={"Booking"})
      * @ClosedTuesday(groups={"Booking"})
      * @NotPossibleBooking(groups={"Booking"})

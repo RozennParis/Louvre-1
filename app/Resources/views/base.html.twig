@@ -8,8 +8,8 @@
         {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+           <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">-->
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
         {% endblock %}
     </head>
 
@@ -17,22 +17,20 @@
         {% block nav %}
             <div class="navbar navbar-inverse navbar-fixed-top" >
                  <div class="container">
+                     <div class="col-md-12">
                      <a class="navbar-header">
                         <a href="{{ path("stepOne") }}" id="logo" class="navbar-left headerNav"><img src="{{ asset('../web/img/iconinverse.png') }} " alt="image louvre"/>
                             <span id="headerTitle">{{ 'louvre museum - ticketing'|trans|upper }}</span></a>
                     </a>
+                     <ul class="navbar navbar-nav navbar-right">
+                         <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('img/ru.png') }}"></a></li>
+                         <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/fr.png') }}"></a></li>
+                     </ul>
                  </div>
+            </div>
             </div>
         {% endblock %}
 
-        {% block language %}
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-6">
-                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a>
-                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR</a>
-                    </div>
-                </div>
-        {% endblock %}
 
         {% block body %}{% endblock %}
         {% block footer %}

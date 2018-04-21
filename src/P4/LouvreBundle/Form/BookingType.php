@@ -34,6 +34,8 @@ class BookingType extends AbstractType
                     'data-date-language' => 'fr',
                     'data-date-format' => 'dd/mm/yyyy',
                     'data-provide' => 'datepicker',
+                   // 'data-date-start-date' => '0d',
+                    //'data-date-end-date' => '+365d',
                     'data-date-autoclose' => true
                 ],
             ))

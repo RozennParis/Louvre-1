@@ -67,7 +67,7 @@ body{
 .footer
 {
 	color : white;
-	margin-top: 50px;
+	margin-top: 800px;
 }
 #headerTitle {
 	margin-left: 20px;
@@ -79,6 +79,25 @@ body{
 .headerNav {
 	text-decoration: none;
 }
+.flags
+{
+	text-align: center;
+}
+ol
+{
+	text-align: center;
+}
+.breadcrumb
+{
+	background-color: black;
+}
+.breadcrumb a
+{
+	color: white;
+	text-decoration: none;
+}
+
+
 
 
 

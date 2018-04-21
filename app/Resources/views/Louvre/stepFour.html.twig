@@ -1,16 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block title %}{{ parent() }} - {{ 'order summary'|trans|capitalize }} {% endblock %}
-
 {% block body %}
     <div class="container">
-        <div class="bc-icons-2">
-            <ol class="breadcrumb indigo lighten-4">
-                <li>{{ '1 - order'|trans }}</li>
-                <li>{{ '2 - informations'|trans }}</li>
-                <li>{{ '3 - summary / payment'|trans }}</li>
+        <div class="row">
+            <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('stepOne') }}">{{ '1 - order'|trans }}</a></li>
+                <li><a href="{{ path('stepTwo') }}">{{ '2 - informations'|trans }}</a></li>
+                <li><a href="{{ path('stepThree') }} ">{{ '3 - summary / payment'|trans }}</a></li>
                 <li><a href="{{ path('stepFour', {'id': booking.id}) }} ">{{ '4 - confirmation'|trans }}</a></li>
             </ol>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-5">
