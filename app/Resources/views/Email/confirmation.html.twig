@@ -1,28 +1,29 @@
 <p><img style="width: 300px" src= "{{ icon }}" alt = "Logo Louvre"></p>
-<h2>{{ 'the louvre museum thanks you for your order placed on the'|trans|upper }} {{ booking.purchaseDate|date('d/m/Y') }}</h2>
+<p>{{ 'the louvre museum thanks you for your order placed on the'|trans|upper }} {{ booking.purchaseDate|date('d/m/Y') }}</p>
 <hr class="my-4">
-
+<p>{{ 'your order'|trans|capitalize }}</p>
+<hr class="my-4">
         <ul>
             <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ booking.bookingCode }}</li>
             <li><span>{{ 'visit date'|trans|capitalize }} :  </span>{{ booking.visitDate|date('d/m/Y') }}</li>
             <li><span>{{ 'ticket'|trans|capitalize }} :  {{ booking.ticketTypeLabel |trans }}</li>
         </ul>
 
-            <hr class="my-4">
-            <h2>{{ 'visitor(s)'|trans|upper }}</h2>
-                    {% for ticket in app.session.get('booking').tickets %}
-                        <hr class="my-4">
-                        <p>{{ 'last name'|trans|capitalize }} : {{ ticket.lastName|upper }}</p>
-                        <p>{{ 'first name'|trans|capitalize }} : {{ ticket.firstName|upper }}</p>
-                        <p>{{ 'birth date'|trans|capitalize }} : {{ ticket.birthDate|date('d/m/Y') }}</p>
-                        <p>{{ 'country'|trans|capitalize }} : {{ ticket.country|upper }}</p>
-                        <p>{{ 'reduced price'|trans|capitalize }} : {{ ticket.reducedPriceLabel|trans }}</p>
-                        <p>{{ 'ticket price'|trans|capitalize }} :  {{ ticket.price|upper }}</p>
-                    {% endfor %}
-            <hr class="my-4">
-                <p><span>{{ 'total amount'|trans|capitalize }} : </span> {{ booking.totalPrice|number_format(2,',',' ') }} euros</p>
-             <hr class="my-4">
 <hr class="my-4">
+        {% for ticket in app.session.get('booking').tickets %}
+            <hr class="my-4">
+            <p><strong>{{ 'visitor'|trans|capitalize }} : {{ loop.index }}</strong></p>
+            <p>{{ 'last name'|trans|capitalize }} : {{ ticket.lastName|upper }}</p>
+            <p>{{ 'first name'|trans|capitalize }} : {{ ticket.firstName|upper }}</p>
+            <p>{{ 'birth date'|trans|capitalize }} : {{ ticket.birthDate|date('d/m/Y') }}</p>
+            <p>{{ 'country'|trans|capitalize }} : {{ ticket.country|upper }}</p>
+            <p>{{ 'reduced price'|trans|capitalize }} : {{ ticket.reducedPriceLabel|trans }}</p>
+            <p>{{ 'ticket price'|trans|capitalize }} :  {{ ticket.price|upper }}</p>
+        {% endfor %}
+<hr class="my-4">
+            <p><span>{{ 'total amount'|trans|capitalize }} : </span> {{ booking.totalPrice|number_format(2,',',' ') }} euros</p>
+             <hr class="my-4">
+            <hr class="my-4">
 <p><span>{{ 'order paid by credit card on'|trans|capitalize }} : </span> {{ booking.purchaseDate|date('d/m/Y') }}</p>
 <hr class="my-4">
                 <p>{{ 'thank you for your trust'|trans|capitalize }}</p>
