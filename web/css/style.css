@@ -1,18 +1,4 @@
-@media (min-width: 768px) {
-	.container {
-		width: 750px;
-	}
-}
-@media (min-width: 992px) {
-	.container {
-		width: 970px;
-	}
-}
-@media (min-width: 1200px) {
-	.container {
-		width: 1170px;
-	}
-}
+
 .img-thumbnail
 {
     width: 1000px;
@@ -67,11 +53,11 @@ body{
 .footer
 {
 	color : white;
-	margin-top: 800px;
+	margin-top: 80px;
 }
 #headerTitle {
-	margin-left: 20px;
-	font-size: 15px;
+	margin-left: 8px;
+	font-size: 14px;
 	font-family: "PT Serif";
 	color: white;
 	font-style: normal;
@@ -82,6 +68,7 @@ body{
 .flags
 {
 	text-align: center;
+	margin-bottom: 20px;
 }
 ol
 {
@@ -96,7 +83,44 @@ ol
 	color: white;
 	text-decoration: none;
 }
-
+/*Smartphone*/
+@media (max-width: 600px){
+h1,h2 {
+	font-size : 20px;
+	text-align: center;
+}
+	.logo img{
+		vertical-align: middle;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.paiement {
+		text-align: center;
+	}
+	.paiement .stripe-button-el{
+		margin-top: 30px;
+	}
+}
+/* tablette*/
+@media (max-width: 780px){
+	h1,h2 {
+		font-size : 30px;
+		text-align: center;
+	}
+	.logo img{
+		vertical-align: middle;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.paiement {
+		text-align: center;
+	}
+	.paiement .stripe-button-el{
+		margin-top: 30px;
+	}
+}
 
 
 

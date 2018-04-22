@@ -19,16 +19,19 @@
                  <div class="container">
                      <div class="col-md-12">
                      <a class="navbar-header">
-                        <a href="{{ path("stepOne") }}" id="logo" class="navbar-left headerNav"><img src="{{ asset('../web/img/iconinverse.png') }} " alt="image louvre"/>
+                        <a href="{{ path("stepOne") }}" id="logo" class="navbar-left headerNav"><img src="{{ asset('img/iconinverse.png') }} " alt="image louvre"/>
                             <span id="headerTitle">{{ 'louvre museum - ticketing'|trans|upper }}</span></a>
+
                     </a>
-                     <ul class="navbar navbar-nav navbar-right">
-                         <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('img/ru.png') }}"></a></li>
-                         <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/fr.png') }}"></a></li>
-                     </ul>
                  </div>
-            </div>
-            </div>
+                </div>
+           </div>
+        {% endblock %}
+        {% block flags %}
+        <div class="flags">
+            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('img/ru.png') }}"></a>
+            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/fr.png') }}"></a>
+        </div>
         {% endblock %}
 
 
