@@ -15,7 +15,6 @@
                 {% include 'Louvre/breadcrumb.html.twig' with{'step': 1 }only %}
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6">
                 <h1>{{ 'louvre museum'|trans|upper }}</h1>
@@ -28,7 +27,6 @@
             </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6">
                 <div class="well">
@@ -64,21 +62,20 @@
                 </div>
             </div>
             <div class="col-md-6">
-                    <div class="well">
-                        <div class="card">{{ 'order your tickets online'|trans|upper }}</div>
-                    </div>
-                    <div class="well">
-                        {{ form_start(form) }}
-                        {{ form_row(form.visitDate) }}
-                        {{ form_row(form.ticketType) }}
-                        <p class="bg-danger"><i class="fa fa-warning"> {{ 'after 14 hours, it is no longer possible to book a day ticket for the same day'|trans|capitalize }}</i></p>
-                        {{ form_row(form.nbTickets) }}
-                        <p class="bg-danger"><i class="fa fa-warning"> {{ 'for more than 10 tickets, please contact us'|trans|capitalize }}</i></p>
-                        {{ form_row(form.email) }}
-                        <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans|upper }}</button>
-
-                        {{ form_end(form) }}
-                    </div>
+                <div class="well">
+                    <div class="card">{{ 'order your tickets online'|trans|upper }}</div>
+                </div>
+                <div class="well">
+                    {{ form_start(form) }}
+                    {{ form_row(form.visitDate) }}
+                    {{ form_row(form.ticketType) }}
+                    <p class="bg-danger"><i class="fa fa-warning"> {{ 'after 14 hours, it is no longer possible to book a day ticket for the same day'|trans|capitalize }}</i></p>
+                    {{ form_row(form.nbTickets) }}
+                    <p class="bg-danger"><i class="fa fa-warning"> {{ 'for more than 10 tickets, please contact us'|trans|capitalize }}</i></p>
+                    {{ form_row(form.email) }}
+                    <button type="submit" class="btn btn-primary" name="submit" value="submit">{{ 'next'|trans|upper }}</button>
+                    {{ form_end(form) }}
+                </div>
             </div>
         </div>
     </div>
@@ -87,7 +84,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.fr.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/dateScript.js') }}"></script>

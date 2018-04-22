@@ -1,6 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block title %}{{ parent() }} - {{ 'summary'|trans }} {% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
@@ -8,35 +9,36 @@
                 {% include 'Louvre/breadcrumb.html.twig' with{'step': 3 }only %}
             </div>
         </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h1>{{ 'order summary'|trans|upper }}</h1>
-                    <hr class="my-4">
-                    <ul>
-                        <li><span>{{ 'purchaseDate'|trans|capitalize }} : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
-                        <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ booking.bookingCode }}</li>
-                        <li><span>{{ 'visit date'|trans|capitalize }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
-                        <li><span>{{ 'you have booked'|trans|capitalize }} : </span>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }}</li>
-                        <li><span>{{ 'ticket type'|trans|capitalize }} : </span> {{ booking.ticketTypeLabel |trans }}</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <div class="logo">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>{{ 'order summary'|trans|upper }}</h1>
+                <hr class="my-4">
+                <ul>
+                    <li><span>{{ 'purchaseDate'|trans|capitalize }} : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ booking.bookingCode }}</li>
+                    <li><span>{{ 'visit date'|trans|capitalize }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                    <li><span>{{ 'you have booked'|trans|capitalize }} : </span>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }}</li>
+                    <li><span>{{ 'ticket type'|trans|capitalize }} : </span> {{ booking.ticketTypeLabel |trans }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="logo">
                     <div class="col-md-3 col-md-offset-3">  <img src="{{ asset('img/icon.png') }}"></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <hr class="my-4">
-                <p class="bg-primary"><i class="fa fa-warning"> {{ 'Please check your information before paying'|trans|capitalize }}</i></p>
+                <p class="bg-primary text-center"><i class="fa fa-warning"> {{ 'Please check your information before paying'|trans|capitalize }}</i></p>
                 <h2 class="text-center">{{ 'your ticket(s)'|trans|upper }}</h2>
                 <hr class="my-4">
-                </div>
             </div>
-            <div class="form-group row">
-                <div class="col-md-8 col-md-offset-2">
-                    <table class="table table-checkout table-hover">
-                        <tbody>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table table-checkout table-hover">
+                    <tbody>
                         {% for ticket in booking.tickets %}
                             <tr>
                                 <td><strong>{{ 'visitor'|trans|capitalize }} {{ loop.index }}</strong></td>
@@ -45,58 +47,58 @@
                                 <td>{{ 'price'|trans|capitalize }} : {{ ticket.price }} {{ 'euros'|trans }}</td>
                             </tr>
                         {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <table class="table table-border">
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td><strong>{{ 'total amount'|trans|upper }} :</strong></td>
-                                <td>{{ booking.totalPrice }} {{ 'euros'|trans }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table table-border">
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><strong>{{ 'total amount'|trans|upper }} :</strong></td>
+                            <td>{{ booking.totalPrice }} {{ 'euros'|trans }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <hr class="my-4">
-            <div class="row">
-                <div class="well">
-                    <div class="paiement">
+        </div>
+        <hr class="my-4">
+        <div class="row">
+            <div class="well">
+                <div class="paiement">
                     <div class="col-md-12">
-                            <div class="col-md-4 col-md-offset-2">
-                                <span><i class="fa fa-credit-card">  {{ 'payment by credit card'|trans|upper }}</i></span>
-                            </div>
-                            <div class="col-md-4 col-md-offset-2">
-                                <form action="{{ path('checkout') }}" method="POST">
-                                    <script
-                                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                         data-key="{{ stripe_public_key }}"
-                                         data-image="{{ asset('img/icon.png') }}"
-                                         data-amount="{{ booking.totalPrice *100 }}"
-                                         data-name="{{ 'louvre museum'|trans }}"
-                                         data-description="{{ 'payment'|trans }}"
-                                         data-locale="auto"
-                                         data-currency="eur"
-                                         data-allow-remember-me= false
-                                         data-email="{{ booking.email }}"
-                                         data-label="{{ 'payment'|trans|upper }}">
-                                    </script>
-                                </form>
-                            </div>
+                        <div class="col-md-4 col-md-offset-2">
+                            <span><i class="fa fa-credit-card">  {{ 'payment by credit card'|trans|upper }}</i></span>
                         </div>
+                        <div class="col-md-4 col-md-offset-2">
+                            <form action="{{ path('checkout') }}" method="POST">
+                                <script
+                                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="{{ stripe_public_key }}"
+                                        data-image="{{ asset('img/icon.png') }}"
+                                        data-amount="{{ booking.totalPrice *100 }}"
+                                        data-name="{{ 'louvre museum'|trans }}"
+                                        data-description="{{ 'payment'|trans }}"
+                                        data-locale="auto"
+                                        data-currency="eur"
+                                        data-allow-remember-me= false
+                                        data-email="{{ booking.email }}"
+                                        data-label="{{ 'payment'|trans|upper }}">
+                                </script>
+                            </form>
+                        </div>
+                    </div>
                     <hr class="my-4">
                 </div>
-                </div>
             </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <a class="button-back" href="{{ path('cancel') }}"> <button class="btn btn-light" name="return" type="button"> {{ 'cancel my order'|trans|capitalize }}</button></a>
-                     </div>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a class="button-back" href="{{ path('cancel') }}"> <button class="btn btn-light" name="return" type="button"> {{ 'cancel my order'|trans|capitalize }}</button></a>
             </div>
+        </div>
+    </div>
 {% endblock %}

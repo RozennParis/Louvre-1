@@ -1,39 +1,38 @@
 {% extends "base.html.twig" %}
 
 {% block title %}{{ parent() }} - {{ 'order summary'|trans|capitalize }} {% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <ol class="breadcrumb">
-                <li><a href="{{ path('stepOne') }}">{{ '1 - order'|trans }}</a></li>
-                <li><a href="{{ path('stepTwo') }}">{{ '2 - informations'|trans }}</a></li>
-                <li><a href="{{ path('stepThree') }} ">{{ '3 - summary / payment'|trans }}</a></li>
-                <li><a href="{{ path('stepFour', {'id': booking.id}) }} ">{{ '4 - confirmation'|trans }}</a></li>
-            </ol>
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('stepOne') }}">{{ '1 - order'|trans }}</a></li>
+                    <li><a href="{{ path('stepTwo') }}">{{ '2 - informations'|trans }}</a></li>
+                    <li><a href="{{ path('stepThree') }} ">{{ '3 - summary / payment'|trans }}</a></li>
+                    <li><a href="{{ path('stepFour', {'id': booking.id}) }} ">{{ '4 - confirmation'|trans }}</a></li>
+                </ol>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6 col-md-offset-3 text-center">
                 <p class="bg-success">{{ 'your payment has been accepted ! your order is validated !'|trans|capitalize }}</p>
             </div>
         </div>
         <div class="row">
-
             <div class="col-md-6">
                 <h1>{{ 'louvre museum thanks you for your booking' |trans|upper }}</h1>
                 <hr class="my-4">
-                <h4>{{ 'date of your reservation'|trans|upper }} : {{ booking.purchaseDate|date('d/m/Y') }}</h4>
+                <h3>{{ 'date of your reservation'|trans|upper }} : {{ booking.purchaseDate|date('d/m/Y') }}</h3>
             </div>
             <div class="col-md-4 col-md-offset-2">
                 <div class="logo">
                 <img src="{{ asset('img/icon.png') }}">
-            </div>
+                </div>
             </div>
         </div>
-
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 col-md-offset-3">
                 <hr class="my-4">
                 <ul>
                     <li>{{ 'booking'|trans|upper }} n° : {{ booking.id }}</li>
@@ -46,28 +45,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 text-center">
                 <div class="col-md-6">
-                    <h4>{{ 'an email has just been sent to the following address'|trans|capitalize }} :</h4>
+                    <p>{{ 'an email has just been sent to the following address'|trans|capitalize }} :</p>
                     <hr class="my-4">
-                    <h4>{{ 'in this email you will find'|trans|capitalize }} :</h4>
-
+                    <p>{{ 'in this email you will find'|trans|capitalize }} :</p>
                 </div>
                 <div class="col-md-6">
-                    <ul>
-                        <li><i class="fa fa-envelope"> {{ booking.email }} </i></li>
-                    </ul>
-
+                    <p><i class="fa fa-envelope"> {{ booking.email }} </i></p>
                     <hr class="my-4">
-                    <ul>
-                        <li><i class="fa fa-th-list"> {{ 'the summary of your order'|trans|capitalize }} </i></li>
-                        <li><i class="fa fa-ticket"> {{ 'your ticket(s)'|trans|capitalize }} </i></li>
-                    </ul>
+                    <p><i class="fa fa-th-list"> {{ 'the summary of your order'|trans|capitalize }} </i></p>
+                    <p><i class="fa fa-ticket"> {{ 'your ticket(s)'|trans|capitalize }} </i></p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 col-md-offset-3 text-center">
                 <hr class="my-4">
                 <p class="bg-danger"><i class="fa fa-warning"> {{ 'this email takes the place of a ticket, thank you to keep it because it will be asked at the entrance of the museum'|trans|capitalize }}</i></p>
                 <p class="bg-danger"><i class="fa fa-warning"> {{ 'do not forget your proof if you chose a reduced rate, you will be asked at the entrance of the museum'|trans|capitalize }}</i></p>
@@ -76,7 +69,5 @@
             </div>
         </div>
     </div>
-
-
 
 {% endblock %}
