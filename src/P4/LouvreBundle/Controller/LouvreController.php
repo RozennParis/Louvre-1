@@ -78,9 +78,8 @@ class LouvreController extends Controller
                 $bookingManager->close();
                 $this->addFlash('message','your payment has been accepted ! your order is validated !');
                 return $this->redirectToRoute("stepFour");
-            }else{
-                $this->addFlash('message', 'payment error');
             }
+            $this->addFlash('message', 'payment error');
         }
         return $this->render(':Louvre:stepThree.html.twig',array('booking'=>$booking));
     }
@@ -107,10 +106,9 @@ class LouvreController extends Controller
 
     /**
      * @Route("/cancel", name="cancel")
-     * @param BookingManager $bookingManager
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function cancelBooking(BookingManager $bookingManager)
+    public function cancelBooking()
     {
         return $this->redirectToRoute('stepOne');
     }
