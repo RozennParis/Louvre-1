@@ -55,9 +55,8 @@ class PriceCalculation
                 $price = self::PRICE_CHILD;
             } elseif ($age < self::AGE_SENIOR) {
                 $price = self::PRICE_NORMAL;
-            } else {
-                $price = self::PRICE_SENIOR;
             }
+            $price = self::PRICE_SENIOR;
             if ($ticket->getReducedPrice() && $price > self::PRICE_REDUCED) {
                 $price = self::PRICE_REDUCED;
             }

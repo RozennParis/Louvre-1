@@ -6,7 +6,6 @@ namespace P4\LouvreBundle\Service;
 use P4\LouvreBundle\Entity\Booking;
 
 use Stripe\Charge;
-use Stripe\Error\ApiConnection;
 use Stripe\Error\Card;
 use Stripe\Stripe;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -20,7 +19,7 @@ class BookingPay
 
     private $secretKey;
     /**
-     * @var Session
+     * @var SessionInterface
      */
     private $session;
 
