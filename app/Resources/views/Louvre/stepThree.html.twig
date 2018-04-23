@@ -15,7 +15,6 @@
                 <hr class="my-4">
                 <ul>
                     <li><span>{{ 'purchaseDate'|trans|capitalize }} : </span>{{ booking.purchaseDate|date('d/m/Y') }}</li>
-                    <li><span>{{ 'booking code'|trans|capitalize }} : </span>{{ booking.bookingCode }}</li>
                     <li><span>{{ 'visit date'|trans|capitalize }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
                     <li><span>{{ 'you have booked'|trans|capitalize }} : </span>{{ booking.nbTickets }} {{ 'ticket(s)'|trans }}</li>
                     <li><span>{{ 'ticket type'|trans|capitalize }} : </span> {{ booking.ticketTypeLabel |trans }}</li>
@@ -74,11 +73,11 @@
                             <span><i class="fa fa-credit-card">  {{ 'payment by credit card'|trans|upper }}</i></span>
                         </div>
                         <div class="col-md-4 col-md-offset-2">
-                            <form action="{{ path('checkout') }}" method="POST">
+                            <form method="POST">
                                 <script
                                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                         data-key="{{ stripe_public_key }}"
-                                        data-image="{{ asset('img/littleicon.png') }}"
+                                        data-image="{{ asset('img/icon.png') }}"
                                         data-amount="{{ booking.totalPrice *100 }}"
                                         data-name="{{ 'louvre museum'|trans }}"
                                         data-description="{{ 'payment'|trans }}"

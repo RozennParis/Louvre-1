@@ -30,8 +30,8 @@ class LouvreControllerTest extends WebTestCase
 
     public function testFormBookingValid()
     {
-        //$client = static::createClient();
-        $crawler =$this->client->request('GET', '/fr/');
+        $client = static::createClient();
+        $crawler =$client->request('GET', '/fr/');
 
         $formBooking = $crawler->selectButton('submit')->form();
 
@@ -41,11 +41,11 @@ class LouvreControllerTest extends WebTestCase
         $formBooking['booking[email][first]'] = 'stephanie.houssin@gmx.fr';
         $formBooking['booking[email][second]'] = 'stephanie.houssin@gmx.fr';
 
-        $crawler = $this->client->submit($formBooking);
+        $crawler = $client->submit($formBooking);
 
-        $this->assertTrue($this->client->getResponse()->isRedirect('/fr/tickets'));
+        $this->assertTrue($client->getResponse()->isRedirect('/fr/tickets'));
 
-        $crawler = $this->client->followRedirect();
+        $crawler = $client->followRedirect();
 
         $this->assertEquals(2, $crawler->filter('label:contains("date de naissance")')->count());
 
@@ -66,24 +66,24 @@ class LouvreControllerTest extends WebTestCase
         $formTickets['tickets_booking[tickets][1][birthDate][year]'] = 2012;
         $formTickets['tickets_booking[tickets][1][country]'] = 'FR';
 
-        $crawler = $this->client->submit($formTickets);
+        $crawler = $client->submit($formTickets);
 
-        $this->assertTrue($this->client->getResponse()->isRedirect('/fr/summary'));
+        $this->assertTrue($client->getResponse()->isRedirect('/fr/summary'));
 
-        $crawler = $this->client->followRedirect();
+        $crawler = $client->followRedirect();
 
         $this->assertEquals(2, $crawler->filter('li:contains("Date")')->count());
 
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertTrue($client->getResponse()->isSuccessful());
     }
 
  // Test sur le changement de langue
     public function testSiteTransInFrench()
     {
-        //$client = static::createClient();
-        $crawler = $this->client->request('GET', '/en/');
-        $link = $crawler->selectLink('FR')->link();
-        $crawler = $this->client->click($link);
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/fr/');
+        $link = $crawler->selectLink('Flag FR')->link();
+        $crawler = $client->click($link);
         $this->assertSame(1, $crawler->filter('html:contains("MUSEE DU LOUVRE")')->count());
     }
 }

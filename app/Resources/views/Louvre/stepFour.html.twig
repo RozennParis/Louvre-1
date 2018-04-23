@@ -6,17 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <ol class="breadcrumb">
-                    <li><a href="{{ path('stepOne') }}">{{ '1 - order'|trans }}</a></li>
-                    <li><a href="{{ path('stepTwo') }}">{{ '2 - informations'|trans }}</a></li>
-                    <li><a href="{{ path('stepThree') }} ">{{ '3 - summary / payment'|trans }}</a></li>
-                    <li><a href="{{ path('stepFour', {'id': booking.id}) }} ">{{ '4 - confirmation'|trans }}</a></li>
-                </ol>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-                <p class="bg-success">{{ 'your payment has been accepted ! your order is validated !'|trans|capitalize }}</p>
+                {% include 'Louvre/breadcrumb.html.twig' with{'step': 4 }only %}
             </div>
         </div>
         <div class="row">

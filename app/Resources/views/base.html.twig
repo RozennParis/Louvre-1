@@ -29,9 +29,21 @@
 
         {% block flags %}
             <div class="flags">
-                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('img/ru.png') }}"></a>
-                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/fr.png') }}"></a>
+                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('img/ru.png') }}" alt="Flag EN"></a>
+                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/fr.png') }}" alt="Flag FR"></a>
             </div>
+        {% endblock %}
+
+        {% block flash %}
+        {% for flashMessage in app.session.flashbag.get('message') %}
+        <div class="row">
+            <div class="message">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <p class="bg-success">{{ flashMessage}}</p>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
         {% endblock %}
 
         {% block body %}{% endblock %}

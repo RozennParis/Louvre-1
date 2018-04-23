@@ -13,10 +13,10 @@ class PriceCalculationTest extends TestCase
     public function setUp()
     {
         // CREATION DE MA DATE DE VISITE
-        $now = new \DateTime(); // date d'aujourd'hui
-        $addingDays = 20; // ajout de 20 jours
-        $interval = new \DateInterval('P'.$addingDays.'D'); // création de l'intervalle -> 20 jours
-        $this->visitDate = $now->add($interval);// Ajout des 20 jours à aujourd'hui  ->  visitDate
+        $now = new \DateTime();
+        $addingDays = 20;
+        $interval = new \DateInterval('P'.$addingDays.'D');
+        $this->visitDate = $now->add($interval);
     }
 
     /**
@@ -30,27 +30,17 @@ class PriceCalculationTest extends TestCase
     public function testPrice($age, $ticketType, $reducedPrice, $expected)
     {
         // CREATION DE LA DATE DE NAISSANCE
-        $interval = new \DateInterval('P'.$age.'Y');// creation de l'intervalle âge
-        // ici $interval contient les différentes valeurs âges
-
-        // dans un premier temps je déclare que $bithDate = $visitDate
+        $interval = new \DateInterval('P'.$age.'Y');
         $birthDate =  clone $this->visitDate;
-        // si je lance un test maintenant j'ai 12 failures -> seules les 4 correspondant à une naissance du jour passent
-        // donc les 4 à age = 0
-
-        // Dans un deuxième temps je vais calculer les dates de naissance
-        // J'ote $interval (qui contient mes âges ) à $birthdate qui contient la date de la visite
         $birthDate = $birthDate->sub($interval);
-        // $birthDate contient maintenant les dates de naissances au format yyyy-mm-dd
 
-        // je crée ma commande
         $booking = new Booking();
-        $booking->setVisitDate($this->visitDate); // contient la date du jour + 20 jours au format yyyy-mm-dd
+        $booking->setVisitDate($this->visitDate);
         $booking->setNbTickets(1);
         $booking->setTicketType($ticketType);
 
         $ticket = new Ticket();
-        $ticket->setBirthDate($birthDate); // contient la date de naissance au format yyyy-mm-dd
+        $ticket->setBirthDate($birthDate);
         $ticket->setReducedPrice($reducedPrice);
 
         $ticket->setBooking($booking);

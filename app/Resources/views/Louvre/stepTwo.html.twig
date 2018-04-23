@@ -19,11 +19,11 @@
                 <h1>{{ 'your reservation'|trans|upper }}</h1>
                 <hr class="my-4">
                     <ul>
-                        <li><span>{{ 'date of your reservation'|trans }} :</span> {{ booking.purchaseDate|date('d/m/Y') }}</li>
-                        <li><span>{{ 'date of your visit'|trans }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
+                        <li><span>{{ 'date of your reservation'|trans|capitalize }} :</span> {{ booking.purchaseDate|date('d/m/Y') }}</li>
+                        <li><span>{{ 'date of your visit'|trans|capitalize }} : </span>{{ booking.visitDate|date('d/m/Y') }}</li>
                         <li><span>{{ 'ticket type'|trans|capitalize }} : </span>{{ booking.ticketTypeLabel |trans }}</li>
-                        <li><span>{{ 'number of reserved tickets'|trans }} :</span> {{ booking.nbTickets }}</li>
-                        <li><span>{{ 'your ticket(s) will be sent to the email address'|trans }} :</span> {{ booking.email }}</li>
+                        <li><span>{{ 'number of reserved tickets'|trans|capitalize }} :</span> {{ booking.nbTickets }}</li>
+                        <li><span>{{ 'your ticket(s) will be sent to the email address'|trans|capitalize }} :</span> {{ booking.email }}</li>
                     </ul>
             </div>
         </div>

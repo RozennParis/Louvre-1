@@ -1,17 +1,21 @@
 <?php
 namespace P4\LouvreBundle\Manager;
-use Exception;
+
 use P4\LouvreBundle\Entity\Booking;
 use P4\LouvreBundle\Entity\Ticket;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use P4\LouvreBundle\Service\Mailer;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * Class BookingManager
  * @package P4\LouvreBundle\Manager
  */
 class BookingManager
 {
+    const SESSION_CURRENT_BOOKING_ID_KEY = "current_booking_id";
+
     private $session;
     private $em;
     /**
@@ -38,16 +42,16 @@ class BookingManager
         }
         return $booking;
     }
+
     /**
      * @return mixed
-     * @throws Exception
      */
     public function getBooking()
     {
         $booking = $this->getSession();
         if(!$booking)
         {
-            throw new Exception();
+            throw new NotFoundHttpException('Error');
         }
         return $booking;
     }
@@ -79,7 +83,6 @@ class BookingManager
      */
     public function startBooking(Booking $booking)
     {
-        // faire if > et if <
 
         while (count($booking->getTickets()) < $booking->getNbTickets()) {
             $ticket = new Ticket();
@@ -103,26 +106,24 @@ class BookingManager
         $this->em->persist($booking);
         $this->em->flush();
         $this->mailer->sendEmail($booking);
-
     }
-    /**
-     *
-     */
+
     public function close()
     {
+        $booking = $this->getSession();
         $this->session->clear();
+        $this->session->set(self::SESSION_CURRENT_BOOKING_ID_KEY,$booking->getId());
     }
+
     /**
-     * @param $id
      * @return null|object|Booking
-     * @throws Exception
      */
-    public function recBooking($id)
+    public function recBooking()
     {
-        $booking = $this->em->getRepository('P4LouvreBundle:Booking')->find($id);
+        $booking = $this->em->getRepository('P4LouvreBundle:Booking')->find($this->session->get(self::SESSION_CURRENT_BOOKING_ID_KEY));
         if(!$booking)
         {
-            throw new Exception('erreur');
+            throw new NotFoundHttpException('Error');
         }
         return $booking;
     }
