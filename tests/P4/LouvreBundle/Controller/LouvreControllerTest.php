@@ -10,18 +10,19 @@ class LouvreControllerTest extends WebTestCase
 {
 
     // test premier step
-    private $client = null;
+   // private $client = null;
 
-    public function setUp()
+   /* public function setUp()
     {
         $this->client = static::createClient();
-    }
+    }*/
     public function testFirstStepIsUp()
     {
-        $this->client->request('GET', '/fr/');
+        $client = static::createClient();
+        $client->request('GET', '/fr/');
         static::assertEquals(
             Response::HTTP_OK,
-            $this->client->getResponse()->getStatusCode()
+            $client->getResponse()->getStatusCode()
         );
     }
 
