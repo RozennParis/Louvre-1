@@ -56,6 +56,7 @@ class Booking
     private $visitDate;
 
     /**
+     * @var \DateTime
      * @ORM\Column(name="purchaseDate", type="date")
      * @Assert\DateTime(groups={"Booking"})
      */

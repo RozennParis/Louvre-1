@@ -31,10 +31,10 @@ class BookingType extends AbstractType
                 'html5' => 'false',
                 'attr' => [
                     'class' => 'form-control input-inline datepicker',
-                   // 'data-date-language' => 'fr',
+                    'data-date-language' => 'fr',
                     'data-date-format' => 'dd/mm/yyyy',
                     'data-provide' => 'datepicker',
-                   // 'data-date-start-date' => '0d',
+                    'data-date-start-date' => '0d',
                     //'data-date-end-date' => '+365d',
                     'data-date-autoclose' => true
                 ],

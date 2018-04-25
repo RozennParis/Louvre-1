@@ -35,9 +35,9 @@ class NotPossibleBookingValidator extends ConstraintValidator
             mktime(0, 0, 0, 12, 25, $year),  // Noel
 
             // Dates variables
-            mktime(0, 0, 0, $easterMonth, $easterDay + 1, $easterYear),
-            mktime(0, 0, 0, $easterMonth, $easterDay + 39, $easterYear),
-            mktime(0, 0, 0, $easterMonth, $easterDay + 50, $easterYear),
+            mktime(0, 0, 0, $easterMonth, $easterDay + 1, $easterYear), //Pâques
+            mktime(0, 0, 0, $easterMonth, $easterDay + 39, $easterYear), // Ascension
+            mktime(0, 0, 0, $easterMonth, $easterDay + 50, $easterYear), // Pentecote
         );
 
         if (in_array($timestamp, $holidays)) {

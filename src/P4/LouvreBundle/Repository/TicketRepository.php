@@ -19,9 +19,9 @@ class TicketRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('t')
             ->select('COUNT(t)')
-            ->innerJoin('t.booking', 'o')
-            ->where('o.visitDate >= :start_day')
-            ->andWhere('o.visitDate <= :end_day')
+            ->innerJoin('t.booking', 'b')
+            ->where('b.visitDate >= :start_day')
+            ->andWhere('b.visitDate <= :end_day')
             ->setParameter('start_day', $startDay)
             ->setParameter('end_day', $endDay)
         ;
